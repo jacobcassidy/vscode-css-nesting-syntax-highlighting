@@ -1,0 +1,33 @@
+/**
+ * INVALID CSS NESTING
+ */
+
+/**
+ * Concatenation (is not possible)
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#concatenation_is_not_possible
+ */
+
+.component {
+	&__child-element {
+		margin: 0;
+	}
+}
+/* In Sass this becomes the CSS below, but CSS nesting doesn't allow this */
+.component__child-element {
+	margin: 0;
+}
+
+/**
+* Invalid nested style rules
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#invalid_nested_style_rules
+*/
+
+.parent {
+  /* .parent styles these work fine */
+  & %invalid {
+    /* %invalid styles all of which are ignored */
+  }
+  & .valid {
+    /* .parent .valid styles these work fine */
+  }
+}
