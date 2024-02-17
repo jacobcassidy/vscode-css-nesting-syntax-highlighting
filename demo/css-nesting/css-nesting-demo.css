@@ -62,6 +62,9 @@
 	/* .card styles */
 	.featured & & & {
 		/* .featured .card .card .card styles */
+    & .sub-class {
+			margin: 0;
+		}
 	}
 }
 

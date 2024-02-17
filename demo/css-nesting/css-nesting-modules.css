@@ -1,9 +1,9 @@
 /**
 * CSS NESTING MODULES
+* Review CSS nesting and non-nesting syntax For any issues.
 */
 
 /*
-- commas
 - selectors
 - tag-names
 - combinators
@@ -11,11 +11,7 @@
 - pseudo-classes
 - pseudo-elements
 - urls
-- keyframes
 - color-keywords
-- at-rules
-- feature-query-operators
-- font-features
 - functions
 - timing-function
 - keyword.operator.shape
@@ -23,5 +19,307 @@
 - property-values
 - property-keywords
 - string
-- keyword.operator.comparison.css
 */
+
+/**
+* At Rules
+*/
+
+@container (width > 400px) {
+  h2 {
+    font-size: 1.5em;
+  }
+  .card {
+    width: 50%;
+    background-color: gray;
+    font-size: 1em;
+  }
+}
+/* with an optional <container-name> */
+@container tall (height > 30rem) {
+  h2 {
+    line-height: 1.6;
+  }
+}
+.post {
+  container-name: tall;
+  container-type: inline-size;
+}
+/* shorthand syntax */
+.post {
+  container: tall / inline-size;
+}
+
+@counter-style thumbs {
+	system: cyclic;
+	symbols: "\1F44D";
+	suffix: " ";
+}
+ul {
+  list-style: thumbs;
+}
+
+@font-face {
+	font-family: "MyWebFont";
+	src: url("webfont.woff2") format("woff2"), url("webfont.woff") format("woff");
+}
+
+@font-feature-values MyFont {
+	@styleset {
+		nice-style: 1;
+	}
+	@stylistic {
+		nice-style: 1;
+	}
+	@character-variant {
+		nice-style: 1;
+	}
+	@swash {
+		nice-style: 1;
+	}
+	@ornaments {
+		nice-style: 1;
+	}
+	@annotation {
+		nice-style: 1;
+	}
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@layer base {
+  h1 {
+    color: red;
+  }
+}
+
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+@media (min-width: 600px), (orientation: portrait) {
+  /* Styles */
+}
+
+
+@page {
+	size: A4;
+	margin: 10%;
+}
+@page :left {
+  margin-top: 4in;
+}
+@page wide {
+  size: a4 landscape;
+}
+@page {
+  /* margin box at top right showing page number */
+  @top-right {
+    content: "Page " counter(pageNumber);
+  }
+}
+
+/* @property is not cross-browsers friendly yet */
+/* @property --my-color {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: black;
+} */
+
+/* @scope is not cross-browser friendly yet */
+/* @scope (.article-body) to (figure) {
+  img {
+    border: 5px solid black;
+    background-color: goldenrod;
+  }
+  :scope {
+    background: rebeccapurple;
+    color: antiquewhite;
+    font-family: sans-serif;
+  }
+} */
+
+@supports (display: grid) {
+  .grid {
+    display: grid;
+  }
+}
+
+/**
+* FEATURE QUERY OPERATORS (AND, OR, NOT)
+*/
+
+/* AND */
+@container (width > 400px) and (height > 400px) {}
+@media (min-width: 600px) and (orientation: landscape) {}
+@supports (display: grid) and (gap: 1rem) {}
+
+/* NOT */
+@container not (width < 400px) {}
+@media not (orientation: landscape) {}
+@supports not (display: flex) {}
+
+/* OR */
+@container (width > 400px) or (height > 400px) {}
+@supports (display: grid) or (display: flex) {}
+
+/**
+* COMBINATORS
+*/
+
+.example > li {
+  margin: 0;
+}
+div > span {
+  margin: 0;
+}
+p ~ span {
+  color: red;
+}
+img + p {
+  color: red;
+}
+
+.example {
+  div {
+    > span {
+      margin: 0;
+    }
+  }
+  p {
+    ~ span {
+      color: red;
+    }
+  }
+  img {
+    + p {
+      color: red;
+    }
+  }
+}
+
+.example {
+  & div {
+    & > span {
+      margin: 0;
+    }
+  }
+  & p {
+    & ~ span {
+      color: red;
+    }
+  }
+  & img {
+    & + p {
+      color: red;
+    }
+  }
+}
+
+/**
+* COMMAS
+*/
+
+body {
+	figure:is(.class) {
+		&.a,
+		&.b {
+			margin-block-end: 12px;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html,
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+}
+
+.example {
+	@media (min-width: 500px) {
+		&::before,
+		&::after {
+			content: '"';
+			display: block;
+		}
+	}
+}
+
+@media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+	.class {
+		fieldset,
+		span {
+			max-width: calc((768 / 16) * 1rem);
+			flex: 0 0 100%;
+			&.class_left,
+			&.class_right {
+				flex: 0 0 100%;
+			}
+		}
+	}
+}
+
+/**
+* FUNCTIONS
+*/
+
+.example {
+  color: rgb(255, 0, 0);
+  background-color: oklch(70% 0.1 315);
+  margin: calc( (100 / 16) * 1rem);
+  max-width: min(100%, 600px);
+  padding: clamp(1rem, 5%, 2rem);
+  width: calc(100% - 3em);
+}
+
+/**
+ * PROPERTY NAMES WHEN SAME AS TAG NAMES
+ */
+
+.class::before {
+  content: "";
+  cursor: pointer;
+  filter: brightness(1.075);
+}
+content {
+	margin: 0;
+}
+cursor {
+	margin: 0;
+}
+filter {
+	margin: 0;
+}
+
+/**
+ * PSEUDO CLASS NESTING
+ */
+
+.class {
+	> :nth-child(1) {
+		margin: 0;
+	}
+	@media screen and (max-width: 1100px) {
+		> :nth-child(1) {
+			margin: 0;
+		}
+	}
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_pseudo-elements */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements */
