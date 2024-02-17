@@ -1,9 +1,19 @@
 # Change Log
 
-All notable changes to the "css" extension will be documented in this file.
+All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## v0.0.2
 
-## [Unreleased]
+_2024-02-17_
 
-- Initial release
+### Added
+
+- Added demo CSS files for testing and review.
+
+## v0.0.1
+
+_2024-02-16_
+
+### Added
+
+- Added initial files to match VSCode core CSS syntax highlighting.
