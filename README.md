@@ -10,18 +10,18 @@ The core CSS syntax file this extension updates can be found in the [official vs
 
 ```css
 .example {
-	text-decoration: none;
-	&:hover {
-		text-decoration: underline;
-	}
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 /* The browser parses this as: */
 .example {
-	text-decoration: none;
+  text-decoration: none;
 }
 .example:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 ```
 
