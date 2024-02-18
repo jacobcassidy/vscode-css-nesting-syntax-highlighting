@@ -1,24 +1,6 @@
 /**
 * CSS NESTING MODULES
-* Review CSS nesting and non-nesting syntax For any issues.
-*/
-
-/*
-- selectors
-- tag-names
-- combinators
-- functional-pseudo-classes
-- pseudo-classes
-- pseudo-elements
-- urls
-- color-keywords
-- functions
-- timing-function
-- keyword.operator.shape
-- property-names
-- property-values
-- property-keywords
-- string
+* For reviewing CSS nesting and non-nesting syntax For any issues.
 */
 
 /**
@@ -51,38 +33,38 @@
 }
 
 @counter-style thumbs {
-	system: cyclic;
-	symbols: "\1F44D";
-	suffix: " ";
+  system: cyclic;
+  symbols: "\1F44D";
+  suffix: " ";
 }
 ul {
   list-style: thumbs;
 }
 
 @font-face {
-	font-family: "MyWebFont";
-	src: url("webfont.woff2") format("woff2"), url("webfont.woff") format("woff");
+  font-family: "MyWebFont";
+  src: url("webfont.woff2") format("woff2"), url("webfont.woff") format("woff");
 }
 
 @font-feature-values MyFont {
-	@styleset {
-		nice-style: 1;
-	}
-	@stylistic {
-		nice-style: 1;
-	}
-	@character-variant {
-		nice-style: 1;
-	}
-	@swash {
-		nice-style: 1;
-	}
-	@ornaments {
-		nice-style: 1;
-	}
-	@annotation {
-		nice-style: 1;
-	}
+  @styleset {
+    nice-style: 1;
+  }
+  @stylistic {
+    nice-style: 1;
+  }
+  @character-variant {
+    nice-style: 1;
+  }
+  @swash {
+    nice-style: 1;
+  }
+  @ornaments {
+    nice-style: 1;
+  }
+  @annotation {
+    nice-style: 1;
+  }
 }
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
@@ -113,10 +95,9 @@ ul {
   /* Styles */
 }
 
-
 @page {
-	size: A4;
-	margin: 10%;
+  size: A4;
+  margin: 10%;
 }
 @page :left {
   margin-top: 4in;
@@ -131,7 +112,7 @@ ul {
   }
 }
 
-/* @property is not cross-browsers friendly yet */
+/* @property is not cross-browser friendly yet */
 /* @property --my-color {
   syntax: '<color>';
   inherits: false;
@@ -162,18 +143,26 @@ ul {
 */
 
 /* AND */
-@container (width > 400px) and (height > 400px) {}
-@media (min-width: 600px) and (orientation: landscape) {}
-@supports (display: grid) and (gap: 1rem) {}
+@container (width > 400px) and (height > 400px) {
+}
+@media (min-width: 600px) and (orientation: landscape) {
+}
+@supports (display: grid) and (gap: 1rem) {
+}
 
 /* NOT */
-@container not (width < 400px) {}
-@media not (orientation: landscape) {}
-@supports not (display: flex) {}
+@container not (width < 400px) {
+}
+@media not (orientation: landscape) {
+}
+@supports not (display: flex) {
+}
 
 /* OR */
-@container (width > 400px) or (height > 400px) {}
-@supports (display: grid) or (display: flex) {}
+@container (width > 400px) or (height > 400px) {
+}
+@supports (display: grid) or (display: flex) {
+}
 
 /**
 * COMBINATORS
@@ -232,44 +221,77 @@ img + p {
 * COMMAS
 */
 
+html,
 body {
-	figure:is(.class) {
-		&.a,
-		&.b {
-			margin-block-end: 12px;
-		}
-	}
+  margin: 0;
+  &.a,
+  &.b {
+    margin: 0;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	html,
-	html:focus-within {
-		scroll-behavior: auto;
-	}
+  html,
+  html:focus-within {
+    scroll-behavior: auto;
+    &.a,
+    &.b {
+      margin: 0;
+    }
+  }
 }
 
+.class,
 .example {
-	@media (min-width: 500px) {
-		&::before,
-		&::after {
-			content: '"';
-			display: block;
-		}
-	}
+  @media (min-width: 500px) {
+    &::before,
+    &::after {
+      content: '"';
+      display: block;
+    }
+  }
+}
+
+.class,
+.example {
+  fieldset,
+  span {
+    max-width: calc((768 / 16) * 1rem);
+    &.class_left,
+    &.class_right {
+      flex: 0 0 100%;
+    }
+  }
 }
 
 @media only screen and (max-width: calc( (768 / 16) * 1rem )) {
-	.class {
-		fieldset,
-		span {
-			max-width: calc((768 / 16) * 1rem);
-			flex: 0 0 100%;
-			&.class_left,
-			&.class_right {
-				flex: 0 0 100%;
-			}
-		}
-	}
+  .class,
+  .example {
+    fieldset,
+    span {
+      max-width: calc((768 / 16) * 1rem);
+      flex: 0 0 100%;
+      &.class_left,
+      &.class_right {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}
+
+.class,
+.example {
+  @media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+    fieldset,
+    span {
+      max-width: calc((768 / 16) * 1rem);
+      flex: 0 0 100%;
+      &.class_left,
+      &.class_right {
+        flex: 0 0 100%;
+      }
+    }
+  }
 }
 
 /**
@@ -279,7 +301,8 @@ body {
 .example {
   color: rgb(255, 0, 0);
   background-color: oklch(70% 0.1 315);
-  margin: calc( (100 / 16) * 1rem);
+  margin-top: calc((100 / 16) * 1rem);
+  margin-bottom: calc(var(--size, 10px) * 1rem);
   max-width: min(100%, 600px);
   padding: clamp(1rem, 5%, 2rem);
   width: calc(100% - 3em);
@@ -289,19 +312,39 @@ body {
  * PROPERTY NAMES WHEN SAME AS TAG NAMES
  */
 
-.class::before {
+content,
+cursor,
+filter,
+span {
   content: "";
   cursor: pointer;
   filter: brightness(1.075);
 }
-content {
-	margin: 0;
+
+.class {
+  &::before {
+    content: "";
+    cursor: pointer;
+    filter: brightness(1.075);
+  }
+  & content,
+  & cursor,
+  & filter,
+  & span {
+    margin: 0;
+  }
 }
-cursor {
-	margin: 0;
-}
-filter {
-	margin: 0;
+
+.class {
+  span,
+  header,
+  nav,
+  label,
+  ruby,
+  mark,
+  svg {
+    margin: 0;
+  }
 }
 
 /**
@@ -309,17 +352,39 @@ filter {
  */
 
 .class {
-	> :nth-child(1) {
-		margin: 0;
-	}
-	@media screen and (max-width: 1100px) {
-		> :nth-child(1) {
-			margin: 0;
-		}
-	}
+  > :nth-child(1) {
+    margin: 0;
+  }
+  @media screen and (max-width: 1100px) {
+    > :nth-child(1) {
+      margin: 0;
+      > :nth-child(1) {
+        margin: 0;
+      }
+    }
+  }
 }
 
+/* REFERENCES FOR ADDING ADDITIONAL TYPES */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_pseudo-elements */
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements */
+
+/*
+- selectors
+- tag-names
+- combinators
+- functional-pseudo-classes
+- pseudo-classes
+- pseudo-elements
+- urls
+- color-keywords
+- functions
+- timing-function
+- keyword.operator.shape
+- property-names
+- property-values
+- property-keywords
+- string
+*/

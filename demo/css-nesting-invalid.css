@@ -26,8 +26,10 @@
   /* .parent styles these work fine */
   & %invalid {
     /* %invalid styles all of which are ignored */
+    margin: 0;
   }
   & .valid {
     /* .parent .valid styles these work fine */
+    margin: 0;
   }
 }
