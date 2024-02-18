@@ -2,6 +2,14 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.4
+
+_2024-02-19_
+
+### Modified
+
+- Added border to logo image for contrast on dark backgrounds.
+
 ## v0.0.3
 
 _2024-02-19_
