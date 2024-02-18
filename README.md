@@ -31,7 +31,7 @@ Search for `CSS Nesting Syntax Highlighting` in the VSCode's Extensions Marketpl
 
 You can also manually install the extension by cloning the [github repository](https://github.com/jacobcassidy/vscode-css-nesting-syntax-highlighting) into `~/.vscode/extensions` and restarting the VSCode editor.
 
-## Theme
+## Companion Theme
 
 CSS Nesting Syntax Highlighting works excellent with the [Cassidy Dark Theme](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.cassidy-dark).
 
