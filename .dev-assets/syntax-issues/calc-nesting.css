@@ -1,0 +1,33 @@
+/**
+ * NESTED CALC FUNCTIONS
+ */
+
+.example {
+  max-width: calc((1440 / 16) * 1rem);
+}
+
+/* Without CSS nesting */
+@media screen and (max-width: calc( (1280 / 16) * 1rem)) {
+  .example {
+    max-width: calc((768 / 16) * 1rem);
+  }
+}
+
+/* With CSS nesting */
+@media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+  .example {
+    max-width: calc((768 / 16) * 1rem);
+    span {
+      max-width: calc((600 / 16) * 1rem);
+    }
+  }
+}
+
+.example {
+  @media only screen and (max-width: calc( var(--size) * 1rem)) {
+    max-width: calc((768 / 16) * 1rem);
+    span {
+      max-width: calc((600 / 16) * 1rem);
+    }
+  }
+}

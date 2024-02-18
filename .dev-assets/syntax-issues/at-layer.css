@@ -1,0 +1,14 @@
+/**
+ * AT LAYER
+ */
+
+.foo {
+  @layer base {
+    block-size: 100%;
+    @layer support {
+      & .bar {
+        min-block-size: 100%;
+      }
+    }
+  }
+}

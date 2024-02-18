@@ -1,0 +1,104 @@
+// SCSS:
+// ------
+// rules
+  // > selectors
+    // >> source.css#tag-names
+    // >> selector_class
+    // >> selector_id
+    // >> selector_pseudo_class
+    // >> tag_parent_reference >>> &
+    // >> source.css#pseudo-elements
+    // >> selector_attribute
+// property_list
+  // > {};
+  // > ^...rules
+  // > properties
+    // >> source.css#property-names
+    // >> : -> ; >> property_values
+      // >>> source.css#numeric-values
+      // >>> source.css#property-keywords
+      // >>> source.css#property-names
+      // >>> () >>>> property_values
+  // > self
+// ;
+
+// CSS:
+// ------
+// #selector
+  // > #selector-innards
+    // >> #tag-names
+    // >> entity.other.attribute-name.class.css
+    // >> entity.other.attribute-name.id.css
+    // >> #pseudo-classes
+    // + >> #nesting-selector
+    // >> #pseudo-elements
+    // >> #functional-pseudo-classes
+// #rule-list
+  // > {}
+  // + ^...#selector-innards
+  // > #rule-list-innards
+    // >> word >> #property-names
+    // >> : -> ; >> #property-values
+    // >> ;
+  // + > self
+
+
+
+// {
+//   "include": "#at-rules"
+// },
+// {
+//   "include": "#property-names"
+// },
+// {
+//   "include": "#tag-names"
+// },
+// {
+//   "include": "#pseudo-classes"
+// },
+// {
+//   "include": "#pseudo-elements"
+// },
+// {
+//   "include": "#functional-pseudo-classes"
+// },
+
+
+
+// {
+//   "include": "#property-names"
+// },
+// {
+//   "include": "#tag-names"
+// },
+// {
+//   "include": "#pseudo-classes"
+// },
+// {
+//   "include": "#nesting-selector"
+// },
+// {
+//   "include": "#pseudo-elements"
+// },
+// {
+//   "include": "#functional-pseudo-classes"
+// },
+// {
+//   "include": "#rule-list-innards"
+// },
+// {
+//   "include": "$self"
+// }
+
+
+
+
+// {
+//   "include": "#selector-innards"
+// },
+// {
+//   "include": "#rule-list-innards"
+// },
+// {
+//   "include": "$self"
+// }

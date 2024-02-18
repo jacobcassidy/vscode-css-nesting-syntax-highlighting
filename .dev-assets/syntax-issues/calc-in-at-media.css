@@ -1,0 +1,34 @@
+/**
+ * CALC FUNCTION IN @MEDIA
+ */
+
+:root {
+  --size: 500px;
+}
+
+.example {
+  max-width: calc(var(--size) * 1rem);
+}
+
+@media screen and (min-width: calc( var(--size) * 1rem)) {
+  .example {
+    max-width: calc(var(--size) * 1rem);
+  }
+}
+
+/* With CSS nesting */
+@media only screen and (max-width: calc( var(--size) * 1rem)) {
+  .example {
+    span {
+      max-width: calc(var(--size) * 1rem);
+    }
+  }
+}
+
+.example {
+  @media only screen and (max-width: calc( var(--size) * 1rem)) {
+    span {
+      max-width: calc(var(--size) * 1rem);
+    }
+  }
+}

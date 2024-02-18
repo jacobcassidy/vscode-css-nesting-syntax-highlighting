@@ -1,0 +1,33 @@
+/**
+ * AT CONTAINER
+ */
+
+/* DOES NOT HIGHLIGHT LIKE OTHER AT QUERIES */
+@container (width > 400px) and (height > 400px) {
+}
+@container not (width < 400px) {
+}
+@container (width > 400px) or (height > 400px) {
+}
+
+/* AND */
+@container (width > 400px) and (height > 400px) {
+}
+@media (min-width: 600px) and (orientation: landscape) {
+}
+@supports (display: grid) and (gap: 1rem) {
+}
+
+/* NOT */
+@container not (width < 400px) {
+}
+@media not (orientation: landscape) {
+}
+@supports not (display: flex) {
+}
+
+/* OR */
+@container (width > 400px) or (height > 400px) {
+}
+@supports (display: grid) or (display: flex) {
+}
