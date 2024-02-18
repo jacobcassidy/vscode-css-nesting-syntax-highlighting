@@ -26,15 +26,11 @@
 		{
 			"include": "#rule-list"
 		},
-    {
+		{
 			"include": "#nesting-selector"
 		}
 	],
 	"repository": {
-    "nesting-selector": {
-			"match": "&",
-			"name": "entity.name.tag.nesting.selector.css"
-		},
 		"at-rules": {
 			"patterns": [
 				{
@@ -225,6 +221,9 @@
 							},
 							"name": "meta.at-rule.media.body.css",
 							"patterns": [
+								{
+									"include": "#nesting-at-rules"
+								},
 								{
 									"include": "$self"
 								}
@@ -1380,6 +1379,37 @@
 			},
 			"match": "(?xi)\n(?<=^|\\s|,|\\*/)\n(?:\n  # Valid media types\n  (all|print|screen|speech)\n  |\n  # Deprecated in Media Queries 4: http://dev.w3.org/csswg/mediaqueries/#media-types\n  (aural|braille|embossed|handheld|projection|tty|tv)\n)\n(?=$|[{,\\s;]|/\\*)"
 		},
+		"nesting-at-rules": {
+			"patterns": [
+				{
+					"include": "#commas"
+				},
+				{
+					"include": "#nesting-rules"
+				},
+				{
+					"include": "#rule-list-innards"
+				}
+			]
+		},
+		"nesting-rules": {
+			"patterns": [
+				{
+					"match": "(?xi) (?<![\\w:-])\n(?:\n header|label|mark|nav|ruby|span\n)\n(?=[+~>\\s,.\\#|&){:\\[]|/\\*|$)",
+					"name": "entity.name.tag.css"
+				},
+				{
+					"include": "#property-names"
+				},
+				{
+					"include": "#selector-innards"
+				}
+			]
+		},
+		"nesting-selector": {
+			"match": "&",
+			"name": "entity.name.tag.nesting.selector.css"
+		},
 		"numeric-values": {
 			"patterns": [
 				{
@@ -1512,7 +1542,13 @@
 			"name": "meta.property-list.css",
 			"patterns": [
 				{
+					"include": "#nesting-rules"
+				},
+				{
 					"include": "#rule-list-innards"
+				},
+				{
+					"include": "$self"
 				}
 			]
 		},
@@ -1582,7 +1618,7 @@
 		},
 		"selector-innards": {
 			"patterns": [
-        {
+				{
 					"include": "#nesting-selector"
 				},
 				{
