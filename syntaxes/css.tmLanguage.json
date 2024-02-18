@@ -25,9 +25,16 @@
 		},
 		{
 			"include": "#rule-list"
+		},
+    {
+			"include": "#nesting-selector"
 		}
 	],
 	"repository": {
+    "nesting-selector": {
+			"match": "&",
+			"name": "entity.name.tag.nesting.selector.css"
+		},
 		"at-rules": {
 			"patterns": [
 				{
@@ -1575,6 +1582,9 @@
 		},
 		"selector-innards": {
 			"patterns": [
+        {
+					"include": "#nesting-selector"
+				},
 				{
 					"include": "#comment-block"
 				},
