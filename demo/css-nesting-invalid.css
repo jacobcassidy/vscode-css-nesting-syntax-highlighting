@@ -8,13 +8,13 @@
  */
 
 .component {
-	&__child-element {
-		margin: 0;
-	}
+  &__child-element {
+    margin: 0;
+  }
 }
 /* In Sass this becomes the CSS below, but CSS nesting doesn't allow this */
 .component__child-element {
-	margin: 0;
+  margin: 0;
 }
 
 /**
