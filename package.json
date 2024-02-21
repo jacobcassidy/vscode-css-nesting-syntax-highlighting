@@ -2,7 +2,7 @@
 	"name": "css-nesting-syntax-highlighting",
 	"displayName": "CSS Nesting Syntax Highlighting",
 	"description": "Updates VSCode's CSS TextMate rules to add CSS Nesting",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"icon": "images/css-nesting-syntax-highlighting-logo.png",
 	"publisher": "jacobcassidy",
 	"bugs": {
@@ -19,7 +19,7 @@
 	"keywords": [
 		"CSS Nesting",
 		"Nesting",
-		"Nested",
+		"Nested CSS",
 		"Syntax",
 		"Highlighting",
 		"Colorizer"
@@ -33,7 +33,7 @@
 	"contributes": {
 		"grammars": [
 			{
-				"language": "css",
+				"language": "CSS",
 				"scopeName": "source.css",
 				"path": "./syntaxes/css.tmLanguage.json"
 			}
