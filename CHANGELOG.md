@@ -2,6 +2,24 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.6
+
+_2024-02-22_
+
+### Added
+
+- Added syntax highlighting for functions in media-query header.
+- Added syntax highlighting for nested `calc()` functions.
+
+```css
+/* Example of a nested calc function */
+  .example {
+    max-width: calc( (768 / 16) * 1rem) ) {
+  }
+   /* Example of functions in media-query header */
+   @media only screen and (max-width: calc( var(--size) * 1rem)) {}
+```
+
 ## v0.0.5
 
 _2024-02-21_
