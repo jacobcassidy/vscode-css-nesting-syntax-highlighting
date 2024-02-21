@@ -2,6 +2,14 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.5
+
+_2024-02-21_
+
+### Added
+
+- Added note to reload VSCode after installing this extension.
+
 ## v0.0.4
 
 _2024-02-19_
