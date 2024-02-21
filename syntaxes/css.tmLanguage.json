@@ -1387,6 +1387,9 @@
 						},
 						{
 							"include": "#comment-block"
+						},
+						{
+							"include": "#functions"
 						}
 					]
 				}
