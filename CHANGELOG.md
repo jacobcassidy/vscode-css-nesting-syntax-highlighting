@@ -2,6 +2,14 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.7
+
+_2024-02-22_
+
+### Modified
+
+- Revert package.json language keyword to lowercase as extension doesn't work if it is uppercase.
+
 ## v0.0.6
 
 _2024-02-22_
