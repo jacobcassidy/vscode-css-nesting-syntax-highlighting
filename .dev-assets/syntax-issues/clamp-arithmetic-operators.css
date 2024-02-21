@@ -1,0 +1,4 @@
+.example {
+  margin-block-start: clamp(15px, 0.805rem + 0.64vw, 18px);
+  margin-block-end: clamp(15px, 0.805rem - 0.64vw, 18px);
+}
