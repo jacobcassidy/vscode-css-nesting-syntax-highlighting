@@ -1,5 +1,7 @@
 # CSS Nesting Syntax Highlighting
 
+> Note: You may need to reload VSCode after installing this extension for it to take effect.
+
 All modern browsers support CSS nesting ([Can I Use](https://caniuse.com/css-nesting)), but Visual Studio Code doesn't currently have CSS nesting syntax highlighting. This extension rectifies that by updating the CSS syntax highlighting to include nesting.
 
 To learn more about CSS Nesting, see [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting).
