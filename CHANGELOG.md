@@ -2,6 +2,21 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.8
+
+_2024-02-22_
+
+### Added
+
+- Added `#arithmetic-operators` for functions (clamp, min, max) operator syntax highlighting.
+
+```css
+.arithmetic-operators-example {
+  font-size: clamp(1.1rem, 0.7153rem + 1.6368vw, 1.5rem);
+  width: max(300px, 50% + 20px);
+}
+```
+
 ## v0.0.7
 
 _2024-02-22_
