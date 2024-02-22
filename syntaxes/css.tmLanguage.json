@@ -31,10 +31,10 @@
 		}
 	],
 	"repository": {
-    "arithmetic-operators": {
-      "match": "[*/]|(?<=\\s|^)[-+](?=\\s|$)",
-      "name": "keyword.operator.arithmetic.css"
-    },
+		"arithmetic-operators": {
+			"match": "[*/]|(?<=\\s|^)[-+](?=\\s|$)",
+			"name": "keyword.operator.arithmetic.css"
+		},
 		"at-rules": {
 			"patterns": [
 				{
@@ -850,9 +850,9 @@
 					},
 					"name": "meta.function.calc.css",
 					"patterns": [
-            {
-              "include": "#arithmetic-operators"
-            },
+						{
+							"include": "#arithmetic-operators"
+						},
 						{
 							"include": "#property-values"
 						},
@@ -978,9 +978,9 @@
 							"match": "(?i)(?<=[,\\s\"]|\\*/|^)\\d+x(?=[\\s,\"')]|/\\*|$)",
 							"name": "constant.numeric.other.density.css"
 						},
-            {
-              "include": "#arithmetic-operators"
-            },
+						{
+							"include": "#arithmetic-operators"
+						},
 						{
 							"include": "#property-values"
 						},
@@ -1114,9 +1114,9 @@
 						}
 					},
 					"patterns": [
-            {
-              "include": "#arithmetic-operators"
-            },
+						{
+							"include": "#arithmetic-operators"
+						},
 						{
 							"include": "#property-values"
 						},
