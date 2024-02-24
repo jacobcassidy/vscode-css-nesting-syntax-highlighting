@@ -2,6 +2,30 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.0.9
+
+_2024-02-24_
+
+### Added
+
+- Added tokens for `@container` syntax highlighting.
+
+```css
+/* Nested @container example */
+@container summary (width > 400px) {
+  @container (min-width: 800px) {
+    .card {
+      margin: 50px;
+    }
+    @container (min-width: calc( var(--width) * 1rem)) {
+      .card {
+        margin: 0;
+      }
+    }
+  }
+}
+```
+
 ## v0.0.8
 
 _2024-02-22_
