@@ -11,13 +11,15 @@
 /* NOT */
 @container not (width < 400px) {
 }
+@container not (width < 400px) not (width > 800px) {
+}
 @container sidebar not (orientation: landscape) and (min-width: 600px) {
 }
 @container sidebar not (orientation: landscape) and (min-width: 600px) or (min-width: 600px) {
 }
 
 /* OR */
-@container (width > 400px) or (height > 400px) {
+@container (width > 400px) or (height > 400px) {''
 }
 @container (display: grid) or (display: flex) {
 }
@@ -25,8 +27,9 @@
 /* CONTAINER-NAME */
 @container name (width > 400px) and (height > 400px) {
 }
-@container name1 name2 name3 not (width > 400px) and (height > 400px) {
+@container name1 name2 name3 not (width > 400px) not (height > 400px) {
 }
+
 @container default (width > 400px) {
 }
 @container none default (width > 400px) {
@@ -39,14 +42,28 @@
   }
 }
 
-/* STYLE-QUERY */
-@container style(--accent-color: currentColor) {
+@container (min-width: calc( var(--width) * 1rem)) {
+  .card {
+    margin: 0;
+  }
 }
+
+/* STYLE-QUERY */
+@container style( --accent-color : currentColor ) {
+}
+
+@container style(small --cards: /*comment*/ small 333px) {
+}
+@container card (inline-size > 30em) and style(--responsive: true) {
+}
+@container style( --width : calc( var(--hello) ) ) {
+}
+
 @container style(--themeBackground), not style(--themeColor: blue), style(--themeColor: blue) and style(--themeColor: purple), style(--themeColor: blue) or style(--themeColor: purple) {
 }
 @container card (inline-size > 30em) and style(--responsive: true) {
 }
-@container style(small --cards: small) {
+@container style(--cards: 333px) {
   article {
     border: thin solid silver;
     border-radius: 0.5em;
@@ -73,8 +90,6 @@
   }
 }
 
-
-
 /* EVERYTHING */
 @container /*comment*/ tall /*comment*/ short not invalidName (width > 400px) and invalidName not (min-height: 400px /*comment*/ invalidName) /*comment*/ or style(--accent-color: currentColor) {
   .card {
@@ -85,28 +100,6 @@
   }
 }
 
-/**
- * <container-query>
- * Part of <container-condition> = <container-name> <container-query>
- */
-
-/* <container-query> with everything */
-
-/* <container-query> without <container-name> */
-
-
-/* <container-query> with <container-name> */
-
-/* <container-query> with function */
-
-/**
- * Container <style-query>
- * Part of <container-query> = <container-query> or <style-query>
- */
-
-
-
-
 @container name1 name2 not (max-width: calc( (768 / 16) * 1rem)) invalidName {
   invalidName .wp-block-buttons {
     margin: calc(var(--wp--custom--element-spacing) * 3) auto;
@@ -116,7 +109,6 @@
     }
   }
 }
-
 
 @container (10em <= width <= 20em) {
   /* styles */
@@ -140,8 +132,6 @@
     margin-block: 2em;
   }
 }
-
-
 
 @container (inline-size >= 0px) {
   /* only applies when an inline-size container is available */
