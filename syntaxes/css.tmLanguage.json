@@ -35,8 +35,206 @@
 			"match": "[*/]|(?<=\\s|^)[-+](?=\\s|$)",
 			"name": "keyword.operator.arithmetic.css"
 		},
+
+		"container-condition": {
+			"begin": "\\G",
+			"end": "(?=\\s*[{;])",
+			"patterns": [
+				{
+					"include": "#comment-block"
+				},
+				{
+					"include": "#escapes"
+				},
+				{
+					"match": "(?i)(?<=\\s|^|,|\\*/)(and|or|not)(?=\\s|{|/\\*|$)",
+					"name": "keyword.operator.logical.$1.container.css"
+				},
+				{
+					"include": "#container-name"
+				},
+        {
+					"include": "#container-query"
+				}
+			]
+		},
+
+		"container-name": {
+      "begin": "\\G",
+			"end": "(?xi)\n (?=(?:\\(|not)|style\\()\n # Ends when `(`, `not`, or `style(` is reached",
+      "patterns": [
+        {
+					"include": "#comment-block"
+				},
+        {
+          "captures": {
+            "1": {
+              "name": "invalid.illegal.constant.container-name.container.css"
+            },
+            "2": {
+              "name": "support.constant.container-name.container.css"
+            }
+          },
+          "match": "(?xi)\n (?<=^|\\s|\\*/)\n(?:\n # Invalid name\n (default|none)\n |\n # Valid names\n ([a-zA-Z0-9\\-_\\\\]+)\n  )\n(?=$|[({\\s;]|/\\*)"
+        }
+      ]
+		},
+
+    "container-style-query": {
+      "begin": "(?<=\\s)(style)(\\()",
+			"beginCaptures": {
+        "1": {
+          "name": "support.style-query.container.css"
+        },
+				"2": {
+					"name": "punctuation.definition.parameters.begin.bracket.round.css"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.end.bracket.round.css"
+				}
+			},
+			"patterns": [
+        {
+					"include": "#custom-property-name"
+				},
+        {
+					"match": ":",
+					"name": "punctuation.separator.key-value.css"
+				},
+				{
+          "begin": "(?<=:)",
+          "end": "\\)",
+          "name": "ttt.css",
+          "patterns": [
+            {
+              "include": "#property-values"
+            }
+          ]
+				}
+			]
+    },
+
+		"container-query": {
+			"begin": "(?<=\\s|style)\\(",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.begin.bracket.round.css"
+				}
+			},
+			"end": "\\)",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.parameters.end.bracket.round.css"
+				}
+			},
+			"patterns": [
+        {
+          "begin": "(?<=\\s()",
+          "end": "\\G",
+          "name": "tesst.css",
+          "patterns": [
+            {
+              "include": "#property-values"
+            }
+          ]
+				},
+
+
+				{
+					"include": "#container-size-features"
+				},
+        {
+					"include": "#container-size-features-keywords"
+				},
+				{
+					"match": ":",
+					"name": "punctuation.separator.key-value.css"
+				},
+				{
+					"match": ">=|<=|=|<|>",
+					"name": "keyword.operator.comparison.css"
+				},
+				{
+					"include": "#numeric-values"
+				},
+				{
+					"include": "#comment-block"
+				},
+				{
+					"include": "#functions"
+				}
+			]
+		},
+
+		"container-size-features": {
+
+			"match": "(?xi)\n(?<=^|\\s|\\(|\\*/)\n(aspect-ratio|block-size|height|inline-size|orientation|width)\n(?=\\s|$|[><:=]|\\)|/\\*)",
+			"name": "support.type.property-name.container.css"
+		},
+
+    "container-size-features-keywords": {
+
+    },
+
+    "custom-property-name": {
+      "match": "(?x) (?<![\\w-])\n--\n(?:[-a-zA-Z_] | [^\\x00-\\x7F])  # First letter\n(?:[-a-zA-Z0-9_] | [^\\x00-\\x7F] # Remainder of identifier\n  |\\\\(?:[0-9a-fA-F]{1,6}|.)\n)*",
+			"name": "variable.css"
+    },
+
 		"at-rules": {
 			"patterns": [
+
+				{
+					"begin": "(?i)(?=@container(\\s|\\(|/\\*|$))",
+					"end": "(?<=})(?!\\G)",
+					"patterns": [
+						{
+							"begin": "(?i)\\G(@)container",
+							"beginCaptures": {
+								"0": {
+									"name": "keyword.control.at-rule.container.css"
+								},
+								"1": {
+									"name": "punctuation.definition.keyword.css"
+								}
+							},
+							"end": "(?=\\s*[{;])",
+							"name": "meta.at-rule.container.header.css",
+							"patterns": [
+								{
+									"include": "#container-condition"
+								}
+							]
+						},
+						{
+							"begin": "{",
+							"beginCaptures": {
+								"0": {
+									"name": "punctuation.section.container.begin.bracket.curly.css"
+								}
+							},
+							"end": "}",
+							"endCaptures": {
+								"0": {
+									"name": "punctuation.section.container.end.bracket.curly.css"
+								}
+							},
+							"name": "meta.at-rule.container.body.css",
+							"patterns": [
+								{
+									"include": "#nesting-at-rules"
+								},
+								{
+									"include": "$self"
+								}
+							]
+						}
+					]
+				},
+
 				{
 					"begin": "\\A(?:\\xEF\\xBB\\xBF)?(?i:(?=\\s*@charset\\b))",
 					"end": ";|(?=$)",
@@ -75,9 +273,7 @@
 						},
 						{
 							"captures": {
-								"1": {
-									"name": "keyword.control.at-rule.charset.css"
-								},
+
 								"2": {
 									"name": "punctuation.definition.keyword.css"
 								}
