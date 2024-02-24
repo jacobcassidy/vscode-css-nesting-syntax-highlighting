@@ -306,6 +306,7 @@ body {
   max-width: min(100%, 600px);
   padding: clamp(1rem, 5%, 2rem);
   width: calc(100% - 3em);
+  content: counter(count, decimal) ') ';
 }
 
 /**
