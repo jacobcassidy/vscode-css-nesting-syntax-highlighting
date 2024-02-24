@@ -2,32 +2,150 @@
  * AT CONTAINER
  */
 
-/* DOES NOT HIGHLIGHT LIKE OTHER AT QUERIES */
-@container (width > 400px) and (height > 400px) {
-}
-@container not (width < 400px) {
-}
-@container (width > 400px) or (height > 400px) {
-}
-
 /* AND */
 @container (width > 400px) and (height > 400px) {
 }
-@media (min-width: 600px) and (orientation: landscape) {
-}
-@supports (display: grid) and (gap: 1rem) {
+@container (min-width: 600px) and (orientation: landscape) {
 }
 
 /* NOT */
 @container not (width < 400px) {
 }
-@media not (orientation: landscape) {
+@container sidebar not (orientation: landscape) and (min-width: 600px) {
 }
-@supports not (display: flex) {
+@container sidebar not (orientation: landscape) and (min-width: 600px) or (min-width: 600px) {
 }
 
 /* OR */
 @container (width > 400px) or (height > 400px) {
 }
-@supports (display: grid) or (display: flex) {
+@container (display: grid) or (display: flex) {
+}
+
+/* CONTAINER-NAME */
+@container name (width > 400px) and (height > 400px) {
+}
+@container name1 name2 name3 not (width > 400px) and (height > 400px) {
+}
+@container default (width > 400px) {
+}
+@container none default (width > 400px) {
+}
+
+/* CONTAINER-QUERY */
+@container (min-aspect-ratio: 3 / 2) {
+  .video-player {
+    border: 5px solid #fff;
+  }
+}
+
+/* STYLE-QUERY */
+@container style(--accent-color: currentColor) {
+}
+@container style(--themeBackground), not style(--themeColor: blue), style(--themeColor: blue) and style(--themeColor: purple), style(--themeColor: blue) or style(--themeColor: purple) {
+}
+@container card (inline-size > 30em) and style(--responsive: true) {
+}
+@container style(small --cards: small) {
+  article {
+    border: thin solid silver;
+    border-radius: 0.5em;
+    padding: 1em;
+  }
+}
+
+/* NESTED @CONTAINER */
+@container summary (min-width: 400px) {
+  @container (min-width: 800px) {
+    .card {
+      margin: 0;
+    }
+    @container (min-width: calc( var(--width) * 1rem)) {
+      .card {
+        margin: 0;
+      }
+    }
+  }
+}
+@container card (inline-size > 30em) {
+  @container style(--responsive: true) {
+    /* styles */
+  }
+}
+
+
+
+/* EVERYTHING */
+@container /*comment*/ tall /*comment*/ short not invalidName (width > 400px) and invalidName not (min-height: 400px /*comment*/ invalidName) /*comment*/ or style(--accent-color: currentColor) {
+  .card {
+    margin: 0;
+    .example {
+      margin: 0;
+    }
+  }
+}
+
+/**
+ * <container-query>
+ * Part of <container-condition> = <container-name> <container-query>
+ */
+
+/* <container-query> with everything */
+
+/* <container-query> without <container-name> */
+
+
+/* <container-query> with <container-name> */
+
+/* <container-query> with function */
+
+/**
+ * Container <style-query>
+ * Part of <container-query> = <container-query> or <style-query>
+ */
+
+
+
+
+@container name1 name2 not (max-width: calc( (768 / 16) * 1rem)) invalidName {
+  invalidName .wp-block-buttons {
+    margin: calc(var(--wp--custom--element-spacing) * 3) auto;
+    .wp-block-button,
+    .wp-element-button {
+      width: 100%;
+    }
+  }
+}
+
+
+@container (10em <= width <= 20em) {
+  /* styles */
+}
+
+@container (inline-size >= 0px) {
+  /* only applies when an inline-size container is available */
+  h2 {
+    font-size: calc(1.2em + 1cqi);
+  }
+}
+
+@container (width > 40em) {
+  h2 {
+    font-size: 1.5em;
+  }
+}
+
+@container my-page-layout (block-size > 12em) {
+  .card {
+    margin-block: 2em;
+  }
+}
+
+
+
+@container (inline-size >= 0px) {
+  /* only applies when an inline-size container is available */
+  h2 {
+    font-size: calc(1.2em + 1cqi);
+  }
 }
