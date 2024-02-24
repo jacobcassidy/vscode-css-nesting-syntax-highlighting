@@ -1,8 +1,5 @@
 # CSS Nesting Syntax Highlighting
-
-> Note: You may need to reload VSCode after installing this extension for it to take effect.
-
-All modern browsers support CSS nesting ([Can I Use](https://caniuse.com/css-nesting)), but Visual Studio Code doesn't currently have CSS nesting syntax highlighting. This extension rectifies that by updating the CSS syntax highlighting to include nesting.
+All modern browsers support CSS nesting ([Can I Use](https://caniuse.com/css-nesting)), but Visual Studio Code doesn't currently have CSS nesting syntax highlighting. This extension rectifies that by updating the CSS syntax highlighting to include nesting (and more).
 
 To learn more about CSS Nesting, see [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting).
 
@@ -27,7 +24,37 @@ The core CSS syntax file this extension updates can be found in the [official vs
 }
 ```
 
+## Includes `@container` Syntax Highlighting
+
+```css
+/* Nested @container example */
+@container summary (width > 400px) {
+  @container (min-width: 800px) {
+    .card {
+      margin: 50px;
+    }
+    @container (min-width: calc( var(--width) * 1rem)) {
+      .card {
+        margin: 0;
+      }
+    }
+  }
+```
+
+## Includes _function_ syntax highlighting for 'at-rules', such as in `@media`
+
+```css
+/* calc() function example */
+@media (max-width: calc( (768 / 16) * 1rem )) {
+  .example {
+    margin: 0;
+  }
+}
+```
+
 ## Installation
+
+> Note: You may need to reload VSCode after installing this extension for it to take effect.
 
 Search for `CSS Nesting Syntax Highlighting` in the VSCode's Extensions Marketplace panel or click the install button on the [CSS Nesting Syntax Highlighting Marketplace page](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.css-nesting-syntax-highlighting).
 
@@ -35,7 +62,7 @@ You can also manually install the extension by cloning the [github repository](h
 
 ## Companion Theme
 
-CSS Nesting Syntax Highlighting works excellent with the [Cassidy Dark Theme](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.cassidy-dark).
+CSS Nesting Syntax Highlighting works great with the [Cassidy Dark Theme](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.cassidy-dark).
 
 ## What's New?
 
@@ -46,7 +73,6 @@ View the [Changelog](https://github.com/jacobcassidy/vscode-css-nesting-syntax-h
 - When nested, a few obscure `#tag-names` are overridden by the same `#property-names`. Those names are:
   - **HTML tags**: `content`, `font`, `image`, `marquee`, `mask`, `shadow`, `style`.
   - **SVG tags**: `color-profile`, `cursor`, `filter`, `line`, `text`.
-- Nesting syntax highlighting for `at rules`, except for `@media`, has not been added.
 
 ## Issues?
 
