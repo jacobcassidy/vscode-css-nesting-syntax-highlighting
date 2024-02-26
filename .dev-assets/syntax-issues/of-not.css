@@ -1,0 +1,18 @@
+.item > div:nth-child(1 of :not(.hidden))  {
+  padding-left: var(--item_margin);
+}
+
+.item > div:nth-last-child(1 of :not(.hidden)) {
+  padding-right: var(--item_margin);
+}
+
+.item {
+  & > div {
+    &:nth-child(1 of :not(.hidden))  {
+      padding-left: var(--item_margin);
+    }
+    &:nth-last-child(1 of :not(.hidden)) {
+      padding-right: var(--item_margin);
+    }
+  }
+}
