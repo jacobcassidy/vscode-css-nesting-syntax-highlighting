@@ -1,14 +1,19 @@
-.item > div:nth-child(1 of :not(.hidden))  {
+/**
+ * OF :NOT
+ */
+
+/* `of` and trailing grammar has no syntax highlighting */
+.item > div:nth-child(1 of :not(.hidden)) {
   padding-left: var(--item_margin);
 }
-
 .item > div:nth-last-child(1 of :not(.hidden)) {
   padding-right: var(--item_margin);
 }
 
+/* Same as above, but using CSS Nesting formatting */
 .item {
   & > div {
-    &:nth-child(1 of :not(.hidden))  {
+    &:nth-child(1 of :not(.hidden)) {
       padding-left: var(--item_margin);
     }
     &:nth-last-child(1 of :not(.hidden)) {

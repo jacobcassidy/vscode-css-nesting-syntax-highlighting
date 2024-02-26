@@ -2,6 +2,7 @@
  * AT LAYER
  */
 
+/* layer name has no syntax highlighting */
 .foo {
   @layer base {
     block-size: 100%;
