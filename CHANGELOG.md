@@ -2,6 +2,14 @@
 
 All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
 
+## v0.1.0
+
+_2024-03-15_
+
+### Modified
+
+- Change `package.json` vscode engine to v1.84.0 and above to allow users on older versions to use the extension.
+
 ## v0.0.9
 
 _2024-02-24_
