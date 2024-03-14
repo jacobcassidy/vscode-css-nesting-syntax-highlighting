@@ -26,7 +26,7 @@
 		"Colorizer"
 	],
 	"engines": {
-		"vscode": "^1.86.0"
+		"vscode": "^1.84.0"
 	},
 	"categories": [
 		"Programming Languages"
@@ -45,10 +45,12 @@
 		"publisherId": "aee9e75c-ea26-4af1-b5e6-815e33288c4b",
 		"publisherDisplayName": "Jacob Cassidy",
 		"targetPlatform": "undefined",
-		"updated": false,
+		"updated": true,
 		"isPreReleaseVersion": false,
 		"hasPreReleaseVersion": false,
-		"installedTimestamp": 1708770163153,
-		"pinned": false
+		"installedTimestamp": 1708787420085,
+		"pinned": false,
+		"isApplicationScoped": false,
+		"preRelease": false
 	}
 }
