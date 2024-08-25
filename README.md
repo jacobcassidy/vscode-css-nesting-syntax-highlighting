@@ -1,5 +1,19 @@
 # CSS Nesting Syntax Highlighting
-All modern browsers support CSS nesting ([Can I Use](https://caniuse.com/css-nesting)), but Visual Studio Code doesn't currently have CSS nesting syntax highlighting. This extension rectifies that by updating the CSS syntax highlighting to include nesting (and more).
+
+| Table of Contents |
+| -- |
+| [Overview](#overview) |
+| [CSS Nesting Example](#css-nesting-example) |
+| [Other Features](#other-features) |
+| [Installation](#installation) |
+| [Companion Theme](#companion-theme) |
+| [What's New](#whats-new) |
+| [Known Issues](#known-issues) |
+| [Reporting Issues](#issues) |
+
+## Overview
+
+All modern browsers support CSS nesting ([Can I Use](https://caniuse.com/css-nesting)), but Visual Studio Code doesn't currently have CSS nesting syntax highlighting. This extension rectifies that by updating the CSS syntax highlighting to include nesting ([and more](#other-features)).
 
 To learn more about CSS Nesting, see [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting).
 
@@ -24,7 +38,9 @@ The core CSS syntax file this extension updates can be found in the [official vs
 }
 ```
 
-## Includes `@container` Syntax Highlighting
+## Other Features
+
+### Includes syntax highlighting for `@container`
 
 ```css
 /* Nested @container example */
@@ -41,7 +57,7 @@ The core CSS syntax file this extension updates can be found in the [official vs
   }
 ```
 
-## Includes _function_ syntax highlighting for 'at-rules', such as in `@media`
+### Includes _function_ syntax highlighting for 'at-rules', such as in `@media`
 
 ```css
 /* calc() function example */
