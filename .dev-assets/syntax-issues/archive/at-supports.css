@@ -1,0 +1,7 @@
+:root {
+  --supports-red: false;
+  @supports (color: red) {
+    --supports-red: true;
+  }
+  --x: 1;
+}
