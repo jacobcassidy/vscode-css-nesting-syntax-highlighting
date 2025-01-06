@@ -1,26 +1,33 @@
-# Change Log
+# Changelog
 
-All notable changes to the "CSS Nesting Syntax Highlighting" extension will be documented in this file.
+All notable changes to this project will be documented in this file.
 
- ## v0.1.1
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-_2024-08-25_
+## [0.2.0] - 2025-01-06
 
-### Modified
+### Added
+
+- Added nesting syntax highlighting for body of `@support` rule.
+
+### Changed
+
+- Updated CHANGELOG.md to follow formatting set by [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
+
+## [0.1.1] - 2024-08-25
+
+### Changed
 
 - Updated `README.md` with Table of Contents and better organization.
 
-## v0.1.0
+## [0.1.0] - 2024-03-15
 
-_2024-03-15_
-
-### Modified
+### Changed
 
 - Changed `package.json` vscode engine to v1.84.0 and above to allow users on older versions to use the extension.
 
-## v0.0.9
-
-_2024-02-24_
+## [0.0.9] - 2024-02-24
 
 ### Added
 
@@ -42,9 +49,7 @@ _2024-02-24_
 }
 ```
 
-## v0.0.8
-
-_2024-02-22_
+## [0.0.8] - 2024-02-22
 
 ### Added
 
@@ -57,17 +62,13 @@ _2024-02-22_
 }
 ```
 
-## v0.0.7
+## [0.0.7] - 2024-02-22
 
-_2024-02-22_
-
-### Modified
+### Changed
 
 - Revert package.json language keyword to lowercase as extension doesn't work if it is uppercase.
 
-## v0.0.6
-
-_2024-02-22_
+## [0.0.6] - 2024-02-22
 
 ### Added
 
@@ -83,25 +84,19 @@ _2024-02-22_
    @media only screen and (max-width: calc( var(--size) * 1rem)) {}
 ```
 
-## v0.0.5
-
-_2024-02-21_
+## [0.0.5] - 2024-02-21
 
 ### Added
 
 - Added note to reload VSCode after installing this extension.
 
-## v0.0.4
+## [0.0.4] - 2024-02-19
 
-_2024-02-19_
-
-### Modified
+### Changed
 
 - Added border to logo image for contrast on dark backgrounds.
 
-## v0.0.3
-
-_2024-02-19_
+## [0.0.3] - 2024-02-19
 
 ### Added
 
@@ -113,27 +108,23 @@ _2024-02-19_
 - Added extension's logo image.
 - Added `.prettierrc` file for formatting json with tabs.
 
-### Modified
+### Changed
 
 - Updated demo CSS.
 - Updated other CSS for review and testing.
 
 ### Removed
 
-- Remove `&` from invalid punctuation so it can be used as a CSS nesting selector.
+- Removed `&` from invalid punctuation so it can be used as a CSS nesting selector.
 - Removed `language-configuration.json` and package.json's language contribution block pointing to it.
 
-## v0.0.2
-
-_2024-02-17_
+## [0.0.2] - 2024-02-17
 
 ### Added
 
 - Added demo CSS files for testing and review.
 
-## v0.0.1
-
-_2024-02-16_
+## [0.0.1] - 2024-02-16
 
 ### Added
 
