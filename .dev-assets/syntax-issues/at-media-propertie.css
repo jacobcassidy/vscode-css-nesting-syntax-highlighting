@@ -5,3 +5,5 @@
 /* Missing token for `prefers-reduced-motion: reduce` */
 @media (prefers-reduced-motion: reduce) {
 }
+
+/* NOTE: see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries#descriptors for more media properties */
