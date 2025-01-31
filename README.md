@@ -1,15 +1,17 @@
 # CSS Nesting Syntax Highlighting
 
-| Table of Contents |
-| -- |
-| [Overview](#overview) |
+[![vs marketplace](https://img.shields.io/vscode-marketplace/v/jacobcassidy.css-nesting-syntax-highlighting.svg?label=vs%20marketplace)](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.css-nesting-syntax-highlighting) ![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/jacobcassidy.css-nesting-syntax-highlighting) ![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/jacobcassidy.css-nesting-syntax-highlighting) ![GitHub commit activity](https://img.shields.io/github/commit-activity/t/jacobcassidy/vscode-css-nesting-syntax-highlighting)
+
+| Table of Contents                           |
+| ------------------------------------------- |
+| [Overview](#overview)                       |
 | [CSS Nesting Example](#css-nesting-example) |
-| [Other Features](#other-features) |
-| [Installation](#installation) |
-| [Companion Theme](#companion-theme) |
-| [What's New](#whats-new) |
-| [Known Issues](#known-issues) |
-| [Reporting Issues](#issues) |
+| [Other Features](#other-features)           |
+| [Installation](#installation)               |
+| [Companion Theme](#companion-theme)         |
+| [What's New](#whats-new)                    |
+| [Known Issues](#known-issues)               |
+| [Reporting Issues](#issues)                 |
 
 ## Overview
 
