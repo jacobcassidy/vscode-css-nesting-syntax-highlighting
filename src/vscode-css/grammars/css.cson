@@ -983,7 +983,7 @@
       }
       # Colours
       {
-        'begin': '(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color)(\\()'
+        'begin': '(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color|light-dark)(\\()'
         'beginCaptures':
           '1':
             'name': 'support.function.misc.css'
@@ -2084,7 +2084,7 @@
                 | \\\\(?:[0-9a-fA-F]{1,6}|.)         # - Escape sequence
               )*
               (?:                                    # Invalid punctuation
-                [!"'%&(*;<?@^`|\\]}]                 # - NOTE: We exempt `)` from the list of checked
+                [!"'%(*;<?@^`|\\]}]                  # - NOTE: We exempt `)` from the list of checked
                 |                                    #   symbols to avoid matching `:not(.invalid)`
                 / (?!\\*)                            # - Avoid invalidating the start of a comment
               )+
