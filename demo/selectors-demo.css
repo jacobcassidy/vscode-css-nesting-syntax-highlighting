@@ -1,0 +1,2529 @@
+.nested-selectors {
+  :root
+  {gap:0}
+
+  /* UNIVERSAL SELECTOR */
+  *
+  {gap:0}
+
+
+  /* NESTING SELECTOR */
+  &
+  {gap:0}
+
+
+  /* NAMESPACE SELECTOR */
+  namespace|*
+  {gap:0}
+
+  |div
+  {gap:0}
+
+
+  /* TYPE SELECTORS */
+  a
+  {gap:0}
+
+  pokémon-ピカチュウ
+  {gap:0}
+
+  /* CUSTOM SELECTORS */
+  very-custom.class,
+  very-custom:hover,
+  very-custom::shadow,
+  Basecamp-schedule basecamp-Schedule
+  {gap:0}
+
+  halo_night
+  {gap:0}
+
+  @some-weird-new-feature
+  {gap:0}
+
+  /* CLASS SELECTOR */
+  .class,
+  .étendard,
+  .スポンサー,
+  .--,
+  ._,
+  .\\33\\44-model
+  {gap:0}
+
+
+  /* ID SELECTOR */
+  #id
+  {gap:0}
+
+  #unicorn,
+  #洪荒之力,
+  #_zer0-day,
+  #--d3bug--,
+  #\\33\\44-model
+  {gap:0}
+
+
+
+
+  /* ATTRIBUTE SELECTOR */
+  [attribute]
+  {gap:0}
+
+  [hreflang|=fr],
+  [disabled], [disabled] + p
+  {gap:0}
+
+  [href^="http://www.w3.org/"],
+  [*|title],
+  [marvel|origin=radiation],
+  [|data-hp="75"],
+  #div[id="0"],
+  .bar#div[id="0"],
+  .div[id="0"],
+  #bar.div[id],
+  span[  er|lang  |=   "%%"   ],
+  a[name\\[0\\]="value"],
+  a[name\\ space|Get\\ It\\?="kek"],
+  span[/*]*/lang],
+  a[href^="#"] a[href^= "#"] a[href^="#" ],
+  span[class~=Java],
+  span[class^=  0xDEADCAFE=|~BEEFBABE  ],
+  a[name\\[0\\]=a\\BAD\\AF\\]a\\ i]
+  {gap:0}
+
+
+
+  /* PSEUDO-CLASS SELECTOR */
+  :hover
+  {gap:0}
+
+
+  /* PSEUDO-ELEMENT SELECTOR */
+  ::before
+  {gap:0}
+
+  ::after
+  {gap:0}
+
+
+  /* FUNCTIONAL PSEUDO-CLASS SELECTOR */
+  :is(h1, h2, h3)
+  {gap:0}
+
+  :lang(zh-Hans-CN,es-419)
+  {gap:0}
+
+  :lang(zh-*-CN)
+  {gap:0}
+
+  *:not(.class-name):not(div)
+  {gap:0}
+
+  *:not(/*(*/.class-name/*)*/):not(/*b*/)
+  {gap:0}
+
+
+  /* COMBINATOR SELECTORS */
+
+
+
+  /* GROUPING SELECTORS */
+
+
+
+  /* INVALID SELECTORS */
+
+
+
+
+
+
+}
+
+.tbd {
+
+  /* Universal Selector */
+  *,
+  *.class,
+  *#id,
+  *[attribute],
+  *div {
+    margin:0
+  }
+  *
+  {gap:0}
+
+  &
+  {gap:0}
+
+  *&
+  {gap:0}
+
+
+
+
+
+  /* CLASS SELECTOR*/
+
+  *.class
+  {gap:0}
+
+  &.class
+  {gap:0}
+
+  &*.class
+  {gap:0}
+
+  .\33\44-model
+  {gap:0}
+
+  p.class {margin:0}
+  div.class {margin:0}
+  *p.class {margin:0}
+  &div.class {margin:0}
+  *&p.class {margin:0}
+
+  custom-selector.class {margin:0}
+  *custom-selector.class {margin:0}
+  &custom-selector.class {margin:0}
+  *&custom-selector.class {margin:0}
+
+
+  /* ID SELECTOR */
+  #id {margin:0}
+
+*#id {margin:0}
+
+&#id {margin:0}
+*&#id {margin:0}
+
+p#id {margin:0}
+div#id {margin:0}
+*p#id {margin:0}
+&div#id {margin:0}
+*&p#id {margin:0}
+
+custom-selector#id {margin:0}
+*custom-selector#id {margin:0}
+&custom-selector#id {margin:0}
+*&custom-selector#id {margin:0}
+
+#id.class {margin:0}
+
+*#id.class {margin:0}
+
+&#id.class {margin:0}
+*&#id.class {margin:0}
+
+p#id.class {margin:0}
+div#id.class {margin:0}
+*p#id.class {margin:0}
+&div#id.class {margin:0}
+*&p#id.class {margin:0}
+
+custom-selector#id.class {margin:0}
+*custom-selector#id.class {margin:0}
+&custom-selector#id.class {margin:0}
+*&custom-selector#id.class {margin:0}
+
+  #id
+  {gap:0}
+
+  #\33\44-model
+  {gap:0}
+
+  #c\33\44-model
+  {gap:0}
+
+  a, p, div
+  {gap:0}
+
+  *a
+  {gap:0}
+
+  &p
+  {gap:0}
+
+  *&div
+  {gap:0}
+
+  [disabled], [disabled] + p
+  {gap:0}
+
+  a[href^="#"] a[href^= "#"] a[href^="#" ]
+  {gap:0}
+
+  洪荒之力
+  {gap:0}
+
+  \61\ \. \@media
+  {gap:0}
+
+  *custom-selector,
+  &custom-selector,
+  *&custom-selector,
+  custom-selector-01
+  {gap:0}
+
+  div:focus
+  {gap:0}
+
+  /* ATTRIBUTE SELECTOR */
+  [lang] {gap:0}                 /* attribute name */
+  [lang="en"]                       /* attribute with exact value */
+  [lang~="en"] {gap:0}           /* attribute with space-separated values, one of which must match exactly */
+  [lang|="en"] {gap:0}           /* attribute with hyphen-separated values, must match the start exactly */
+  [lang^="en"] {gap:0}           /* attribute with value that starts with a certain string */
+  [lang$="en"] {gap:0}           /* attribute with value that ends with a certain string */
+  [lang*="en"] {gap:0}           /* attribute with value that contains a certain string */
+  [lang="en" i] {gap:0}          /* case-insensitive attribute with exact value */
+  [lang="en" s] {gap:0}          /* case-sensitive attribute with exact value */
+
+  a[href^="#"] {gap:0}
+  a[href$=".org"] {gap:0}
+  a[href*="example"] {gap:0}
+  a[href*="insensitive" i] {gap:0}
+  a[href*="cAsE" s] {gap:0}
+  a[href^="https://"][href$=".org"] {gap:0}
+
+  [required] {gap:0}
+  *[required] {gap:0}
+  &[required] {gap:0}
+  *&[required] {gap:0}
+  input[type="text"] {max-width:0}
+  input[type="text"][required] {gap:0}
+  custom-selector[href^="https"] {gap:0}
+  a[class~="logo"] {gap:0}
+  a[href$=".org" i] {gap:0}
+  a[href*="example"] {gap:0}
+  p[required] {gap:0}
+  .class[href$=".pdf"] {gap:0}
+  #id[href*="example"] {gap:0}
+
+  /* PSEUDO-CLASS SELECTOR - UI State */
+:focus {margin:0}
+:checked {margin:0}
+:disabled {margin:0}
+/***/
+*:focus {margin:0}
+&:focus {margin:0}
+p:focus {margin:0}
+div:focus {margin:0}
+custom-selector:focus {margin:0}
+.class:focus {margin:0}
+#id:focus {margin:0}
+[required]:focus {margin:0}
+*[required]:focus {margin:0}
+&[required]:focus {margin:0}
+input[type="text"]:focus {max-width:0}
+input[type="text"][required]:focus {margin:0}
+custom-selector[href^="https"]:focus {margin:0}
+.class[href$=".pdf"]:focus {margin:0}
+#id[href*="example"]:focus {margin:0}
+
+p:first-child {}
+
+
+
+
+.opening:first-letter {}
+
+q::after {}
+
+:-ms-input-placeholder {}
+
+::-webkit-input-placeholder {}
+
+::selection {}
+
+:selection
+
+
+
+/* PSEUDO-CLASS SELECTOR - Structural */
+:first-child {margin:0}
+:last-child {margin:0}
+:nth-child(2) {margin:0}
+:nth-last-child(2) {margin:0}
+:nth-of-type(odd) {margin:0}
+:first-of-type {margin:0}
+
+*:first-child {margin:0}
+&:last-child {margin:0}
+p:nth-child(2) {margin:0}
+div:nth-last-child(2) {margin:0}
+custom-selector:nth-last-child(2) {margin:0}
+.class:nth-of-type(odd) {margin:0}
+#id:first-of-type {margin:0}
+[required]:first-of-type {margin:0}
+*[required]:first-of-typ {margin:0}
+&[required]:first-of-typ {margin:0}
+input[type="text"]:first-of-typ {max-width:0}
+input[type="text"][required]:first-of-typ {margin:0}
+custom-selector[href^="https"]:first-of-typ {margin:0}
+.class[href$=".pdf"]:first-of-typ {margin:0}
+#id[href*="example"]:first-of-typ {margin:0}
+
+:first-child
+{
+  margin:0
+}
+:last-child
+{
+  margin:0
+}
+:nth-child(2)
+{
+  margin:0
+}
+:nth-last-child(2)
+{
+  margin:0
+}
+:nth-of-type(odd)
+{
+  margin:0
+}
+:first-of-type
+{
+  margin:0
+}
+
+*:first-child
+{
+  margin:0
+}
+&:last-child
+{
+  margin:0
+}
+p:nth-child(2)
+{
+  margin:0
+}
+div:nth-last-child(2)
+{
+  margin:0
+}
+custom-selector:nth-last-child(2)
+{
+  margin:0
+}
+.class:nth-of-type(odd)
+{
+  margin:0
+}
+#id:first-of-type
+{
+  margin:0
+}
+[required]:first-of-type
+{
+  margin:0
+}
+*[required]:first-of-typ
+{
+  margin:0
+}
+&[required]:first-of-typ
+{
+  margin:0
+}
+input[type="text"]:first-of-typ {max-width:0}
+input[type="text"][required]:first-of-typ
+{
+  margin:0
+}
+custom-selector[href^="https"]:first-of-typ
+{
+  margin:0
+}
+.class[href$=".pdf"]:first-of-typ
+{
+  margin:0
+}
+#id[href*="example"]:first-of-typ
+{
+  margin:0
+}
+
+
+:where(&) {
+  color: red;
+}
+
+article {
+  color: blue;
+  :where(&) {
+    color:red
+  }
+}
+
+
+
+
+:first-child {margin:0}
+div:first-child {margin:0}
+p:last-child {margin:0}
+p:nth-child(2) {margin:0}
+p:nth-last-child(2) {margin:0}
+p:nth-of-type(odd) {margin:0}
+p:first-of-type {margin:0}
+
+
+/* PSEUDO-CLASS SELECTOR - Form */
+:valid {margin:0}
+input:valid {margin:0}
+input:invalid {margin:0}
+input:required {margin:0}
+
+
+/* PSEUDO-CLASS SELECTOR - Interactive State */
+:hover {margin:0}
+a:hover {margin:0}
+button:active {margin:0}
+
+/* PSEUDO-ELEMENT SELECTOR -  */
+*::before {margin:0}
+&::after {margin:0}
+custom-selector::first-letter {margin:0}
+.class::before {margin:0}
+#id::after {margin:0}
+
+
+::selection {margin:0}
+p::first-letter {margin:0}
+p::first-line{margin:0}
+input::placeholder {margin:0}
+
+
+/* LOGICAL SELECTOR */
+:is(h1, h2, h3) {margin:0}
+:where(section, article) {margin:0}
+div:not(.excluded) {margin:0}
+div:has(img) {margin:0}
+
+
+  /* NAMESPACE SELECTOR */
+  namespace|div {margin:0}
+  *|div {margin:0}
+  |div {margin:0}
+
+  foo|h1 { }
+
+*|abbr {}
+
+*|* {}
+
+foo|*  { }
+
+|[svg|attr=name]{}
+
+|h1   { }
+
+*| { }
+
+*|{ }
+
+
+
+
+  /* GROUPING SELECTOR */
+  h1, h2, h3 {margin:0}
+
+
+  /* COMBINATORS SELECTOR */
+  div p {margin:0}
+  div > p {margin:0}
+  div + p {margin:0}
+  div ~ p {margin:0}
+
+  a > b + * ~ :not(.nah)
+
+  div + div,
+div+div,
+div > div,
+div>div,
+div ~ div,
+div~div {
+  margin: 0;
+}
+
+/* Namespace Selector */
+|div,
+namespace|div {
+  margin: 0;
+}
+
+
+  /* NESTING SELECTOR */
+  & div,
+  &div,
+  div&,
+  div &,
+  div & & &,
+  & div {
+    margin: 0;
+  }
+
+  .parent {
+    content: U+0025;
+    .child-class {
+      content: U+00A0-00FF;
+      margin: 0;
+    }
+  }
+
+  #parent-rule {
+    margin: 0;
+    .child-rule {
+      .test-class {
+        margin: 0;
+        h2 {
+          margin: 0;
+        }
+        :hover {
+          text-decoration: underline;
+        }
+        .test-class {
+          margin: 0;
+          :hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      h2 {
+        margin: 0;
+      }
+      margin: 0;
+    }
+  }
+
+  /**
+* Nesting with the `&` nesting selector
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector
+*/
+
+.parent-rule {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/**
+* Using `&` outside nested rule
+* If not used in nested style rule, the & nesting selector represents the scoping root.
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector#using_outside_nested_rule
+*/
+
+* {
+  color: blue;
+  font-weight: bold;
+}
+
+&:hover {
+  background-color: wheat;
+}
+
+
+  /**
+* Creating complex selectors with CSS nesting
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators#creating_complex_selectors_with_css_nesting
+*/
+h2 {
+  & + p {
+    & ~ p {
+      font-style: italic;
+      width: some-edgy-new-function(30% / 2rem + 10px);
+    }
+    & + p {
+      color: red
+    }
+  }
+}
+.myClass {
+  & + p {
+    text-decoration: underline;
+  }
+}
+#myId {
+  & > .myClass {
+    outline: 3px dashed red;
+  }
+  > p #an > theirId {
+    font-size: 1.1rem;
+  }
+}
+
+
+
+}
+
+/**
+ * OF :NOT
+ */
+
+/* `of` and trailing grammar has no syntax highlighting */
+.item > div:nth-child(1 of :not(.hidden)) {
+  padding-left: var(--item_margin);
+}
+.item > div:nth-last-child(1 of :not(.hidden)) {
+  padding-right: var(--item_margin);
+}
+
+/* Same as above, but using CSS Nesting formatting */
+.item {
+  & > div {
+    &:nth-child(1 of :not(.hidden)) {
+      padding-left: var(--item_margin);
+    }
+    &:nth-last-child(1 of :not(.hidden)) {
+      padding-right: var(--item_margin);
+    }
+  }
+}
+
+
+
+
+/* Valid Start Options */
+*div,
+&div,
+|div,
+.class,
+#id,
+ div,
+[attribute],
+:hover,
+::before/* comment */,
+div,
+div +div,
+div >div,
+div ~div,
+custom-selector,
+/* comment */div {
+  margin: 0;div {margin:0}
+  div:focus {margin:0}
+}
+
+section {
+  border:4px /*1px;
+      padding:1px*/
+}
+
+section {
+  margin: 0
+}
+
+
+
+/* Valid End Options */
+div&,
+div.class,
+div#id,
+div[attribute],
+div:hover,
+div::before,
+div+,
+div>,
+div~,
+div ,
+div,
+div/* comment */ {
+  margin: 0;
+}
+
+/* Invalid End Options */
+div*,
+div|,
+div:,
+div: ,
+div: focus,
+div;,
+div],
+div},
+div),
+
+/* Invalid Start Options */
+somediv {
+  div: focus {margin:0}
+}
+
+div: focus {margin:0}
+
+
+.sooo /deep/ >>>_.>>> {}
+
+
+
+洪荒!%之力!english.^%$(_%^
+  {gap:0}
+
+
+.B!W{
+
+  .666{
+
+  .-911-{
+
+  .-{
+
+  #sort!{
+
+  #666{
+
+  #-911-{
+
+  #-{
+
+
+
+
+
+
+div { font-size: inherit; }
+
+div{color:inherit;float:left}
+
+:root { --white: #FFF; }
+
+a{ text-shadow: a, b; }
+
+#jon { color: snow; }
+
+p{ color: #f030; }
+
+a{ color: #CAFEBABE; }
+
+a{ color: #CAFEBABEF; }
+
+p { font-family: Verdana, Helvetica, sans-serif; }
+
+ol.myth { list-style-type: cjk-earthly-branch }
+
+div { font-size: 14px; }
+
+div { font-size: test14px; }
+
+div { font-size: test-14px; }
+
+.edge { cursor: -webkit-zoom-in; }
+
+.edge { width: -moz-min-content; }
+
+.edge { display: -ms-grid; }
+
+div { color: var(--primary-color) }
+
+a{content:aTTr(data-width px, inherit)}
+
+a{content:ATTR(VAR(--name) px, "N/A")}
+
+a{ width: calc(3px+1em); }
+
+a{ width: calc(3px--1em); height: calc(10-1em);}
+
+a{ width: calc(3px*2); }
+
+a{ width: calc(3px/2); }
+
+.foo { margin-top: calc(var(--gap) + 1px); }
+
+a{ color: rgb(187,255,221); }
+
+a{ color: RGBa( 100%, 0% ,20.17% ,.5 ); }
+
+a{color:HSL(0,  00100%,50%)}
+
+a{color:HSLa(2,.0%,1%,.7)}
+
+a{ color: RGBA(var(--red), 0% , 20%, .2)}
+
+a{ color: rgba(/**/255/*=*/,0,/*2.2%*/51/*,*/0.2)}
+
+a{ background-image: linear-gradient( 45deg, blue, red ); }
+
+a{ background-image: LINear-graDIEnt( ellipse to left top, blue, red);
+
+a{ background-image: radial-gradient(farthest-corner at 45px 45px , #f00 0%, #00f 100%);}
+
+a{ background-image: RADial-gradiENT(16px at 60px 50%,#000 0%, #000 14px, rgba(0,0,0,.3) 18px, transparent 19px)}
+
+a{ zoom: cubic-bezier(/**/1.2,/*=*/0,0,0/**/)}
+
+a{ before: steps(0, start); after: steps(1, end); }
+
+a{color: var(--name)}
+
+a{color: var(  --name  )}
+
+a{ color: var( /*=*/ --something ) }
+
+.bar{ width: var(--page-width, /*;;;);*/ 2); }
+
+a{ content: attr (title); }
+
+a{url:url (s)}
+
+a{content:url ("http://github.com/");}
+
+a{content: url (http://a.pl/)}
+
+a{ color: rgb (187,255,221); }
+
+a{ unicode-range: U+A5 }
+
+a{ unicode-range: U+0025-00FF }
+
+a{ unicode-range: u+0-7F }
+
+a{ unicode-range: U+4?? }
+
+a{ unicode-range: U+0025-00FF, U+4?? }
+
+very-custom { content: "\\c0ffee" }
+
+\\61 \\{ {  } \\}
+
+\\61\\ \\. \\@media {}
+
+a { \\77\\69\\64\\74\\68: 20px; }
+
+a { content: \\1F764; }
+
+a{ content: "aaaa
+
+a{ content: "aaa\\"aa
+
+@import /* url("name"); */ "1.css";
+
+@import/*";"*/ url("2.css");
+
+@import url("3.css") print /* url(";"); */;
+
+@font-face/*"{;}"*/{}
+
+/* comment */ @media
+
+@media/* comment */ ()
+
+@media (max-height: 40em/* comment */)
+
+section {border:4px/*padding:1px*/}
+
+
+/* disable-prettier */
+
+/* 'source.css', 'meta.property-list.css', 'punctuation.section.property-list.end.bracket.curly.css' */
+
+[disabled]:not(:first-child)::before:hover\n  ~ div.object\n  + #id.thing:hover > strong ~ p::before,\na::last-of-type,/*Comment*/::selection > html[lang^=en-AU],\n*>em.i.ly[data-name|=\"Life\"] { }
+
+foo|h1 { }
+
+*|abbr {}
+
+*|* {}
+
+foo|*  { }
+
+|[svg|attr=name]{}
+
+|h1   { }
+
+*| { }
+
+h1 { }@media only screen { } h2 { }
+
+h1 { }@media only screen { }h2 { }
+
+@font-feature-values Font name 2 { }
+
+@font-feature-values Font name 2 {\n@swash{/*\n========*/swashy:/**/2;/**/}\n}
+
+@page :first { }
+
+@page {}
+
+@page{}
+
+::selection,
+:selection,
+:selection
+{gap:0}
+
+@viewport { min-width: 640px; max-width: 800px; }
+
+@-O-VIEWPORT\n{\n  zoom: 0.75;\n  min-zoom: 0.5;\n  max-zoom: 0.9;\n}
+
+@-ms-viewport/*{*/{/*\n==*/orientation: landscape;\n}
+
+p{ left:left }
+
+div { font-size: inherit; }
+
+div{color:inherit;float:left}
+
+very-custom { color: inherit }\nanother-one  {  display  :  none  ;  }
+
+p{ color: #f030; }
+
+a{ color: #CAFEBABE; }
+
+a{content:aTTr(data-width px, inherit)}
+
+.foo { margin-top: calc(var(--gap) + 1px); }
+
+.grad {\n  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,\n    from( rgb(0, 171, 235)),\n    color-stop(0.5, rgb(255, 255, 255)),\n    color-stop(0.5, rgb(102, 204, 0)),\n    to(rgb(255, 255, 255))),\n    -webkit-gradient(radial, 45 45, 10, 52 50, 30, from(#A7D30C), to(rgba(1,159,98,0)), color-stop(90%, #019F62)),\n        -webkit-gradient(radial, 105 105, 20, 112 120, 50, from(#ff5f98), to(rgba(255,1,136,0)), color-stop(75%, #ff0188)),\n        -webkit-gradient(radial, 95 15, 15, 102 20, 40, from(#00c9ff), to(rgba(0,201,255,0)), color-stop(80%, #00b5e2)),\n        -webkit-gradient(radial, 0 150, 50, 0 140, 90, from(#f4f201), to(rgba(228, 199,0,0)), color-stop(80%, #e4c700));\n}
+
+a{\n    background-image: image-set( \"foo.png\" 1x,\n                                 \"foo-2x.png\" 2x,\n                                 \"foo-print.png\" 600dpi );\n}
+
+a{color: var(--name)}
+
+a{ content: attr (title); }
+
+a{url:url (s)}
+
+a{content:url ("http://github.com/");}
+
+a{content: url (http://a.pl/)}
+
+\\61 \\{ {  } \\}
+
+a { content: \\1F764; }
+
+a{\n  content: \"aaa\\\"aa\\\naaaa\naaaa; color: red;\n}
+
+@font-face/*"{;}"*/{}
+
+section {border:4px/*padding:1px*/}
+
+ section {\n    border:4px /*1px;\n    padding:1px*/\n}
+
+a { place-items: center center; }
+
+a { place-self: center center; }
+
+a { place-content: center center; }
+
+a { row-gap: 5px; }
+
+a{ before: steps(0, start); after: steps(1, end); }
+
+very-custom { color: inherit }
+another-one {  display :  none  ;  }
+
+html {
+  --var : 'hello'
+}
+
+div custom-element:focus {
+
+  div custom-element:focus {
+      margin: 0;
+      row-gap: 0;
+  }
+
+  div custom-element::before {
+    margin: 0;
+    row-gap: 0;
+  }
+
+  div:focus {
+    margin: 0;
+    margin:: 0;
+  }
+
+  custom-element as-tffs:focus st-ass {
+    max-width: 0;
+  }
+
+  div custom-element:focus > custom-element {
+    margin: 0;
+  }
+
+  custom-element:focus {
+    max-width: 0;
+
+    h2 {
+      margin:auto;
+    }
+  }
+
+  margin: 0;
+
+
+
+  a{ before: steps(0, start); after: steps(1, end); }
+
+
+}
+
+a > b + * ~ :not(.nah) {gap:0}
+
+[disabled]:not(:first-child)::before:hover
+~ div.object
++ #id.thing:hover > strong ~ p::before,
+a::last-of-type,/*Comment*/::selection > html[lang^=en-AU],
+*>em.i.ly[data-name|=\"Life\"] {gap:0}
+
+a:dir(ltr ){
+  max-width:calc(1*44px)
+}
+*:dir( rtl){max-width:0
+}
+
+/* 61 . @media {} */
+
+a{ content: attr(title); } /* p = 'source.css', 'meta.property-list.css', 'meta.property-name.css' */
+
+p { left:left } /* p = 'source.css', 'meta.selector.css', 'entity.name.tag.css' */
+
+:-ms-input-placeholder {}
+
+/* ROOT */
+div,div,div:focus,
+div::after,
+custom-selector,
+custom-selector:focus :focus,
+custom-selector::after,
+custom-selector :focus,
+custom-selector ::after,
+div custom-selector,
+div /* p = 'source.css', 'meta.selector.css', 'entity.name.tag.css' */custom-selector:focus,
+div custom-selector::after,
+div custom-selector + div custom-selector,
+div custom-selector + div custom-selector,
+div custom-selector:focus ~ div custom-selector:focus,
+div custom-selector:focus ~ div custom-selector:focus,
+div custom-selector::after > div custom-selector::after,
+div custom-selector::after > div custom-selector::after,
+custom-selector#id,
+custom-selector #id,
+custom-selector.class,
+custom-selector .class,
+custom-selector another-custom-selector very-custom-selector,
+custom-selector > another-custom-selector + very-custom-selector,
+custom-selector>another-custom-selector+very-custom-selector,
+start-start:where(#id) nth-child-class:nth-child(2) custom-selector:not(.class),
+h2,
+h4,
+span,
+header,
+nav,
+label,
+content {
+
+  div {
+    margin:0;
+    property-custom:all
+  }
+
+  --var: "value";
+  --var:"value";
+  content: var(--var);
+  content:var(--var);
+  margin: 0;
+  margin:0;
+  max-width: 0;
+  max-width:0;
+  property: all;
+  property:all;
+  p: all;
+  p:all;
+  property-custom: all !important;
+
+  div {
+    div {
+      margin: 0;
+
+      .sooo /deep/ >>>_.>>>_ {
+        margin: 0
+      }
+    }
+  }
+
+  property-custom: all !important;
+
+  div:focus
+  {
+    div:focus
+    {
+      margin: 0
+    }
+    /* content: var(--var); */
+  }
+
+
+  div {
+    margin: 0
+  }
+  div
+  {
+    margin: 0
+  }
+
+  /* NESTED */
+  div,
+  div:focus,
+  div::after,
+  custom-selector,
+  custom-selector:focus,
+  custom-selector::after,
+  custom-selector :focus,
+  custom-selector ::after,
+  div custom-selector,
+  div custom-selector:focus,
+  div custom-selector::after,
+  div custom-selector + div custom-selector,
+  div custom-selector:focus ~ div custom-selector:focus,
+  div custom-selector::after > div custom-selector::after custom-selector#id,
+  custom-selector.class,
+  custom-selector another-custom-selector very-custom-selector,
+  custom-selector > another-custom-selector + very-custom-selector,
+  start-start:where(#id) nth-child-class:nth-child(2) custom-selector:not(.class) h2,
+  h4,
+  span,
+  header,
+  nav,
+  label,
+  content {
+
+    .sooo /deep/ >>>_.>>>_ {
+      margin: 0;
+    }
+
+
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all !important;
+    property-custom: all !important;
+    p: focus;
+  }
+
+  div:focus {
+    margin: 0;
+  }
+
+  div:focus {
+    margin: 0;
+  }
+
+  div:focus {
+    margin: 0;
+  }
+
+  div:focus {
+    div:focus {
+      p: all;
+      margin:0
+
+      div:focus {
+        p: all;
+        margin:0
+
+        div:focus {
+          p: all;
+          margin:0
+        }
+      }
+    }
+  }
+
+  div:focus {
+    margin: 0;
+  }
+
+  div:focus {
+    margin: 0;
+  }
+
+  /* With selector end bracket */
+  custom-selector {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom:all
+  }
+  h2,
+  h4,
+  span,
+  header,
+  nav,
+  label,
+  content {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom:all
+  }
+
+  /* Without selector end bracket */
+  custom-selector {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom: all;
+  }
+  h2,
+  h4,
+  span,
+  header,
+  nav,
+  label,
+  content {
+    margin: 0;
+    property: all;
+    a: auto;
+    property-custom: all;
+  }
+
+  /* With end selector bracket + no last prop terminator */
+  custom-selector:focus
+  {
+    margin: 0;
+    max-width: 0;
+    property: all;
+    p: auto;
+    property-custom: all;
+  }
+  h2,
+  h4,
+  span,
+  header,
+  nav,
+  label,
+  content {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom:all;
+    select:first-child
+    {
+
+    }
+  }
+
+  /* Without selector end bracket + no last prop terminator */
+  custom-selector::after,
+  custom-selector:not(.class)
+  {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom: all;
+  }
+  h2,
+  h4,
+  span,
+  header,
+  nav,
+  label,
+  content {
+    --var: "value";
+    --var: "value";
+    content: var(--var);
+    content: var(--var);
+    margin: 0;
+    margin: 0;
+    max-width: 0;
+    max-width: 0;
+    property: all;
+    property: all;
+    p: all;
+    p: all;
+    property-custom: all;
+    property-custom: all;
+
+  /* Properties with inner comments */
+  margin: /* comment */ 0;
+  /* comment */
+  margin: 0;
+  /* comment */
+  margin: /* comment */ 0 /* comment */; /* comment */
+  max-width: /* comment */ 0;
+}
+
+div {
+  property-custom: all;
+
+
+  /* PSEUDO ELEMENTS */
+  select,
+  select:focus,
+  select::after,
+  select :focus,
+  select ::after {
+    margin: 0;
+  }
+
+  property-custom: all;
+
+  custom-selector:after,
+  custom-selector::focus,
+  custom-selector:focus {
+    margin: 0;
+    property-custom: all;
+  }
+
+  :where(&) {
+    color: red;
+  }
+
+  property-custom:all
+}
+
+/* INVALID */
+custom-selector::::focus,
+select:::::after {
+  margin: 0;
+}
+
+/* pseudo-element not touching preceding colon */
+custom-selector: not(.class) {
+  margin: 0;
+}
+
+/* Custom selector contains uppercase letters  */
+custom-selectSTARTor {
+  margin: 0;
+}
+
+/* Custom selector or property starts with a digit */
+9-custom-selector {
+  margin: 0;
+  9custom-property: value;
+}
+
+
+/**
+* CSS NESTING DEMO
+*/
+
+/**
+* Nesting without the `&` nesting selector
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector
+*/
+
+.parent-rule {
+  margin: 0;
+  .child-rule {
+    margin: 0;
+  }
+}
+
+.parent-rule {
+  text-decoration: none;
+  :hover {
+    text-decoration: underline;
+  }
+}
+
+#id~.example {gap:0}
+
+/**
+* Nesting with the `&` nesting selector
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector
+*/
+
+.parent-rule {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.example {
+  font-family: system-ui;
+  font-size: 1.2rem;
+  & > a {
+    color: tomato;
+    &:hover,
+    &:focus {
+      color: ivory;
+      background-color: tomato;
+    }
+  }
+}
+
+/**
+ * Appending the `&` nesting selector
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector#appending_the_nesting_selector
+ */
+
+.card {
+  /* .card styles */
+  margin: 0;
+  .featured & {
+    /* .featured .card styles */
+    margin: 0;
+  }
+}
+
+.card {
+  /* .card styles */
+  margin: 0;
+  .featured & & & {
+    /* .featured .card .card .card styles */
+    margin: 0;
+  }
+}
+
+.card {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  & h2 {
+    /* equivalent to `.card h2` */
+    color: slateblue;
+    .featured & {
+      /* equivalent to `:is(.card h2):is(.featured h2)` */
+      color: tomato;
+    }
+  }
+}
+
+/**
+ * Appending the `&` nesting selector as a compound selector
+ */
+
+.example {
+  section& {
+    /* equivalent to `section.example` */
+    margin: 0;
+  }
+  .class& {
+    /* equivalent to `.class.example` */
+    padding: 0;
+  }
+  #id& {
+    /* equivalent to `#id.example` */
+    border: 1px solid black;
+  }
+  @media screen and (max-width: 1100px) {
+    section& {
+      margin: 0;
+    }
+    .class& {
+      padding: 0;
+    }
+    #id& {
+      margin: 0;
+    }
+  }
+}
+
+/**
+* Using `&` outside nested rule
+* If not used in nested style rule, the & nesting selector represents the scoping root.
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector#using_outside_nested_rule
+*/
+
+& {
+  color: blue;
+  font-weight: bold;
+}
+
+&:hover {
+  background-color: wheat;
+}
+
+/**
+ * Nesting `@media` at-rule
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Nesting_at-rules#nesting_media_at-rule
+ */
+
+/* Typical way to write Nested CSS */
+.foo {
+  display: grid;
+  @media (orientation: landscape) {
+    grid-auto-flow: column;
+  }
+}
+/* Expanded nested CSS as the browser parses it */
+.foo {
+  display: grid;
+  @media (orientation: landscape) {
+    & {
+      grid-auto-flow: column;
+    }
+  }
+}
+
+/**
+ * Multiple nested `@media` at-rule
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Nesting_at-rules#multiple_nested_media_at-rules
+ */
+
+.foo {
+  display: grid;
+  @media (orientation: landscape) {
+    grid-auto-flow: column;
+    @media (min-width: 1024px) {
+      max-inline-size: 1024px;
+    }
+  }
+}
+
+/* Equivalent without nesting */
+.foo {
+  display: grid;
+}
+@media (orientation: landscape) {
+  .foo {
+    grid-auto-flow: column;
+  }
+}
+@media (orientation: landscape) and (min-width: 1024px) {
+  .foo {
+    max-inline-size: 1024px;
+  }
+}
+
+/**
+ * Nesting Cascade Layers (`@layer`)
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Nesting_at-rules#nesting_cascade_layers_layer
+ */
+
+@layer base {
+  @layer support;
+}
+
+.foo {
+  @layer base {
+    block-size: 100%;
+    @layer support {
+      & .bar {
+        min-block-size: 100%;
+      }
+    }
+  }
+}
+/* Equivalent without nesting */
+@layer base {
+  .foo {
+    block-size: 100%;
+  }
+}
+@layer base.support {
+  .foo .bar {
+    min-block-size: 100%;
+  }
+}
+
+/**
+* Creating complex selectors with CSS nesting
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors/Selectors_and_combinators#creating_complex_selectors_with_css_nesting
+*/
+h2 {
+  & + p {
+    & ~ p {
+      font-style: italic;
+    }
+    & + p {
+      color: red;
+    }
+  }
+}
+.myClass {
+  & + p {
+    text-decoration: underline;
+  }
+}
+#myId {
+  & > .myClass {
+    outline: 3px dashed red;
+  }
+  > p #anotherId {
+    font-size: 1.1rem;
+  }
+}
+
+/**
+* Nesting and compound selectors
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#compound_selectors
+*/
+
+.notice {
+  color: black;
+  padding: 1rem;
+  .notice-heading:before {
+    /* equivalent to `.notice .notice-heading:before` */
+    content: "ℹ︎ ";
+  }
+  &.warning {
+    /* equivalent to `.notice.warning` */
+    background-color: #d81b60;
+    border-color: #d81b60;
+    color: white;
+    .warning-heading:before {
+      /* equivalent to `.notice.warning .warning-heading:before` */
+      content: "! ";
+    }
+  }
+  &.success {
+    /* equivalent to `.notice.success` */
+    background-color: #004d40;
+    border-color: #004d40;
+    color: white;
+    .success-heading:before {
+      /* equivalent to `.notice.success .success-heading:before` */
+      content: "✓ ";
+    }
+  }
+}
+
+.notice {
+  color: black;
+  padding: 1rem;
+  .notice-heading:before {
+    /* equivalent to `.notice .notice-heading:before` */
+    content: "ℹ︎ ";
+  }
+  .warning {
+    /* equivalent to `.notice.warning` */
+    background-color: #d81b60;
+    border-color: #d81b60;
+    color: white;
+    .warning-heading:before {
+      /* equivalent to `.notice.warning .warning-heading:before` */
+      content: "! ";
+    }
+  }
+  .success {
+    /* equivalent to `.notice.success` */
+    background-color: #004d40;
+    border-color: #004d40;
+    color: white;
+    .success-heading:before {
+      /* equivalent to `.notice.success .success-heading:before` */
+      content: "✓ ";
+    }
+  }
+}
+
+@supports not ((tab-size:4) or (-moz-tab-size:4)){
+  body::before{
+    content: \"Come on, Microsoft (Get it together already)…\";
+
+    \\61\\ \\. \\@media {}
+
+/**
+* CSS NESTING MODULES
+* For reviewing CSS nesting and non-nesting syntax For any issues.
+*/
+
+/**
+* At Rules
+*/
+
+@container (width > 400px) {
+  h2 {
+    font-size: 1.5em;
+  }
+  .card {
+    width: 50%;
+    background-color: gray;
+    font-size: 1em;
+  }
+}
+/* with an optional <container-name> */
+@container tall (height > 30rem) {
+  h2 {
+    line-height: 1.6;
+  }
+}
+.post {
+  container-name: tall;
+  container-type: inline-size;
+}
+/* shorthand syntax */
+.post {
+  container: tall / inline-size;
+}
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\1F44D";
+  suffix: " ";
+}
+ul {
+  list-style: thumbs;
+}
+
+@font-face {
+  font-family: "MyWebFont";
+  src: url("webfont.woff2") format("woff2"), url("webfont.woff") format("woff");
+}
+
+@font-feature-values MyFont {
+  @styleset {
+    nice-style: 1;
+  }
+  @stylistic {
+    nice-style: 1;
+  }
+  @character-variant {
+    nice-style: 1;
+  }
+  @swash {
+    nice-style: 1;
+  }
+  @ornaments {
+    nice-style: 1;
+  }
+  @annotation {
+    nice-style: 1;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+@keyframes slidein {
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}
+
+@layer base {
+  h1 {
+    color: red;
+  }
+}
+
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+@media (min-width: 600px), (orientation: portrait) {
+  /* Styles */
+}
+
+@page {
+  size: A4;
+  margin: 10%;
+}
+@page :left {
+  margin-top: 4in;
+}
+@page wide {
+  size: a4 landscape;
+}
+@page {
+  /* margin box at top right showing page number */
+  @top-right {
+    content: "Page " counter(pageNumber);
+  }
+}
+
+/* @property is not cross-browser friendly yet */
+/* @property --my-color {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: black;
+} */
+
+/* @scope is not cross-browser friendly yet */
+/* @scope (.article-body) to (figure) {
+  img {
+    border: 5px solid black;
+    background-color: goldenrod;
+  }
+  :scope {
+    background: rebeccapurple;
+    color: antiquewhite;
+    font-family: sans-serif;
+  }
+} */
+
+@supports (display: grid) {
+  .grid {
+    display: grid;
+  }
+}
+
+/**
+* FEATURE QUERY OPERATORS (AND, OR, NOT)
+*/
+
+/* AND */
+@container (width > 400px) and (height > 400px) {
+}
+@media (min-width: 600px) and (orientation: landscape) {
+}
+@supports (display: grid) and (gap: 1rem) {
+}
+
+/* NOT */
+@container not (width < 400px) {
+}
+@media not (orientation: landscape) {
+}
+@supports not (display: flex) {
+}
+
+/* OR */
+@container (width > 400px) or (height > 400px) {
+}
+@supports (display: grid) or (display: flex) {
+}
+
+/**
+* COMBINATORS
+*/
+
+.example > li {
+  margin: 0;
+}
+div > span {
+  margin: 0;
+}
+p ~ span {
+  color: red;
+}
+img + p {
+  color: red;
+}
+
+.example {
+  div {
+    > span {
+      margin: 0;
+    }
+  }
+  p {
+    ~ span {
+      color: red;
+    }
+  }
+  img {
+    + p {
+      color: red;
+    }
+  }
+}
+
+.example {
+  & div {
+    & > span {
+      margin: 0;
+    }
+  }
+  & p {
+    & ~ span {
+      color: red;
+    }
+  }
+  & img {
+    & + p {
+      color: red;
+    }
+  }
+}
+
+/**
+* COMMAS
+*/
+
+html,
+body {
+  margin: 0;
+  &.a,
+  &.b {
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  html:focus-within {
+    scroll-behavior: auto;
+    &.a,
+    &.b {
+      margin: 0;
+    }
+  }
+}
+
+.class,
+.example {
+  @media (min-width: 500px) {
+    &::before,
+    &::after {
+      content: '"';
+      display: block;
+    }
+  }
+}
+
+.class,
+.example {
+  fieldset,
+  span {
+    max-width: calc((768 / 16) * 1rem);
+    &.class_left,
+    &.class_right {
+      flex: 0 0 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+  .class,
+  .example {
+    fieldset,
+    span {
+      max-width: calc((768 / 16) * 1rem);
+      flex: 0 0 100%;
+      &.class_left,
+      &.class_right {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}
+
+.class,
+.example {
+  @media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+    fieldset,
+    span {
+      max-width: calc((768 / 16) * 1rem);
+      flex: 0 0 100%;
+      &.class_left,
+      &.class_right {
+        flex: 0 0 100%;
+      }
+    }
+  }
+}
+
+/**
+* FUNCTIONS
+*/
+
+.example {
+  color: rgb(255, 0, 0);
+  background-color: oklch(70% 0.1 315);
+  margin-top: calc((100 / 16) * 1rem);
+  margin-bottom: calc(var(--size, 10px) * 1rem);
+  max-width: min(100%, 600px);
+  padding: clamp(1rem, 5%, 2rem);
+  width: calc(100% - 3em);
+}
+
+
+
+/**
+ * PSEUDO CLASS NESTING
+ */
+
+.class {
+  > :nth-child(1) {
+    margin: 0;
+  }
+  @media screen and (max-width: 1100px) {
+    > :nth-child(1) {
+      margin: 0;
+      > :nth-child(1) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+/* REFERENCES FOR ADDING ADDITIONAL TYPES */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_pseudo-elements */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements */
+
+/*
+- selectors
+- tag-names
+- combinators
+- functional-pseudo-classes
+- pseudo-classes
+- pseudo-elements
+- urls
+- color-keywords
+- functions
+- timing-function
+- keyword.operator.shape
+- property-names
+- property-values
+- property-keywords
+- string
+*/
+
+* > .example {
+  gap: 0;
+}
+
+
+.example {
+  font-family: system-ui;
+  font-size: 1.2rem;
+  a {
+    color: tomato;
+    max-width:calc(var(--size) * 1rem)
+  }
+  section {
+    display: flex;
+    row-gap:1rem
+}
+
+:where(&) {
+  color: red;
+}
+
+article {
+  color: blue;
+  :where(&) {
+    color:red
+  }
+}
+
+/**
+* Nesting with the `&` nesting selector
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector
+*/
+
+.parent-rule {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/**
+* Using `&` outside nested rule
+* If not used in nested style rule, the & nesting selector represents the scoping root.
+* See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector#using_outside_nested_rule
+*/
+
+* {
+  color: blue;
+  font-weight: bold;
+}
+
+&:hover {
+  background-color: wheat;
+}
+
+/**
+ * Appending the `&` nesting selector as a compound selector
+ */
+
+section& {
+  /* equivalent to `section.example` */
+  margin: 0;
+}
+
+.example {
+  section& {
+    /* equivalent to `section.example` */
+    margin: 0;
+  }
+  .class ~ .class& {
+    margin: 0;
+  }
+  .class& {
+    /* equivalent to `.class.example` */
+    padding: 0;
+  }
+  #id& {
+    /* equivalent to `#id.example` */
+    border: 1px solid black;
+  }
+  @media screen and (max-width: 1100px) {
+    section& {
+      margin: 0;
+    }
+    .class& {
+      padding: 0;
+    }
+    #id& {
+      margin: 0;
+    }
+  }
+}
+
+/**
+ * Appending the `&` nesting selector
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/Nesting_selector#appending_the_nesting_selector
+ */
+
+.card {
+  /* .card styles */
+  margin: 0;
+  .featured & {
+    /* .featured .card styles */
+    margin: 0;
+  }
+}
+
+.card {
+  /* .card styles */
+  margin: 0;
+  .featured & & & {
+    /* .featured .card .card .card styles */
+    margin: 0;
+  }
+}
+
+.card {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  & h2 {
+    /* equivalent to `.card h2` */
+    color: slateblue;
+    .featured & {
+      /* equivalent to `:is(.card h2):is(.featured h2)` */
+      color:tomato
+    }
+  }
+}
+
+/**
+ * INVALID SELECTORS
+ */
+
+ ,selector-cannot-start-with-comma
+ {gap:0}
+
+ 1-selector-cannot-start-with-number
+ {gap:0}
+
+ -selector-cannot-start-with-single-hyphen
+ {gap:0}
+
+ #6-id-cannot-start-with-number
+ {gap:0}
+
+ .6-class-cannot-start-with-number
+ {gap:0}
+
+
+ very-custom::shadow {gap:0}
+ q::after {gap:0}
+
+ [href^="http://www.w3.org/"]
+ /* {gap:0} */
+ { :CALC(/**==*/ltr/**/) }
+
+ :something {gap:0}
+
+ :DIR(/**==*/ltr/**/)
+ {gap:0}
+
+ :DIR(/**
+ ==*/ltr/*
+ */)
+ {gap:0}
+
+ /**
+  * Concatenation (is not possible)
+  * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#concatenation_is_not_possible
+  */
+
+ .component {
+   &__child-element {
+     gap: 0;
+   }
+ }
+ /* In Sass this becomes the CSS below, but CSS nesting doesn't allow this */
+ .component__child-element {
+   gap: 0;
+ }
+
+ /**
+ * Invalid nested style rules
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting#invalid_nested_style_rules
+ */
+ .parent {
+   >>> .child-element {
+     gap: 0;
+   }
+
+   /* .parent styles these work fine */
+   & %invalid {
+     /* %invalid styles all of which are ignored */
+     gap: 0;
+   }
+   & .valid {
+     /* .parent .valid styles these work fine */
+     gap: 0;
+
+   }
+ }
+
+
+
+
+:hover,
+.a {
+  div > p, ul + li, .class, #id
+  {gap:0}
+
+  a:active,
+  a:any-link,
+  a:checked,
+  a
+  {
+    float:left
+  }
+  a
+  {
+    text-align:right
+  }
+
+  color:default {gap:0}
+
+  input:default
+  {
+    color:default
+  }
+  button:disabled
+  {
+    color:disabled
+  }
+
+  input:default
+
+  {
+    appearance:default
+  }
+  option:default
+  {
+    appearance:default
+  }
+
+  input::content
+  {
+    content:content
+  }
+  [disabled]:hover,
+  [disabled]:not(:first-child)::before:hover
+  ~ div.object
+  + #id.thing:hover > strong ~ p::before,
+  + #id.thing:hover > strong ~ p::before
+  a::last-of-type,/*Comment*/::selection > html[lang^=en-AU],
+  *>em.i.ly[data-name|=\"Life\"]
+  {gap:0}
+
+  DIV:HOVER
+  {gap:0}
+  #id::BefORE
+  {gap:0}
+  #id::aFTEr
+  {gap:0}
+  TABle:nTH-cHILD(2N+1),
+  table:nth-child(2N+1)
+  {gap:0}
+  htML:NOT(.htiml)
+  {gap:0}
+  I::BACKDROP
+  {gap:0}
+  I::-mOZ-thing
+  {gap:0}
+  very-custom::shadow
+  {gap:0}
+  q::after
+  {gap:0}
+  I::BACKDROP
+  {gap:0}
+
+  a:active b:focus
+  {margin:0
+  }
+  a:active b:focus
+  {margin:0
+  }
+  a:active&
+  {margin:0
+  }
+  a:active
+  {margin:0
+  }
+  a:active:focus
+  {margin:0
+  }
+  a:active~:focus
+  {margin:0
+  }
+
+  a:actives { margin:0
+  }
+  a:actives b:focus {
+    margin:0
+  }
+  a:actives b:focus {
+    margin:0
+  }
+  a:actives b:focus
+  {margin:0
+  }
+
+  a:actives
+  {margin:0
+  }
+
+
+div:focus {
+  a:dir(ltr )
+  {gap:0}
+
+  a:dir(rtl)
+  {gap:0}
+
+  a:lang()
+  {gap:0}
+
+  a:first-child
+  {gap:0}
+
+  .after-prop {gap:0;max-width:calc( var(--size) * 1rem );
+  }
+  .open{ max-width:calc( var(--size) * 1rem ) }
+  .close{ gap:0 } max-width:calc( var(--size) * 1rem );
+  p{ content:aTTr(data-width 5px, inherit) }
+
+  p:dir(ltr ){gap:0; max-width:calc(1*44px);}
+
+  h2 {margin:auto}
+
+  *:dir( rtl)
+  {gap:0}
+
+  p {margin:0;p:all}
+
+  div custom-element:focus > custom-element
+  {gap:0}
+
+  custom-element:focus as-tffsfocus st-ass
+  {gap:0}
+
+  #nested-selectors:focus,
+  custom-selector:focus, focus,
+  div /* p = 'source.css', 'meta.selector.css', 'entity.name.tag.css' */custom-selector:focus,
+  start-start:where(#id) nth-child-class:nth-child(2) custom-selector:not(.class),
+  custom-selector:focus,
+  start-start:where(#id) nth-child-class:nth-child(2) custom-selector:not(.class) h2,
+  select:focus,
+  article {
+    gap:0;
+  }
+
+  :where(&) {
+    max-width:0;
+  }
+
+  div:where(&)
+  {
+    margin:0; div{margin:0}
+    color:red;
+  }
+
+  p{ left:left }
+
+  p{color:inherit;float:left}
+
+  p{content:aTTr(data-width px, inherit)}
+
+  p{content:ATTR(VAR(--name) px, "N/A")}
+
+  p{color:HSL(0,  00100%,50%)}
+
+  p{color:HSLa(2,.0%,1%,.7)}
+
+  p{ url:url(s) }
+
+  p{content:url("http://github.com/");}
+
+  p{content:aTTr(data-width px, inherit)}
+
+  @supports (display:table-cell) or ((display:list-item) and (display:run-in))
+  {}
+
+  p {
+    \77\69\64\74\68: 100%;
+  }
+
+}
+
+@supports (display:table-cell) or ((display:list-item) and (display:run-in))
+{}
+
+@page:right
+{}
+
+.invalid {
+  width: CALC(/**==*/ ltr /**/);
+}

@@ -1,0 +1,58 @@
+'selector-custom':
+    'patterns': [
+      {
+        'match': '''(?x)
+          (?<![@\\w-])      # Match may not be preceded by an @ symbol, any word character, or a hyphen.
+          (?=
+            [a-z]           # Custom element names must start with a lowercase letter
+            \\w*-           # And contain at least one dash followed by one or more word characters
+          )
+          (
+            (?![A-Z])       # No uppercase ASCII letters are allowed
+            [\\w-]          # Allow any other word character or dash
+          )+
+          (?=
+            \\.             # Matches literal dot for classes (e.g. "custom-selector.class")
+            | \\#           # Matches literal hashtag for ids (e.g. "custom-selector#id")
+            | \\s++         # Matches one or more whitespace characters followed by any character
+            | \\s*[,\\[{]   # Matches zero or more whitespace characters followed by a comma, opening square bracket, or opening curly brace.
+
+            # Matches a pseudo-class
+            | :(
+                active|any-link|checked|default|disabled|empty|enabled|first
+                | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+                | in-range|indeterminate|invalid|left|link|optional|out-of-range
+                | read-only|read-write|required|right|root|scope|target|unresolved
+                | valid|visited
+                | not|has|matches|where|is            # Matches (logical) pseudo-classes
+                | nth-(?:last-)?(?:child|of-type)     # Matches (child-indexed) pseudo-classes
+              )
+
+            # Matches a (single or double-colon) pseudo-element
+            | ::?(
+                after
+                | before
+                | first-letter
+                | first-line
+                | (?:-(?:ah|apple|atsc|epub|hp|khtml|moz
+                        |ms|o|rim|ro|tc|wap|webkit|xv)
+                    | (?:mso|prince))
+                  -[a-z-]+
+              )
+
+            # Matches a (double-colon only) pseudo-element
+            | ::(
+              backdrop
+              | content
+              | grammar-error
+              | marker
+              | placeholder
+              | selection
+              | shadow
+              | spelling-error
+            )
+          )
+        '''
+        'name': 'entity.name.tag.custom.css'
+      }
+    ]

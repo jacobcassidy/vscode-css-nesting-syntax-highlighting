@@ -1,0 +1,34 @@
+/**
+ * AT LAYER
+ */
+
+/**
+ * Nesting Cascade Layers (`@layer`)
+ * See: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Nesting_at-rules#nesting_cascade_layers_layer
+ */
+
+@layer base {
+  @layer support;
+}
+
+.foo {
+  @layer base {
+    block-size: 100%;
+    @layer support {
+      & .bar {
+        min-block-size: 100%;
+      }
+    }
+  }
+}
+/* Equivalent without nesting */
+@layer base {
+  .foo {
+    block-size: 100%;
+  }
+}
+@layer base.support {
+  .foo .bar {
+    min-block-size: 100%;
+  }
+}

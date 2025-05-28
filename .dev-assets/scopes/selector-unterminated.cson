@@ -1,0 +1,108 @@
+'selector-unterminated':
+    # For identifiers that have no closing character such as a semicolon or brace
+    begin: '''(?xi)
+    #  (?:
+    #     [-\\[:.*&\\#a-zA-Z_]      # Valid selector character
+    #     |
+    #     [^\\x00-\\x7F]            # Which can include non-ASCII symbols
+    #     |
+    #     \\\\                      # Or an escape sequence
+    #     (?:[0-9a-fA-F]{1,6}|.)
+    #   )
+
+    (?:
+      [a-zA-Z_-]+
+      (:)
+    )
+    (?:
+        active|any-link|checked|default|disabled|empty|enabled|first
+      | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+      | in-range|indeterminate|invalid|link|optional|out-of-range
+      | read-only|read-write|required|root|scope|target|unresolved
+      | valid|visited
+
+      | (?: dir|lang
+          | not|has|matches|where|is
+          | nth-(?:last-)?(?:child|of-type)
+        )\\(
+
+      | \\:
+
+      | after
+      | before
+      | first-letter
+      | first-line
+      | (?:
+          \\-
+          (?:
+              ah|apple|atsc|epub|hp|khtml|moz
+            | ms|o|rim|ro|tc|wap|webkit|xv
+          )
+          | (?:
+              mso|prince
+            )
+        )
+        -[a-z-]+
+
+      | backdrop
+      | grammar-error
+      | marker
+      | placeholder
+      | selection
+      | shadow
+      | spelling-error
+
+
+    )
+
+
+
+
+      # (?:
+      #   \\w+
+      #   (:)
+      #   \\w+
+      #   $
+      # )
+      (?!
+        (?:
+          .*
+        )
+        (?:
+            \\;
+          | \\{
+          | \\}
+          | \\,
+          | \\&
+          | \\*
+          | [>~+]
+        )
+      )
+    '''
+    beginCaptures:
+      '0':
+        name: 'test.unterminated.begin'
+    end: '''(?xi)
+        \\s*
+        \\w+
+        (:)
+        \\w+
+        | \\{
+        | \\}
+
+    # (?<=
+    #    \\{
+    #  | \\}
+        # \\w+
+        # (:)
+        # \\w+
+    # )
+
+    # (?!
+    #   \\}
+    # )
+    '''
+    endCaptures:
+      '0':
+        name: 'test.unterminated.end'
+    name: 'test.unterminated'

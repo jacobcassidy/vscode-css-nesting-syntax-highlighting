@@ -1,0 +1,103 @@
+  'selector-differentiator':
+    # Differentiate between a `selector:pseudo-element` and `property:value` when they're not followed by a semicolon or bracket
+    'match': '''(?x)
+      (?:
+        [\\w-]+          # Start with a word or hyphen
+        \\:              # Followed by a colon
+        [\\w-]+          # Followed by any word character or hyphen
+        \\s*$            # Followed by any optional whitespace and end of line
+      )
+
+      (?<!
+        [\\w-]+           # Starts with a word
+        \\:               # Followed by a colon
+        (?:
+          # Don't match if the name after the colon is a pseudo-class
+            active|any-link|checked|default|disabled|empty|enabled|first
+          | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+          | in-range|indeterminate|invalid|left|link|optional|out-of-range
+          | read-only|read-write|required|right|root|scope|target|unresolved
+          | valid|visited
+          | not|has|matches|where|is            # Matches (logical) pseudo-classes
+          | nth-(?:last-)?(?:child|of-type)     # Matches (child-indexed) pseudo-classes
+
+          # Don't match if the name after the colon is a pseudo-element
+            after
+          | before
+          | first-letter
+          | first-line
+          | (?:
+              -(?:
+                  ah|apple|atsc|epub|hp|khtml|moz
+                | ms|o|rim|ro|tc|wap|webkit|xv
+              )
+              | (?:
+                mso|prince
+              )
+            )
+            -[a-z-]+
+        )
+        \\s*$             # Followed by any optional whitespace and end of line
+      )
+    '''
+    'name': 'test.selector-list-innards'
+
+
+
+
+
+'property-condensed':
+    'match': '''(?x)
+
+      # Matches:
+      (?:
+        [\\w-]+             # Start with a word character or hyphen
+        \\:                 # Followed by a colon
+        [^;,{}\\s]+         # Followed by any character that is NOT a semicolon, comma, or curly brace, or whitespace
+        \\s*$               # Followed by any optional whitespace and end of line
+      )
+
+      # Doesn't Match:
+      (?<!
+        [\\w-]+             # Starts with a word
+        \\:                 # Followed by a colon
+        (?:                 # Followed by any of the following:
+
+          # Don't match if the name after the colon is a pseudo-class
+            active|any-link|checked|default|disabled|empty|enabled|first
+          | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+          | in-range|indeterminate|invalid|left|link|optional|out-of-range
+          | read-only|read-write|required|right|root|scope|target|unresolved
+          | valid|visited
+
+          # Don't match if the name after the colon is a functional pseudo-class
+          | (?:
+                dir
+              | lang
+              | not|has|matches|where|is
+              | nth-(?:last-)?(?:child|of-type)
+            )
+            \\(             # Followed by an opening parenthesis
+            [^)]+           # Followed by any character that is NOT a closing parenthesis
+            \\)             # Followed by a closing parenthesis
+
+          # Don't match if the name after the single colon is a pseudo-element
+          | after
+          | before
+          | first-letter
+          | first-line
+          | (?:
+                -(?:
+                    ah|apple|atsc|epub|hp|khtml|moz
+                  | ms|o|rim|ro|tc|wap|webkit|xv
+                )
+              | (?:
+                mso|prince
+              )
+            )
+            -[a-z-]+
+        )
+        \\s*$               # Followed by any optional whitespace and end of line
+      )
+    '''
+    'name': 'meta.property-condensed.css'

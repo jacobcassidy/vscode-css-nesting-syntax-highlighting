@@ -1,5 +1,4 @@
-.dev-assets/**
-.vscode/**
-.vscode-test/**
+.dev-assets
+.vscode
 .gitignore
-vsc-extension-quickstart.md
+src

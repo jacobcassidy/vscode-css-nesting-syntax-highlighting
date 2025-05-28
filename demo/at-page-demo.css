@@ -1,0 +1,53 @@
+/**
+ * AT PAGE
+ */
+
+ @page {
+  content: "Page " counter(pageNumber);
+}
+
+@page {
+  /* margin box at top right showing page number */
+  @top-right {
+    content: "Page " counter(pageNumber);
+  }
+}
+
+@page :first { }
+
+@page:right{}
+
+@page {}
+
+@page{}
+
+/* See: https://developer.mozilla.org/en-US/docs/Web/CSS/@page */
+
+/* Targets all the pages */
+@page {
+  size: 8.5in 9in;
+  margin-top: 4in;
+}
+
+/* Targets all even-numbered pages */
+@page :left {
+  margin-top: 4in;
+}
+
+/* Targets all odd-numbered pages */
+@page :right {
+  size: 11in;
+  margin-top: 4in;
+}
+
+/* Targets all selectors with `page: wide;` set */
+@page wide {
+  size: a4 landscape;
+}
+
+@page {
+  /* margin box at top right showing page number */
+  @top-right {
+    content: "Page " counter(pageNumber);
+  }
+}

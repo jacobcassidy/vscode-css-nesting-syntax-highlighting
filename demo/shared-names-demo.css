@@ -1,0 +1,120 @@
+/*
+ * SHARED NAMES
+ * Names that are shared between selectors and properties.
+ */
+
+.shared-names {
+  /* HTML Selectors */
+  content
+  {
+    content:url('https://www.example.com')
+  }
+  font
+  {
+    font:16px/1.5 'Helvetica Neue', sans-serif
+  }
+  header
+  {
+    header:initial
+  }
+  image
+  {
+    image:initial
+  }
+  label
+  {
+    label:initial
+  }
+  mark
+  {
+    mark:initial
+  }
+  marquee
+  {
+    marquee:initial
+  }
+  mask
+  {
+    mask:initial
+  }
+  nav
+  {
+    nav:initial
+  }
+  ruby
+  {
+    ruby:initial
+  }
+  shadow
+  {
+    shadow:initial
+  }
+  span
+  {
+    span:initial
+  }
+  style
+  {
+    style:initial
+  }
+
+  /* SVG Selectors */
+  color-profile
+  {
+    color-profile:initial
+  }
+  cursor
+  {
+    cursor:initial
+  }
+  filter
+  {
+    filter:initial
+  }
+  line
+  {
+    line:initial
+  }
+  text
+  {
+    text:initial
+  }
+}
+
+content,
+cursor,
+filter,
+span {
+  content: "";
+  cursor: pointer;
+  filter: brightness(1.075);
+}
+
+.example {
+  &::before {
+    content: "";
+    cursor: pointer;
+    filter: brightness(1.075);
+  }
+  & content,
+  & cursor,
+  & filter,
+  & span {
+    content: "";
+    cursor: pointer;
+    filter: brightness(1.075);
+  }
+}
+
+.example {
+  span,
+  header,
+  nav,
+  label,
+  ruby,
+  mark,
+  svg {
+    gap:0
+  }
+}
+

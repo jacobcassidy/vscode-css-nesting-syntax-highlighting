@@ -1,0 +1,28 @@
+/* Correctly nested */
+:root {
+  --supports-red: false;
+  @supports (color: red) {
+    --supports-red: true;
+    width: 100%;
+    row-gap: 1rem;
+    section {
+      display: flex;
+      row-gap: 1rem;
+    }
+  }
+  --x: 1;
+}
+
+@supports (color: red) {
+  section {
+    display: flex;
+    row-gap: 1rem;
+  }
+}
+
+/* Invalid first-level properties not nested within a selector should not have syntax highlighting */
+@supports (color: red) {
+  --supports-red: true;
+  width: 100%;
+  row-gap: 1rem;
+}

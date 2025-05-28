@@ -1,0 +1,128 @@
+/* Shared values between selectors and properties. Only matters when using condense formatting without any closing punctuation such as `name:value`, otherwise follow punctuation rules */
+
+@supports/*===*/not/*==****************|
+==*/(display:table-cell)/*============*/ and (display: list-item)/*}*/{}
+
+select :content,
+select:content,
+select:not(something):content,
+{
+  color:content
+}
+
+/* ACTIVE */
+.nested-example {
+  div:active {gap:0}
+
+  /* Unknown use case for active as a property value so it's always a selector */
+  select :active,
+  select:active
+  {
+    color:active
+
+    .nested-example {
+      div:active {gap:0}
+      div {
+        content: '{'
+      }
+
+      select :active,
+      /* Unknown use case for active as a property value so it's always a selector */
+      select:active
+      {
+        color:active
+      }
+    }
+  }
+}
+
+.nested-example
+{
+  --var:value
+}
+
+/* CONTENT */
+.nested-example
+{
+  /* div:content {gap:0} */
+
+  select :content,
+  /* Unknown use case for content as a pseudo-class selector or a property value so it's always a property value by default */
+  select:content
+  {
+    color:content
+  }select
+  {gap:0}
+}
+
+/* DEFAULT */
+.nested-example
+{
+  div:default {gap:0}
+
+  button :default,
+  /* The :default pseudo-class is limited to the following form elements: */
+  button:default,
+  input:default,
+  option:default,
+  select:default,
+  other-selectors-not-included:default
+  {
+    appearance:default
+  }
+}
+
+/* DISABLED */
+.nested-example {
+  div:disabled {gap:0}
+
+  button :disabled,
+  /* Unknown use case for disabled as a property value so it's always a selector */
+  button:disabled,
+  input:disabled
+  tsstst: hello
+  {
+    color:disabled
+}
+
+/* OPTIONAL */
+.nested-example {
+  div:optional {gap:0}
+
+  input :optional,
+  /* The :optional pseudo-class is limited to the following form elements: */
+  input:optional,
+  select:optional,
+  textarea:optional,
+  other-selectors-not-included:optional
+  {
+    color:optional
+  }
+}
+
+/* LEFT */
+.nested-example {
+  div:left {gap:0}
+
+  @page :left
+  {}
+
+  select :left,
+  /* :left is always a property value in condensed format */
+  select:left
+  {
+    float:left
+  }
+}
+
+/* RIGHT */
+.nested-example {
+  @page :right {} /* Not used in condensed format */
+
+  select :right,
+  /* :right is always a property value in condensed format */
+  select:right
+  {
+    float:right
+  }
+}

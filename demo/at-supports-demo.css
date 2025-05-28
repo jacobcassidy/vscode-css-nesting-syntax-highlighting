@@ -1,0 +1,35 @@
+:root {
+  --supports-red: false;
+  @supports (color: red) {
+    --supports-red: true;
+    width: 100%;
+    row-gap: 1rem;
+    section {
+      display: flex;
+      row-gap: 1rem;
+    }
+  }
+  --x: 1;
+}
+
+@supports (color: red) {
+  section {
+    display: flex;
+    row-gap: 1rem;
+  }
+}
+
+/* Invalid first-level properties */
+@supports (color: red) {
+  --supports-red: true;
+  width: 100%;
+  row-gap: 1rem;
+}
+
+
+
+@supports (font-size: 1em) { }
+
+@supports (--foo: green){}
+
+@supports (display:table-cell) or ((display:list-item) and (display:run-in)){

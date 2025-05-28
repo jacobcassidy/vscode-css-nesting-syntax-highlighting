@@ -1,0 +1,44 @@
+/* This shows correctly */
+div:focus {
+  div:focus {
+    p: all;
+    margin:0;
+
+    div:focus {
+      p: all;
+      margin:0;
+
+      div:focus {
+        p: all;
+        margin:0;
+      }
+    }
+  }
+}
+
+/* But selectors trailing unclosed properties do not show correctly  */
+div:focus {
+
+  div:focus {
+    p: all;
+    margin:0
+
+    div:focus {
+      p: all;
+      margin:0
+
+      div:focus {
+        p: all;
+        margin:0
+      }
+    }
+  }
+
+  .b{font-family:
+    "Arial",
+    "Courier New",
+    monospace,
+    sans-serif
+
+  div {gap:0}
+}

@@ -1,0 +1,95 @@
+  'property-unclosed':
+    'begin': '''(?xi)
+      (?<=                                      # Match must be preceded by one of the following:
+          ^                                       # Start of line
+        | \\s                                     # Whitespace
+        | ;                                       # Semicolon (condensed property list syntax)
+        | [{}]                                    # Opening or closing brace (condensed property list syntax)
+        | \\*/                                    # Comment end
+        | \\\\(?:[0-9a-fA-F]{1,6}|.)              # Escape sequence
+      )
+
+      (?!                                       # Match must NOT include:
+          .*                                      # Any character
+          [;{}]                                   # Followed by a semicolon or curly brace
+        |                                       # OR any pseudo-class or pseudo-element:
+          [-a-zA-Z]                               # Property name/variable start
+          [\\w-]*                                 # Optionally followed by any word character or hyphen
+          (:)                                     # Followed by a colon
+          (?:
+            # Don't match if the name after the colon is a pseudo-class:
+              active|any-link|checked|default|disabled|empty|enabled|first
+            | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+            | in-range|indeterminate|invalid|left|link|optional|out-of-range
+            | read-only|read-write|required|right|root|scope|target|unresolved
+            | valid|visited
+
+            # Don't match if the name after the colon is a functional pseudo-class:
+            | (?:
+                  dir|lang
+                | not|has|matches|where|is
+                | nth-(?:last-)?(?:child|of-type)
+              )\\(.*\\)
+
+            # Don't match if the name after the single colon is a pseudo-element:
+            | after
+            | before
+            | first-letter
+            | first-line
+            | (?:
+                -(?:
+                    ah|apple|atsc|epub|hp|khtml|moz
+                  | ms|o|rim|ro|tc|wap|webkit|xv
+                )
+                | (?:
+                  mso|prince
+                )
+              )
+              -[a-z-]+
+          )
+          \\s*$                                   # Followed by optional whitespaces and the end of line
+      )
+
+      (?=                                       # Match must include:
+        (?:                                       First character of property value can be:
+            [\\w-]                                  # Or any word character or hyphen
+          | \\\\(?:[0-9a-fA-F]{1,6}|.)              # Or an escape sequence
+
+        )
+
+
+        [-a-zA-Z]                                 # Property name/variable must start with a letter or hyphen
+        [\\w-]*                                   # Optionally followed by any word character or hyphen
+        (:)                                       # Followed by a colon
+        [\\w]                                     # Property value must start with a word character
+        (?:                                     # Optionally followed by any of the following characters:
+            [-\\w\\(\\)\\/]                       # Word character, hyphen, parentheses, or slash
+          | (?<=[\\d\\*\\/\\+\\-\\%]) \\s         # Whitespace if it preceded by a number, arithmetic operator, or percentage
+          | \\s (?=[\\d\\*\\/\\+\\-\\%])          # Whitespace if it is followed by a number, arithmetic operator, or percentage
+          | (?:                                 # Or any of the following extra characters within parentheses (for functions):
+              (?<=\\(.*)                          # Opening parenthesis
+              (
+                  [\\.\\,\\:]                       # Dot, comma, or colon
+                | [\\'\\"]                          # Single or double quote
+                | [\\*\\+\\%]                       # Arithmetic operator or percentage
+                | \\s                               # Whitespace
+
+                  \\.                             # Dot
+                | \\,                             # Comma
+                | \\:                             # Colon
+                | \\'                             # Single quote
+                | \\"                             # Double quote
+                | \\*                             # Multiplication operator
+                | \\+                             # Addition operator
+                | \\%                             # Percent operator
+                | \\s                             # Whitespace
+              )
+              (?=.*\\))                           # Closing parenthesis
+          )
+        )*
+        \\s*                                      # Allow trailing whitespace
+        $                                         # End of line
+      )
+    '''
+    'end': '$'
+    'name': 'test.property-unclosed'

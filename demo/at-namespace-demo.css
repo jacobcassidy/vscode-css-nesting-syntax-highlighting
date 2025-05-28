@@ -1,0 +1,13 @@
+@namespace "XML";
+
+@namespace  prefix  "XML"  ;
+
+@namespace url("http://a.bc/");
+
+@namespace url url("http://a.bc/");
+
+@namespace/*=*/pre/*=*/"url"/*=*/;
+
+@namespace"XML";
+
+@namespace pre\\ fix "http://url/";

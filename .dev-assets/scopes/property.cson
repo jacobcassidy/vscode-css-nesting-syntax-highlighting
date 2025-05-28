@@ -1,0 +1,56 @@
+  'property':
+    'begin': '''(?x)
+
+      [\\w-]+\\:                      # Match a name followed by a single colon
+
+      # Don't match selectors:
+      (?!
+        \\:                           # Don't match if there are more than one colon following the name
+        | [()\\>\\+\\~\\s\\w-]*\\{    # Don't match if there is a selector opening bracket following the name
+
+        # Don't match if the value immediately following the colon is a pseudo-class
+        | (
+          active|any-link|checked|default|disabled|empty|enabled|first
+          | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+          | in-range|indeterminate|invalid|left|link|optional|out-of-range
+          | read-only|read-write|required|right|root|scope|target|unresolved
+          | valid|visited
+          | not|has|matches|where|is            # Matches (logical) pseudo-classes
+          | nth-(?:last-)?(?:child|of-type)     # Matches (child-indexed) pseudo-classes
+        )
+
+        # Don't match if the value immediately following the colon is a pseudo-element
+        | (
+          after
+          | before
+          | first-letter
+          | first-line
+          | (?:-(?:ah|apple|atsc|epub|hp|khtml|moz
+                  |ms|o|rim|ro|tc|wap|webkit|xv)
+              | (?:mso|prince))
+            -[a-z-]+
+        )
+      )
+    '''
+    'beginCaptures':
+      '0':
+        'name': 'test.begin.0'
+      '1':
+        'name': 'test.begin.1'
+
+    'end': '''(?x)
+      \\;
+      | \\)
+      | \\}
+    '''
+    'endCaptures':
+      '0':
+        'name': 'test.end.0'
+      '1':
+        'name': 'test.end.1'
+    'contentName': 'meta.property-name.css'
+    'patterns': [
+      {
+        'include': '#property-names'
+      }
+    ]

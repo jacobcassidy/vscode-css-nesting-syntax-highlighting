@@ -1,0 +1,5 @@
+.missing-properties {
+  color: light-dark(white, black); /* light-dark() */
+  margin: steps(1, end); /* steps() ?? */
+  width: some-edgy-new-function(30% / 2rem + 10px); /* some-edgy-new-function() ?? */
+}

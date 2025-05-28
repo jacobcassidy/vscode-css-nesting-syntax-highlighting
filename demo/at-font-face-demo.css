@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('fonts/custom-font.woff2') format('woff2'), url('fonts/custom-font.woff') format('woff');
+}
+
+.example {
+  font-family: 'CustomFont', sans-serif;
+}
