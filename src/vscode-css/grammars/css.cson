@@ -34,8 +34,14 @@
   {
     'include': '#rule-list'
   }
+  {
+    'include': '#nesting-selector'
+  }
 ]
 'repository':
+  'arithmetic-operators':
+    'match': '[*/]|(?<=\\s|^)[-+](?=\\s|$)'
+    'name': 'keyword.operator.arithmetic.css'
   'at-rules':
     'patterns': [
       {
@@ -214,6 +220,9 @@
                 'name': 'punctuation.section.media.end.bracket.curly.css'
             'name': 'meta.at-rule.media.body.css'
             'patterns': [
+              {
+                'include': '#rule-list-innards'
+              }
               {
                 'include': '$self'
               }
@@ -633,6 +642,9 @@
             'name': 'meta.at-rule.body.css'
             'patterns': [
               {
+                'include': '#rule-list-innards'
+              }
+              {
                 'include': '$self'
               }
             ]
@@ -643,12 +655,12 @@
   'color-keywords':
     'patterns': [
       {
-        # CSS 2.1 colours: http://www.w3.org/TR/CSS21/syndata.html#value-def-color
+        # CSS 2.1 colors: http://www.w3.org/TR/CSS21/syndata.html#value-def-color
         'match': '(?i)(?<![\\w-])(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)(?![\\w-])'
         'name': 'support.constant.color.w3c-standard-color-name.css'
       }
       {
-        # SVG/CSS3 colour names: http://www.w3.org/TR/css3-color/#svg-color
+        # SVG/CSS3 color names: http://www.w3.org/TR/css3-color/#svg-color
         'match': '''(?xi) (?<![\\w-])
           (aliceblue|antiquewhite|aquamarine|azure|beige|bisque|blanchedalmond|blueviolet|brown|burlywood
           |cadetblue|chartreuse|chocolate|coral|cornflowerblue|cornsilk|crimson|cyan|darkblue|darkcyan
@@ -670,12 +682,12 @@
         'name': 'support.constant.color.w3c-extended-color-name.css'
       }
       {
-        # Current text colour
+        # Current text color
         'match': '(?i)(?<![\\w-])currentColor(?![\\w-])'
         'name': 'support.constant.color.current.css'
       }
       {
-        # These colours are deprecated in CSS3: http://www.w3.org/TR/css3-color/#css2-system
+        # These colors are deprecated in CSS3: http://www.w3.org/TR/css3-color/#css2-system
         'match': '''(?xi) (?<![\\w-])
           (ActiveBorder|ActiveCaption|AppWorkspace|Background|ButtonFace|ButtonHighlight|ButtonShadow
           |ButtonText|CaptionText|GrayText|Highlight|HighlightText|InactiveBorder|InactiveCaption
@@ -818,17 +830,19 @@
         'name': 'meta.function.calc.css'
         'patterns': [
           {
-            'match': '[*/]|(?<=\\s|^)[-+](?=\\s|$)'
-            'name': 'keyword.operator.arithmetic.css'
+            'include': '#arithmetic-operators'
           }
           {
             'include': '#property-values'
           }
+          {
+            'include': '#function-nesting'
+          }
         ]
       }
-      # Colours
+      # colors
       {
-        'begin': '(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color)(\\()'
+        'begin': '(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color|light-dark)(\\()'
         'beginCaptures':
           '1':
             'name': 'support.function.misc.css'
@@ -936,6 +950,9 @@
           {
             'match': '(?i)(?<=[,\\s"]|\\*/|^)\\d+x(?=[\\s,"\')]|/\\*|$)'
             'name': 'constant.numeric.other.density.css'
+          }
+          {
+            'include': '#arithmetic-operators'
           }
           {
             'include': '#property-values'
@@ -1046,6 +1063,30 @@
           }
           {
             'include': '#property-values'
+          }
+        ]
+      }
+    ]
+  'function-nesting':
+    'patterns': [
+      {
+        'begin': '\\('
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.begin.bracket.round.scss'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.end.bracket.round.scss'
+        'patterns': [
+          {
+            'include': '#arithmetic-operators'
+          }
+          {
+            'include': '#property-values'
+          },
+          {
+            'include': '#function-nesting'
           }
         ]
       }
@@ -1352,6 +1393,9 @@
           {
             'include': '#comment-block'
           }
+          {
+            "include": "#functions"
+          }
         ]
       }
     ]
@@ -1380,6 +1424,9 @@
       )
       (?=$|[{,\\s;]|/\\*)
     '''
+  'nesting-selector':
+    'match': '&'
+    'name': 'entity.name.tag.nesting.selector.css'
   'numeric-values':
     'patterns': [
       {
@@ -1686,6 +1733,9 @@
       {
         'include': '#rule-list-innards'
       }
+      {
+        'include': '$self'
+      }
     ]
   'rule-list-innards':
     'patterns': [
@@ -1718,6 +1768,9 @@
             'include': '#property-names'
           }
         ]
+      }
+      {
+        'include': '#selector-innards'
       }
       {
         'begin': '(:)\\s*'
@@ -1833,7 +1886,7 @@
               # Consists of a hyphen only
               -                                      # Terminated by either:
               (?= $                                  # - End-of-line
-                | [\\s,.\\#)\\[:{>+~|]               # - Followed by another selector
+                | [\\s,.\\#)\\[:{>+~|&]              # - Followed by another selector
                 | /\\*                               # - Followed by a block comment
               )
               |
@@ -1843,7 +1896,7 @@
                 | \\\\(?:[0-9a-fA-F]{1,6}|.)         # - Escape sequence
               )*
               (?:                                    # Invalid punctuation
-                [!"'%&(*;<?@^`|\\]}]                 # - NOTE: We exempt `)` from the list of checked
+                [!"'%(*;<?@^`|\\]}]                  # - NOTE: We exempt `)` from the list of checked
                 |                                    #   symbols to avoid matching `:not(.invalid)`
                 / (?!\\*)                            # - Avoid invalidating the start of a comment
               )+
@@ -1874,7 +1927,7 @@
             )+
           )                                      # Followed by either:
           (?= $                                  # - End of the line
-            | [\\s,.\\#)\\[:{>+~|]               # - Another selector
+            | [\\s,.\\#)\\[:{>+~|&]              # - Another selector
             | /\\*                               # - A block comment
           )
         '''
@@ -1897,7 +1950,7 @@
             (?![0-9])
             (?:[-a-zA-Z0-9_]|[^\\x00-\\x7F]|\\\\(?:[0-9a-fA-F]{1,6}|.))+
           )
-          (?=$|[\\s,.\\#)\\[:{>+~|]|/\\*)
+          (?=$|[\\s,.\\#)\\[:{>+~|&]|/\\*)
         '''
         'name': 'entity.other.attribute-name.id.css'
       }
@@ -2100,7 +2153,7 @@
         | mrow|ms|mscarries|mscarry|msgroup|msline|mspace|msqrt|msrow|mstack|mstyle|msub|msubsup
         | msup|mtable|mtd|mtext|mtr|munder|munderover|semantics
       )
-      (?=[+~>\\s,.\\#|){:\\[]|/\\*|$)
+      (?=[+~>\\s,.\\#|&){:\\[]|/\\*|$)
     '''
     'name': 'entity.name.tag.css'
   'unicode-range':
