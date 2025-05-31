@@ -17,13 +17,16 @@
 '''
 'patterns': [
   {
+    'include': '#commas'
+  }
+  {
     'include': '#comment-block'
   }
   {
     'include': '#escapes'
   }
   {
-    'include': '#combinators'
+    'include': '#combinator-invalid'
   }
   {
     'include': '#selector'
@@ -33,9 +36,6 @@
   }
   {
     'include': '#rule-list'
-  }
-  {
-    'include': '#nesting-selector'
   }
 ]
 'repository':
@@ -484,6 +484,9 @@
             'name': 'meta.at-rule.supports.body.css'
             'patterns': [
               {
+                'include': '#rule-list-innards'
+              }
+              {
                 'include': '$self'
               }
             ]
@@ -701,14 +704,16 @@
   'combinators':
     'patterns': [
       {
-        'match': '/deep/|>>>'
-        'name': 'invalid.deprecated.combinator.css'
+        'include': '#combinator-invalid'
       }
       {
         'match': '>>|>|\\+|~'
         'name': 'keyword.operator.combinator.css'
       }
     ]
+  'combinator-invalid':
+    'match': '/deep/|>>>'
+    'name': 'invalid.deprecated.combinator.css'
   'commas':
     'match': ','
     'name': 'punctuation.separator.list.comma.css'
@@ -1068,27 +1073,23 @@
       }
     ]
   'function-nesting':
+    'begin': '\\('
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.function.begin.bracket.round.css'
+    'end': '\\)'
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.function.end.bracket.round.css'
     'patterns': [
       {
-        'begin': '\\('
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.begin.bracket.round.scss'
-        'end': '\\)'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.definition.end.bracket.round.scss'
-        'patterns': [
-          {
-            'include': '#arithmetic-operators'
-          }
-          {
-            'include': '#property-values'
-          },
-          {
-            'include': '#function-nesting'
-          }
-        ]
+        'include': '#arithmetic-operators'
+      }
+      {
+        'include': '#property-values'
+      },
+      {
+        'include': '#function-nesting'
       }
     ]
   'functional-pseudo-classes':
@@ -1394,7 +1395,7 @@
             'include': '#comment-block'
           }
           {
-            "include": "#functions"
+            'include': '#functions'
           }
         ]
       }
@@ -1424,9 +1425,6 @@
       )
       (?=$|[{,\\s;]|/\\*)
     '''
-  'nesting-selector':
-    'match': '&'
-    'name': 'entity.name.tag.nesting.selector.css'
   'numeric-values':
     'patterns': [
       {
@@ -1629,11 +1627,11 @@
           )
           (?![\\w-])
         '''
-        'name': 'support.type.property-name.css'
+        'name': 'meta.property-name.css support.type.property-name.css'
       }
       {
         'match': '(?<![\\w-])(?i:-(?:ah|apple|atsc|epub|hp|khtml|moz|ms|o|rim|ro|tc|wap|webkit|xv)|(?:mso|prince))-[a-zA-Z-]+'
-        'name': 'support.type.vendored.property-name.css'
+        'name': 'meta.property-name.css support.type.vendored.property-name.css'
       }
     ]
   'property-values':
@@ -1760,24 +1758,34 @@
         'name': 'variable.css'
       }
       {
-        'begin': '(?<![-a-zA-Z])(?=[-a-zA-Z])'
-        'end': '$|(?![-a-zA-Z])'
-        'name': 'meta.property-name.css'
-        'patterns': [
-          {
-            'include': '#property-names'
-          }
-        ]
+        'include': '#shared-names'
       }
       {
-        'include': '#selector-innards'
+        'include': '#property-names'
+      }
+      {
+        'include': '#selector'
       }
       {
         'begin': '(:)\\s*'
         'beginCaptures':
           '1':
             'name': 'punctuation.separator.key-value.css'
-        'end': '\\s*(;)|\\s*(?=}|\\))'
+        'end': '''(?x)
+          \\s*                          # Optional whitespaces, followed by:
+          (?:
+              (;)                       # A semicolon
+            | (?=
+                \\}                     # OR a closing curly brace
+              | \\)                     # OR a closing parenthesis
+              | (?:                     # OR an opening curly brace not enclosed by quotes
+                  [^\\'\\"]?
+                  \\{
+                  [^\\'\\"]?
+                )
+            )
+          )
+        '''
         'endCaptures':
           '1':
             'name': 'punctuation.terminator.rule.css'
@@ -1795,22 +1803,80 @@
         'match': ';'
         'name': 'punctuation.terminator.rule.css'
       }
+      {
+        'begin': '(?<![-a-zA-Z])(?=[-a-zA-Z])'
+        'end': '$|(?![-a-zA-Z])'
+        'name': 'meta.property-name.css'
+      }
     ]
   'selector':
-    'begin': '''(?x)
+    'begin': '''(?xi)
+      # Match must be preceded by one of the following:
+      (?<=
+          ^                             # Start of line
+        | (^|[^\\:])\\s                 # Whitespace, after the start of a line or any character except a colon (which denotes a property)
+        | ;                             # Semicolon (condensed property list syntax)
+        | [{}]                          # Opening or closing brace (condensed property list syntax)
+        | \\*/                          # Comment end
+        | \\\\(?:[0-9a-fA-F]{1,6}|.)    # Escape sequence
+      )
+
+      # Match may contain any of the following:
       (?=
-        (?:\\|)?                    # Possible anonymous namespace prefix
         (?:
-          [-\\[:.*\\#a-zA-Z_]       # Valid selector character
-          |
-          [^\\x00-\\x7F]            # Which can include non-ASCII symbols
-          |
-          \\\\                      # Or an escape sequence
-          (?:[0-9a-fA-F]{1,6}|.)
+          # Match must start with one of the following:
+            &                           # Nesting selector
+          | \\*                         # Universal selector
+          | [>~+]                       # Selector combinator
+          | \\|                         # Selector namespace separator
+          | \\[                         # Attribute selector opening bracket
+          | [a-zA-Z]                    # Letter
+          | [^\\x00-\\x7F]              # Non-ASCII symbols
+          | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence
+
+          # Or one of the following symbols, followed by a word character, hyphen, or escape sequence:
+          | (?:
+                \\.                     # Class selector
+              | \\#                     # ID selector
+            )
+            (?:
+                [\\w-]                  # Word character or hyphen
+              | \\\\(?:                 # Escape sequence
+                      [0-9a-fA-F]{1,6}
+                    | .
+                  )
+            )
+
+          # Or one of the following symbols, followed a letter or hyphen:
+          | (?:
+                \\:                     # Pseudo-class
+              | \\:\\:                  # Pseudo-element
+            )
+            [a-zA-Z-]                   # Letter or hyphen
         )
       )
-    '''
-    'end': '(?=\\s*[/@{)])'
+
+      # Match must NOT contain any of the following:
+      (?!
+          [\\w-]*[\\:]+\\s              # One or more colons immediately followed by a whitespace (denotes a property or invalid sequence)
+        | [^{]*;                        # Any characters and a semicolon before an opening bracket (denotes the end of a property)
+        | [^{]*}                        # A closing bracket before an opening bracket (denotes a property)
+        | [^\\:]+(\\:\\:):+             # More than two colons (invalid sequence)
+      )
+      '''
+    'end': '''(?x)
+      # Match must end with:
+      (?=
+        \\s*                            # Optional whitespace and one of the following:
+        (?:
+            \\/                         # Comment
+          | @                           # At-rule
+          | {                           # Opening property list brace
+          | \\)                         # Closing function brace (for passing test on `some-edgy-new-function(`)
+          | $                           # End of line
+        )
+      )
+      '''
     'name': 'meta.selector.css'
     'patterns': [
       {
@@ -1843,7 +1909,7 @@
             [-\\w*]+
             \\|
             (?!
-                [-\\[:.*\\#a-zA-Z_]    # Make sure there's a selector to match
+                [-\\[:.*&\\#a-zA-Z_]   # Make sure there's a selector to match
               | [^\\x00-\\x7F]
             )
           )
@@ -1860,6 +1926,10 @@
       }
       {
         'include': '#tag-names'
+      }
+      {
+        'match': '&'
+        'name': 'entity.name.tag.nesting.css'
       }
       {
         'match': '\\*'
@@ -2065,6 +2135,85 @@
         'name': 'entity.name.tag.custom.css'
       }
     ]
+  'shared-names':
+    # Shared names are keywords that can be used as selector or property names.
+    # If the following conditions are met, the keyword is considered a selector:
+    'begin': '''(?xi)
+        # Selector match must be preceded by one of the following:
+        (?<=
+            ^                           # Start of line
+          | (^|[^\\:])\\s               # Whitespace, after the start of a line or any character except a colon
+          | [{}]                        # Opening or closing brace (condensed property list syntax)
+          | \\*/                        # Comment end
+          | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence
+        )
+
+        (?=
+          # Selector must match:
+          (?:
+            # HTML elements
+            content|font|header|image|label|mark|marquee|mask|nav|ruby|shadow|span|style
+            # SVG elements
+            |color-profile|cursor|filter|line|text
+          )
+
+          # Selector must NOT be followed by any any of the following:
+          (?!
+              .*;                       # Any characters followed by a semicolon (denotes a property)
+            | .*}                       # Any characters followed by a closing bracket (denotes a property)
+            | -                         # A dash (denotes a property name)
+            # | \\s*\\:                   # A colon, unless it's with one of the following:
+            # (?!
+            #   # A opening bracket before an closing bracket
+            #     [^}]*{
+            #   # A pseudo-class selectors
+            #   | active|any-link|checked|disabled|empty|enabled|first
+            #   | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+            #   | in-range|indeterminate|invalid|link|out-of-range
+            #   | read-only|read-write|required|root|scope|target|unresolved
+            #   | valid|visited
+
+            #   # A functional pseudo-class selectors
+            #   | (?: dir|lang
+            #       | not|has|matches|where|is
+            #       | nth-(?:last-)?(?:child|of-type)
+            #     )\\(
+
+            #   # A single-colon pseudo-element selectors
+            #   | after
+            #   | before
+            #   | first-letter
+            #   | first-line
+            #   | (?:
+            #       \\-
+            #       (?:
+            #           ah|apple|atsc|epub|hp|khtml|moz
+            #         | ms|o|rim|ro|tc|wap|webkit|xv
+            #       )
+            #       | (?:
+            #           mso|prince
+            #         )
+            #     )
+            #     -[a-z-]+
+            # )
+          )
+        )
+      '''
+    'end': '''(?xi)
+      # Selector match ends with one of the following:
+      (?=
+          \\s                           # Whitespace
+        | \\/\\*                        # Comment
+        | ,                             # Comma
+        | {                             # Opening property list brace
+        | $                             # End of line
+      )
+      '''
+    'patterns': [
+      {
+        'include': '#selector'
+      }
+    ]
   'string':
     'patterns': [
       {
@@ -2190,3 +2339,4 @@
         'include': '#escapes'
       }
     ]
+
