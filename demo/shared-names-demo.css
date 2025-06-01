@@ -10,7 +10,9 @@
   {
     content:url('https://www.example.com') {gap:0}
 
-    content:url('https://www.example.com')
+    content:url('https://www.example.com');
+
+    content: '{'
 
   }
   font
