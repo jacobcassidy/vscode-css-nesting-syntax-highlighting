@@ -42,6 +42,60 @@
   'at-rules':
     'patterns': [
       {
+        # @container
+        'begin': '''(?xi)
+          (?=
+            @container                  # Match with the keyword `@container`, followed by one of the following:
+            (?:
+                \\s                     # Whitespace
+              | \\(                     # Opening parenthesis
+              | /\\*                    # Comment opening
+              | $                       # End of line
+            )
+          )
+        '''
+        'end': '''(?xi)
+          (?<=})                        # Match ends at the closing curly brace
+          (?!\\G)                       # Allow another match to immediately follow
+        '''
+        'patterns': [
+          {
+            'begin': '(?i)\\G(@)container'
+            'beginCaptures':
+              '0':
+                'name': 'keyword.control.at-rule.container.css'
+              '1':
+                'name': 'punctuation.definition.keyword.css'
+            'end': '(?=\\s*[{;])'
+            'name': 'meta.at-rule.container.header.css'
+            'patterns': [
+              {
+                'include': '#container-condition'
+              }
+            ]
+          }
+          {
+            'begin': '{'
+            'beginCaptures':
+              '0':
+                'name': 'punctuation.section.container.begin.bracket.curly.css'
+            'end': '}'
+            'endCaptures':
+              '0':
+                'name': 'punctuation.section.container.end.bracket.curly.css'
+            'name': 'meta.at-rule.container.body.css'
+            'patterns': [
+              {
+                'include': '#rule-list-innards'
+              }
+              {
+                'include': '$self'
+              }
+            ]
+          }
+        ]
+      }
+      {
         # @charset, with possible preceding BOM sequence
         'begin': '\\A(?:\\xEF\\xBB\\xBF)?(?i:(?=\\s*@charset\\b))'
         'end': ';|(?=$)'
@@ -770,6 +824,343 @@
       '0':
         'name': 'punctuation.definition.comment.end.css'
     'name': 'comment.block.css'
+  'container-condition':
+    'begin': '\\G'
+    'end': '(?=\\s*[{;])'
+    'patterns': [
+      {
+        'include': '#comment-block'
+      }
+      {
+        'include': '#escapes'
+      }
+      {
+        'match': '(?xi) (?<=not.*)not   # Only one `not` is allowed per container condition'
+        'name': 'invalid.illegal.multiple-not.container.css'
+      }
+      {
+        'match': '''(?xi)
+          # Match must be preceded by one of the following:
+          (?<=
+              ^                         # Beginning of line
+            | \\s                       # Whitespace
+            | \\*/                      # Comment closing
+          )
+
+          # Match must be one of the following:
+          (
+              and
+            | or
+            | not
+          )
+
+          # Match must be followed by one of the following:
+          (?=
+              \\s                       # Whitespace
+            | {                         # Opening curly brace
+            | /\\*                      # Comment opening
+            | $                         # End of line
+          )
+        '''
+        'name': 'keyword.operator.logical.$1.container.css'
+      }
+      {
+        # Container Name
+        'begin': '''(?xi)
+          \\G | (?<=\\*/)
+        '''
+        'end': '''(?xi)
+          # Name ends when one of the following is reached:
+          (?=
+              \\(
+            | not
+            | scroll-state\\(
+            | style\\(
+          )
+        '''
+        'patterns': [
+          {
+            'include': '#comment-block'
+          }
+          {
+            'captures':
+              '1':
+                'name': 'invalid.illegal.constant.container-name.css'
+              '2':
+                'name': 'support.constant.container-name.css'
+            'match': '''(?xi)
+
+              # Match must be preceded by one of the following:
+              (?<=
+                  ^                     # Beginning of line
+                | \\s                   # Whitespace
+                | \\*/                  # Comment closing
+              )
+
+              # Match must one of the following:
+              (?:
+                  (default|none)        # Invalid name
+                | ([\\w\\-\\\\]+)       # Valid names (letters, digits, underscores, hyphens, and escapes allowed)
+              )
+
+              # Match must be followed by one of the following:
+              (?=
+                  $                     # End of line
+                | \\s                   # Whitespace
+                | \\(                   # Opening parenthesis
+                | \\{                   # Opening curly brace
+                | \\;                   # Semicolon
+                | /\\*                  # Comment opening
+              )
+            '''
+          }
+        ]
+      }
+      {
+        'include': '#container-query'
+      }
+    ]
+  'container-query':
+    'patterns': [
+      {
+        # Rules for <container size query>
+        'begin': '(?<=\\s)\\('
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.parameters.begin.bracket.round.css'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.parameters.end.bracket.round.css'
+        'patterns': [
+          {
+            'include': '#container-query-features'
+          }
+          {
+            'match': '''(?xi)
+              # Match a slash as a property value delimiter if it's not enclosed by parentheses
+              (?:
+                (?<!\\(:[^\\)]*)
+                /
+              )
+            '''
+            'name': 'meta.property-value.delimiter.css'
+          }
+          {
+            # Container Size Features
+            'match': '''(?xi)
+              # Match must be preceded by one of the following:
+              (?<=
+                  ^                 # Start of line
+                | \\s               # Whitespace
+                | \\(               # Opening parenthesis
+                | \\*/              # Comment closing
+              )
+
+              (?:
+                # Standardised features
+                (
+                  (?:
+                      min-
+                    | max-
+                  )?
+
+                  # Range features
+                  (?:
+                      aspect-ratio
+                    | block-size
+                    | height
+                    | inline-size
+                    | width
+                  )
+                  | orientation
+                )
+              )
+
+              # Match must be followed by one of the following:
+              (?=
+                  \\s               # Whitespace
+                | $                 # End of line
+                | [><:=]            # Comparison operator
+                | \\)               # Closing parenthesis
+                | /\\*              # Comment opening
+              )
+            '''
+            'name': 'support.type.property-name.container.css'
+          }
+          {
+            # Container Size Feature Keywords
+            'match': '''(?xi)
+              # Match must be preceded by one of the following:
+              (?<=
+                  ^                 # Start of line
+                | \\s               # Whitespace
+                | :                 # Colon
+                | \\*/              # Comment closing
+              )
+
+              # Orientation
+              (?:
+                  portrait
+                | landscape
+              )
+
+              # Match must be followed by one of the following:
+              (?=
+                  \\s               # Whitespace
+                | \\)               # Closing parenthesis
+                | /\\*              # Comment opening
+                | $                 # End of line
+              )
+            '''
+            'name': 'support.constant.property-value.container.css'
+          }
+          {
+            'include': '#functions'
+          }
+        ]
+      }
+      {
+        # Rules for <container scroll-state queries>
+        'begin': '(?<=\\s)(scroll-state)(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'support.query-name.container.css'
+          '2':
+            'name': 'punctuation.definition.parameters.begin.bracket.round.css'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.parameters.end.bracket.round.css'
+        'patterns': [
+          {
+            'include': '#comment-block'
+          }
+          {
+            'match': ':'
+            'name': 'punctuation.separator.key-value.css'
+          }
+          {
+            # Scroll-state container descriptors names
+            'match': '(?:scrollable|snapped|stuck)(?=\\s*\\:)'
+            'name': 'support.type.property-name.container.css'
+          }
+          {
+            # Scroll-state container descriptors values
+            'match': '''(?xi)
+                (?:
+                  (?<=(scrollable|snapped|stuck)\\s*\\:\\s*)
+                  (?:none)
+                )
+              | (?:
+                  (?<=(scrollable|snapped)\\s*\\:\\s*)
+                  (?:
+                      x
+                    | y
+                    | block
+                    | inline
+                  )
+                )
+              | (?:
+                  (?<=(scrollable|stuck)\\s*\\:\\s*)
+                  (?:
+                      top
+                    | right
+                    | bottom
+                    | left
+                    | block-start
+                    | block-end
+                    | inline-start
+                    | inline-end
+                  )
+                )
+              | (?:
+                  (?<=(snapped)\\s*\\:\\s*)
+                  (?:both)
+                )
+            '''
+            'name': 'support.constant.property-value.css'
+          }
+        ]
+      }
+      {
+        # Rules for <container style queries>
+        'begin': '(?<=\\s)(style)(\\()'
+        'beginCaptures':
+          '1':
+            'name': 'support.query-name.container.css'
+          '2':
+            'name': 'punctuation.definition.parameters.begin.bracket.round.css'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.parameters.end.bracket.round.css'
+        'patterns': [
+          {
+            'include': '#container-query-features'
+          }
+          {
+            # Container Style Features
+            'match': '''(?xi)
+              # Custom Property Name
+              (?<=^|\\s|\\(|\\*/)
+              # Preceded by whitespace, bracket or comment
+              (?<![\\w-]) -- (?:[-a-zA-Z_] | [^\\x00-\\x7F])
+              # First letter
+              (?:[-a-zA-Z0-9_] | [^\\x00-\\x7F]
+              # Remainder of identifier
+              |\\\\(?:[0-9a-fA-F]{1,6}|.))*
+            '''
+            'name': 'variable.style-query.container.css'
+          }
+          {
+            # Container Style Feature Keywords
+            'begin': '''(?xi)
+              (?<=[\\:\\s*|\\*/])
+              # Preceded by colon and zero or more whitespaces, or a comment
+              (?:(?!\\s))
+              # Ignore trailing whitespace
+            '''
+            'end': '(?=[\\s|\\)|$])'
+            'patterns': [
+              {
+                'match': '(true|false)'
+                'name': 'support.constant.boolean.container.css'
+              }
+              {
+                'include': '#functions'
+              }
+              {
+                'include': '#property-keywords'
+              }
+              {
+                'include': '#unicode-range'
+              }
+              {
+                'include': '#color-keywords'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  'container-query-features':
+    'patterns': [
+      {
+        'match': ':'
+        'name': 'punctuation.separator.key-value.css'
+      }
+      {
+        'match': '>=|<=|=|<|>'
+        'name': 'keyword.operator.comparison.css'
+      }
+      {
+        'include': '#numeric-values'
+      }
+      {
+        'include': '#comment-block'
+      }
+    ]
   'escapes':
     'patterns': [
       {
