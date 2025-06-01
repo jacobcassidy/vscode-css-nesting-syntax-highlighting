@@ -8,9 +8,6 @@
   "firstLineMatch": "(?xi)\n# Emacs modeline\n-\\*-(?:\\s*(?=[^:;\\s]+\\s*-\\*-)|(?:.*?[;\\s]|(?<=-\\*-))mode\\s*:\\s*)\n  css\n(?=[\\s;]|(?<![-*])-\\*-).*?-\\*-\n|\n# Vim modeline\n(?:(?:\\s|^)vi(?:m[<=>]?\\d+|m)?|\\sex)(?=:(?=\\s*set?\\s[^\\n:]+:)|:(?!\\s*set?\\s))(?:(?:\\s|\\s*:\\s*)\\w*(?:\\s*=(?:[^\\n\\\\\\s]|\\\\.)*)?)*[\\s:](?:filetype|ft|syntax)\\s*=\n  css\n(?=\\s|:|$)",
   "patterns": [
     {
-      "include": "#commas"
-    },
-    {
       "include": "#comment-block"
     },
     {
@@ -510,9 +507,6 @@
               "name": "meta.at-rule.supports.body.css",
               "patterns": [
                 {
-                  "include": "#rule-list-innards"
-                },
-                {
                   "include": "$self"
                 }
               ]
@@ -870,7 +864,7 @@
           ]
         },
         {
-          "begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color|light-dark)(\\()",
+          "begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color)(\\()",
           "beginCaptures": {
             "1": {
               "name": "support.function.misc.css"
@@ -1588,13 +1582,18 @@
           "include": "#selector"
         },
         {
+          "begin": "(?<![-a-zA-Z])(?=[-a-zA-Z])",
+          "end": "$|(?![-a-zA-Z])",
+          "name": "meta.property-name.css"
+        },
+        {
           "begin": "(:)\\s*",
           "beginCaptures": {
             "1": {
               "name": "punctuation.separator.key-value.css"
             }
           },
-          "end": "(?x)\n\\s*                          # Optional whitespaces, followed by:\n(?:\n    (;)                       # A semicolon\n  | (?=\n      \\}                     # OR a closing curly brace\n    | \\)                     # OR a closing parenthesis\n    | (?:                     # OR an opening curly brace not enclosed by quotes\n        [^\\'\\\"]?\n        \\{\n        [^\\'\\\"]?\n      )\n  )\n)",
+          "end": "\\s*(;)|\\s*(?=}|\\))",
           "endCaptures": {
             "1": {
               "name": "punctuation.terminator.rule.css"
@@ -1613,11 +1612,6 @@
         {
           "match": ";",
           "name": "punctuation.terminator.rule.css"
-        },
-        {
-          "begin": "(?<![-a-zA-Z])(?=[-a-zA-Z])",
-          "end": "$|(?![-a-zA-Z])",
-          "name": "meta.property-name.css"
         }
       ]
     },
@@ -1814,7 +1808,7 @@
     "shared-names": {
       "patterns": [
         {
-          "begin": "(?xi)\n# Selector match must be preceded by one of the following:\n(?<=\n    ^                           # Start of line\n  | (^|[^\\:])\\s               # Whitespace, after the start of a line or any character except a colon\n  | [{}]                        # Opening or closing brace (condensed property list syntax)\n  | \\*/                        # Comment end\n  | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence\n)\n\n(?=\n  # Selector must match:\n  (?:\n    # HTML elements\n    header|image|label|marquee|mask|nav|ruby|shadow|span|style\n    # SVG elements\n    |color-profile|line|text\n  )\n\n  # Selector must NOT be followed by any any of the following:\n  (?!\n      .*;                       # Any characters followed by a semicolon (denotes a property)\n    | [^{]*}                    # Any characters, except an opening brace, followed by a closing bracket (denotes a property)\n    | -                         # A dash (denotes a property name)\n  )\n)",
+          "begin": "(?xi)\n# Selector match must be preceded by one of the following:\n(?<=\n    ^                           # Start of line\n  | (^|[^\\:])\\s               # Whitespace, after the start of a line or any character except a colon\n  | [{}]                        # Opening or closing brace (condensed property list syntax)\n  | \\*/                        # Comment end\n  | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence\n)\n\n(?=\n  # Selector must match:\n  (?:\n    # HTML elements\n    header|image|label|marquee|mask|nav|ruby|shadow|span|style\n    # SVG elements\n    |color-profile|line|text\n  )\n\n  # Selector must NOT be followed by any any of the following:\n  (?!\n      .*;                       # Any characters followed by a semicolon (denotes a property)\n    | [^{]*}                    # Any characters, except an opening brace, followed by a closing bracket (denotes a property)\n    | -                         # A dash (denotes a property name)\n    | \\:\\s+                   # A colon followed by whitespace (denotes a property name)\n  )\n)",
           "end": "(?xi)\n# Selector match ends with one of the following:\n(?=\n    \\s                           # Whitespace\n  | \\/\\*                        # Comment\n  | ,                             # Comma\n  | {                             # Opening property list brace\n  | $                             # End of line\n)",
           "patterns": [
             {
