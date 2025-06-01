@@ -6,4 +6,5 @@
 .vscode
 .vscodeignore
 demo
+node_modules
 src
