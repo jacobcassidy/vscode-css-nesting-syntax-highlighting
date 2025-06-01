@@ -1710,6 +1710,16 @@
         'match': '!\\s*important(?![\\w-])'
         'name': 'keyword.other.important.css'
       }
+      {
+        'match': '''(?xi)
+          # Match a slash as a property value delimiter if it's not enclosed by parentheses
+          (?:
+            (?<!\\([^\\)]*)
+            /
+          )
+        '''
+        'name': 'meta.property-value.delimiter.css'
+      }
     ]
   'pseudo-classes':
     'captures':
