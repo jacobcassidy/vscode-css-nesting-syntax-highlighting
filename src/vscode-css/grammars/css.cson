@@ -649,6 +649,55 @@
         ]
       }
     ]
+  'at-rule-supports-nested':
+    # @supports
+    'begin': '(?i)(?=@supports(\\s|\\(|/\\*|$))'
+    'end': '(?<=})(?!\\G)|(?=;)'
+    'patterns': [
+      {
+        'begin': '(?i)\\G(@)supports'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.control.at-rule.supports.css'
+          '1':
+            'name': 'punctuation.definition.keyword.css'
+        'end': '(?=\\s*[{;])'
+        'name': 'meta.at-rule.supports.header.css'
+        'patterns': [
+          {
+            'include': '#feature-query-operators'
+          }
+          {
+            'include': '#feature-query'
+          }
+          {
+            'include': '#comment-block'
+          }
+          {
+            'include': '#escapes'
+          }
+        ]
+      }
+      {
+        'begin': '{'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.section.supports.begin.bracket.curly.css'
+        'end': '}'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.section.supports.end.bracket.curly.css'
+        'name': 'meta.at-rule.supports.body.css'
+        'patterns': [
+          {
+            'include': '#rule-list-innards'
+          }
+          {
+            'include': '$self'
+          }
+        ]
+      }
+    ]
   'color-keywords':
     'patterns': [
       {
@@ -1722,6 +1771,9 @@
         'name': 'punctuation.section.property-list.end.bracket.curly.css'
     'name': 'meta.property-list.css'
     'patterns': [
+      {
+        'include': '#at-rule-supports-nested'
+      }
       {
         'include': '#rule-list-innards'
       }
