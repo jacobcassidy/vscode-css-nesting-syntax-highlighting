@@ -829,6 +829,9 @@
     'end': '(?=\\s*[{;])'
     'patterns': [
       {
+        'include': '#commas'
+      }
+      {
         'include': '#comment-block'
       }
       {
