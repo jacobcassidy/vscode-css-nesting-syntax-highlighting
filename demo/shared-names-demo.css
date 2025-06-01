@@ -8,7 +8,10 @@
 
   content
   {
+    content:url('https://www.example.com') {gap:0}
+
     content:url('https://www.example.com')
+
   }
   font
   {
@@ -52,7 +55,7 @@
   }
   span
   {
-    span: initial
+    span:initial
   }
   style
   {
