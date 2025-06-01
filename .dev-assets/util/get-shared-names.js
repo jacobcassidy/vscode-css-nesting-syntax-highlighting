@@ -15,7 +15,7 @@ console.log(sharedWords);
 // LOGS:
 // color-profile
 // content
-// cursor P
+// cursor
 // filter
 // font
 // header

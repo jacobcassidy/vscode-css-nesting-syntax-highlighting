@@ -6,13 +6,14 @@
 }
 .prop{ color:optional
 }
-.prop{ cursor:-webkit-zoom-in
+.prop{ cursor:anything
 }
-.prop{ custom-property:actives
+.prop{ custom-property:hello
 }
 .prop{ width:-moz-min-content
 }
-
+.prop{ span:hello
+}
 .prop{ animation-duration:calc(1s * 2)
 }
 .prop{ animation-timing-function:cubic-bezier(0.25, 0.1, 0.25, 1)
@@ -76,6 +77,8 @@
 .prop{ color:red-plus
 }
 .prop{ color:var(--primary-color)
+}
+.prop{ span:""
 }
 .prop{ content:""
 }
