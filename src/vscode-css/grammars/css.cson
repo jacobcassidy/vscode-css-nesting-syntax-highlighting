@@ -2252,40 +2252,40 @@
                 .*;                       # Any characters followed by a semicolon (denotes a property)
               | [^{]*}                    # Any characters, except an opening brace, followed by a closing bracket (denotes a property)
               | -                         # A dash (denotes a property name)
-              | \\:                     # A colon, unless it's with one of the following:
-              (?!
-                # A opening bracket before an closing bracket
-                  [^}]*{
-                # A pseudo-class selectors
-                | active|any-link|checked|disabled|empty|enabled|first
-                | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
-                | in-range|indeterminate|invalid|link|out-of-range
-                | read-only|read-write|required|root|scope|target|unresolved
-                | valid|visited
+              | \\:                       # A colon, unless it's with one of the following:
+                (?!
+                  # An unquoted opening bracket before an closing bracket
+                    [^}]*[^'"]{
+                  # A pseudo-class selectors
+                  | active|any-link|checked|disabled|empty|enabled|first
+                  | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover
+                  | in-range|indeterminate|invalid|link|out-of-range
+                  | read-only|read-write|required|root|scope|target|unresolved
+                  | valid|visited
 
-                # A functional pseudo-class selectors
-                | (?: dir|lang
-                    | not|has|matches|where|is
-                    | nth-(?:last-)?(?:child|of-type)
-                  )\\(
+                  # A functional pseudo-class selectors
+                  | (?: dir|lang
+                      | not|has|matches|where|is
+                      | nth-(?:last-)?(?:child|of-type)
+                    )\\(
 
-                # A single-colon pseudo-element selectors
-                | after
-                | before
-                | first-letter
-                | first-line
-                | (?:
-                    \\-
-                    (?:
-                        ah|apple|atsc|epub|hp|khtml|moz
-                      | ms|o|rim|ro|tc|wap|webkit|xv
-                    )
-                    | (?:
-                        mso|prince
+                  # A single-colon pseudo-element selectors
+                  | after
+                  | before
+                  | first-letter
+                  | first-line
+                  | (?:
+                      \\-
+                      (?:
+                          ah|apple|atsc|epub|hp|khtml|moz
+                        | ms|o|rim|ro|tc|wap|webkit|xv
                       )
-                  )
-                  -[a-z-]+
-              )
+                      | (?:
+                          mso|prince
+                        )
+                    )
+                    -[a-z-]+
+                )
             )
           )
           '''
