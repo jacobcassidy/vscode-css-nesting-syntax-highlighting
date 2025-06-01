@@ -5,7 +5,7 @@
 
 select :content,
 select:content,
-select:not(something):content,
+select:not(something):content
 {
   color:content
 }
