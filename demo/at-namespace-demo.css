@@ -1,5 +1,7 @@
 @namespace "XML";
 
+@namespace "/";
+
 @namespace  prefix  "XML"  ;
 
 @namespace url("http://a.bc/");

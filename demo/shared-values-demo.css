@@ -1,5 +1,31 @@
 /* Shared values between selectors and properties. Only matters when using condense formatting without any closing punctuation such as `name:value`, otherwise follow punctuation rules */
 
+/* ACTIVE */
+.nested-example {
+  div:active {gap:0}
+
+  /* Unknown use case for active as a property value so it's always a selector */
+  select :active,
+  select:active
+  {
+    color:active;
+
+    .nested-example {
+      div:active {gap:0}
+
+      div {
+        content: '{'
+      }
+
+      select :active,
+      /* Unknown use case for active as a property value so it's always a selector */
+      select:active
+      {
+        color:active
+      }
+    }
+  }
+
 @supports/*===*/not/*==****************|
 ==*/(display:table-cell)/*============*/ and (display: list-item)/*}*/{}
 
@@ -18,12 +44,12 @@ select:not(something):content
   select :active,
   select:active
   {
-    color:active
+    color:active;
 
     .nested-example {
       div:active {gap:0}
       div {
-        content: '{'
+        content: '{''
       }
 
       select :active,

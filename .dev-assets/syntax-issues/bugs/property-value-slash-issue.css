@@ -6,7 +6,33 @@
 .example {
   grid-column: 1/-1;
   grid-row: 1 / 3;
+}
 
-  width: clamp(100px, calc(30% / 2rem - 10px), 900px);
-  width: some-edgy-new-function(30% / 2rem + 10px);
+
+
+.nested-example {
+  div:active {gap:0}
+
+  /* Unknown use case for active as a property value so it's always a selector */
+  select :active,
+  select:active
+  {
+    content: '{'
+    color:active;
+
+    .nested-example {
+      div:active {gap:0}
+
+      div {
+        content: '{'
+      }
+
+      select :active,
+      /* Unknown use case for active as a property value so it's always a selector */
+      select:active
+      {
+        color:active
+      }
+    }
+  }
 }
