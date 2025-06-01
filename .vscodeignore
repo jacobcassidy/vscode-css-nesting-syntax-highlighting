@@ -1,4 +1,9 @@
 .dev-assets
-.vscode
 .gitignore
+.package-lock.json
+.prettierignore
+.prettierrc
+.vscode
+.vscodeignore
+demo
 src
