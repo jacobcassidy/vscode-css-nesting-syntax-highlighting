@@ -34,6 +34,53 @@
     "at-rules": {
       "patterns": [
         {
+          "begin": "(?xi)\n(?=\n  @container                  # Match with the keyword `@container`, followed by one of the following:\n  (?:\n      \\s                     # Whitespace\n    | \\(                     # Opening parenthesis\n    | /\\*                    # Comment opening\n    | $                       # End of line\n  )\n)",
+          "end": "(?xi)\n(?<=})                        # Match ends at the closing curly brace\n(?!\\G)                       # Allow another match to immediately follow",
+          "patterns": [
+            {
+              "begin": "(?i)\\G(@)container",
+              "beginCaptures": {
+                "0": {
+                  "name": "keyword.control.at-rule.container.css"
+                },
+                "1": {
+                  "name": "punctuation.definition.keyword.css"
+                }
+              },
+              "end": "(?=\\s*[{;])",
+              "name": "meta.at-rule.container.header.css",
+              "patterns": [
+                {
+                  "include": "#container-condition"
+                }
+              ]
+            },
+            {
+              "begin": "{",
+              "beginCaptures": {
+                "0": {
+                  "name": "punctuation.section.container.begin.bracket.curly.css"
+                }
+              },
+              "end": "}",
+              "endCaptures": {
+                "0": {
+                  "name": "punctuation.section.container.end.bracket.curly.css"
+                }
+              },
+              "name": "meta.at-rule.container.body.css",
+              "patterns": [
+                {
+                  "include": "#rule-list-innards"
+                },
+                {
+                  "include": "$self"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "begin": "\\A(?:\\xEF\\xBB\\xBF)?(?i:(?=\\s*@charset\\b))",
           "end": ";|(?=$)",
           "endCaptures": {
@@ -679,6 +726,62 @@
         }
       ]
     },
+    "at-rule-supports-nested": {
+      "begin": "(?i)(?=@supports(\\s|\\(|/\\*|$))",
+      "end": "(?<=})(?!\\G)|(?=;)",
+      "patterns": [
+        {
+          "begin": "(?i)\\G(@)supports",
+          "beginCaptures": {
+            "0": {
+              "name": "keyword.control.at-rule.supports.css"
+            },
+            "1": {
+              "name": "punctuation.definition.keyword.css"
+            }
+          },
+          "end": "(?=\\s*[{;])",
+          "name": "meta.at-rule.supports.header.css",
+          "patterns": [
+            {
+              "include": "#feature-query-operators"
+            },
+            {
+              "include": "#feature-query"
+            },
+            {
+              "include": "#comment-block"
+            },
+            {
+              "include": "#escapes"
+            }
+          ]
+        },
+        {
+          "begin": "{",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.section.supports.begin.bracket.curly.css"
+            }
+          },
+          "end": "}",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.section.supports.end.bracket.curly.css"
+            }
+          },
+          "name": "meta.at-rule.supports.body.css",
+          "patterns": [
+            {
+              "include": "#rule-list-innards"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+    },
     "color-keywords": {
       "patterns": [
         {
@@ -732,6 +835,187 @@
         }
       },
       "name": "comment.block.css"
+    },
+    "container-condition": {
+      "begin": "\\G",
+      "end": "(?=\\s*[{;])",
+      "patterns": [
+        {
+          "include": "#comment-block"
+        },
+        {
+          "include": "#escapes"
+        },
+        {
+          "match": "(?xi) (?<=not.*)not   # Only one `not` is allowed per container condition",
+          "name": "invalid.illegal.multiple-not.container.css"
+        },
+        {
+          "match": "(?xi)\n# Match must be preceded by one of the following:\n(?<=\n    ^                         # Beginning of line\n  | \\s                       # Whitespace\n  | \\*/                      # Comment closing\n)\n\n# Match must be one of the following:\n(\n    and\n  | or\n  | not\n)\n\n# Match must be followed by one of the following:\n(?=\n    \\s                       # Whitespace\n  | {                         # Opening curly brace\n  | /\\*                      # Comment opening\n  | $                         # End of line\n)",
+          "name": "keyword.operator.logical.$1.container.css"
+        },
+        {
+          "begin": "(?xi)\n\\G | (?<=\\*/)",
+          "end": "(?xi)\n# Name ends when one of the following is reached:\n(?=\n    \\(\n  | not\n  | scroll-state\\(\n  | style\\(\n)",
+          "patterns": [
+            {
+              "include": "#comment-block"
+            },
+            {
+              "captures": {
+                "1": {
+                  "name": "invalid.illegal.constant.container-name.css"
+                },
+                "2": {
+                  "name": "support.constant.container-name.css"
+                }
+              },
+              "match": "(?xi)\n\n# Match must be preceded by one of the following:\n(?<=\n    ^                     # Beginning of line\n  | \\s                   # Whitespace\n  | \\*/                  # Comment closing\n)\n\n# Match must one of the following:\n(?:\n    (default|none)        # Invalid name\n  | ([\\w\\-\\\\]+)       # Valid names (letters, digits, underscores, hyphens, and escapes allowed)\n)\n\n# Match must be followed by one of the following:\n(?=\n    $                     # End of line\n  | \\s                   # Whitespace\n  | \\(                   # Opening parenthesis\n  | \\{                   # Opening curly brace\n  | \\;                   # Semicolon\n  | /\\*                  # Comment opening\n)"
+            }
+          ]
+        },
+        {
+          "include": "#container-query"
+        }
+      ]
+    },
+    "container-query": {
+      "patterns": [
+        {
+          "begin": "(?<=\\s)\\(",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.parameters.begin.bracket.round.css"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.parameters.end.bracket.round.css"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#container-query-features"
+            },
+            {
+              "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n(?:\n  (?<!\\(:[^\\)]*)\n  /\n)",
+              "name": "meta.property-value.delimiter.css"
+            },
+            {
+              "match": "(?xi)\n# Match must be preceded by one of the following:\n(?<=\n    ^                 # Start of line\n  | \\s               # Whitespace\n  | \\(               # Opening parenthesis\n  | \\*/              # Comment closing\n)\n\n(?:\n  # Standardised features\n  (\n    (?:\n        min-\n      | max-\n    )?\n\n    # Range features\n    (?:\n        aspect-ratio\n      | block-size\n      | height\n      | inline-size\n      | width\n    )\n    | orientation\n  )\n)\n\n# Match must be followed by one of the following:\n(?=\n    \\s               # Whitespace\n  | $                 # End of line\n  | [><:=]            # Comparison operator\n  | \\)               # Closing parenthesis\n  | /\\*              # Comment opening\n)",
+              "name": "support.type.property-name.container.css"
+            },
+            {
+              "match": "(?xi)\n# Match must be preceded by one of the following:\n(?<=\n    ^                 # Start of line\n  | \\s               # Whitespace\n  | :                 # Colon\n  | \\*/              # Comment closing\n)\n\n# Orientation\n(?:\n    portrait\n  | landscape\n)\n\n# Match must be followed by one of the following:\n(?=\n    \\s               # Whitespace\n  | \\)               # Closing parenthesis\n  | /\\*              # Comment opening\n  | $                 # End of line\n)",
+              "name": "support.constant.property-value.container.css"
+            },
+            {
+              "include": "#functions"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=\\s)(scroll-state)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "support.query-name.container.css"
+            },
+            "2": {
+              "name": "punctuation.definition.parameters.begin.bracket.round.css"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.parameters.end.bracket.round.css"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#comment-block"
+            },
+            {
+              "match": ":",
+              "name": "punctuation.separator.key-value.css"
+            },
+            {
+              "match": "(?:scrollable|snapped|stuck)(?=\\s*\\:)",
+              "name": "support.type.property-name.container.css"
+            },
+            {
+              "match": "(?xi)\n  (?:\n    (?<=(scrollable|snapped|stuck)\\s*\\:\\s*)\n    (?:none)\n  )\n| (?:\n    (?<=(scrollable|snapped)\\s*\\:\\s*)\n    (?:\n        x\n      | y\n      | block\n      | inline\n    )\n  )\n| (?:\n    (?<=(scrollable|stuck)\\s*\\:\\s*)\n    (?:\n        top\n      | right\n      | bottom\n      | left\n      | block-start\n      | block-end\n      | inline-start\n      | inline-end\n    )\n  )\n| (?:\n    (?<=(snapped)\\s*\\:\\s*)\n    (?:both)\n  )",
+              "name": "support.constant.property-value.css"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=\\s)(style)(\\()",
+          "beginCaptures": {
+            "1": {
+              "name": "support.query-name.container.css"
+            },
+            "2": {
+              "name": "punctuation.definition.parameters.begin.bracket.round.css"
+            }
+          },
+          "end": "\\)",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.parameters.end.bracket.round.css"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#container-query-features"
+            },
+            {
+              "match": "(?xi)\n# Custom Property Name\n(?<=^|\\s|\\(|\\*/)\n# Preceded by whitespace, bracket or comment\n(?<![\\w-]) -- (?:[-a-zA-Z_] | [^\\x00-\\x7F])\n# First letter\n(?:[-a-zA-Z0-9_] | [^\\x00-\\x7F]\n# Remainder of identifier\n|\\\\(?:[0-9a-fA-F]{1,6}|.))*",
+              "name": "variable.style-query.container.css"
+            },
+            {
+              "begin": "(?xi)\n(?<=[\\:\\s*|\\*/])\n# Preceded by colon and zero or more whitespaces, or a comment\n(?:(?!\\s))\n# Ignore trailing whitespace",
+              "end": "(?=[\\s|\\)|$])",
+              "patterns": [
+                {
+                  "match": "(true|false)",
+                  "name": "support.constant.boolean.container.css"
+                },
+                {
+                  "include": "#functions"
+                },
+                {
+                  "include": "#property-keywords"
+                },
+                {
+                  "include": "#unicode-range"
+                },
+                {
+                  "include": "#color-keywords"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "container-query-features": {
+      "patterns": [
+        {
+          "match": ":",
+          "name": "punctuation.separator.key-value.css"
+        },
+        {
+          "match": ">=|<=|=|<|>",
+          "name": "keyword.operator.comparison.css"
+        },
+        {
+          "include": "#numeric-values"
+        },
+        {
+          "include": "#comment-block"
+        }
+      ]
     },
     "escapes": {
       "patterns": [
@@ -864,7 +1148,7 @@
           ]
         },
         {
-          "begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color)(\\()",
+          "begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color|light-dark)(\\()",
           "beginCaptures": {
             "1": {
               "name": "support.function.misc.css"
@@ -1507,6 +1791,10 @@
         {
           "match": "!\\s*important(?![\\w-])",
           "name": "keyword.other.important.css"
+        },
+        {
+          "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n(?:\n  (?<!\\([^\\)]*)\n  /\n)",
+          "name": "meta.property-value.delimiter.css"
         }
       ]
     },
@@ -1549,6 +1837,9 @@
       },
       "name": "meta.property-list.css",
       "patterns": [
+        {
+          "include": "#at-rule-supports-nested"
+        },
         {
           "include": "#rule-list-innards"
         },
@@ -1817,7 +2108,7 @@
           ]
         },
         {
-          "begin": "(?xi)\n# Selector match must be preceded by one of the following:\n(?<=\n    ^                           # Start of line\n  | (^|[^\\:])\\s               # Whitespace, after the start of a line or any character except a colon\n  | [{}]                        # Opening or closing brace (condensed property list syntax)\n  | \\*/                        # Comment end\n  | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence\n)\n\n(?=\n  # Selector must match:\n  (?:\n    # HTML elements\n    content|font|mark\n    # SVG elements\n    |cursor|filter\n  )\n\n  # Selector must NOT be followed by any any of the following:\n  (?!\n      .*;                       # Any characters followed by a semicolon (denotes a property)\n    | [^{]*}                    # Any characters, except an opening brace, followed by a closing bracket (denotes a property)\n    | -                         # A dash (denotes a property name)\n    | \\:                     # A colon, unless it's with one of the following:\n    (?!\n      # A opening bracket before an closing bracket\n        [^}]*{\n      # A pseudo-class selectors\n      | active|any-link|checked|disabled|empty|enabled|first\n      | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover\n      | in-range|indeterminate|invalid|link|out-of-range\n      | read-only|read-write|required|root|scope|target|unresolved\n      | valid|visited\n\n      # A functional pseudo-class selectors\n      | (?: dir|lang\n          | not|has|matches|where|is\n          | nth-(?:last-)?(?:child|of-type)\n        )\\(\n\n      # A single-colon pseudo-element selectors\n      | after\n      | before\n      | first-letter\n      | first-line\n      | (?:\n          \\-\n          (?:\n              ah|apple|atsc|epub|hp|khtml|moz\n            | ms|o|rim|ro|tc|wap|webkit|xv\n          )\n          | (?:\n              mso|prince\n            )\n        )\n        -[a-z-]+\n    )\n  )\n)",
+          "begin": "(?xi)\n# Selector match must be preceded by one of the following:\n(?<=\n    ^                           # Start of line\n  | (^|[^\\:])\\s               # Whitespace, after the start of a line or any character except a colon\n  | [{}]                        # Opening or closing brace (condensed property list syntax)\n  | \\*/                        # Comment end\n  | \\\\(?:[0-9a-fA-F]{1,6}|.)  # Escape sequence\n)\n\n(?=\n  # Selector must match:\n  (?:\n    # HTML elements\n    content|font|mark\n    # SVG elements\n    |cursor|filter\n  )\n\n  # Selector must NOT be followed by any any of the following:\n  (?!\n      .*;                       # Any characters followed by a semicolon (denotes a property)\n    | [^{]*}                    # Any characters, except an opening brace, followed by a closing bracket (denotes a property)\n    | -                         # A dash (denotes a property name)\n    | \\:                       # A colon, unless it's with one of the following:\n      (?!\n        # An unquoted opening bracket before an closing bracket\n          [^}]*[^'\"]{\n        # A pseudo-class selectors\n        | active|any-link|checked|disabled|empty|enabled|first\n        | (?:first|last|only)-(?:child|of-type)|focus|focus-visible|focus-within|fullscreen|host|hover\n        | in-range|indeterminate|invalid|link|out-of-range\n        | read-only|read-write|required|root|scope|target|unresolved\n        | valid|visited\n\n        # A functional pseudo-class selectors\n        | (?: dir|lang\n            | not|has|matches|where|is\n            | nth-(?:last-)?(?:child|of-type)\n          )\\(\n\n        # A single-colon pseudo-element selectors\n        | after\n        | before\n        | first-letter\n        | first-line\n        | (?:\n            \\-\n            (?:\n                ah|apple|atsc|epub|hp|khtml|moz\n              | ms|o|rim|ro|tc|wap|webkit|xv\n            )\n            | (?:\n                mso|prince\n              )\n          )\n          -[a-z-]+\n      )\n  )\n)",
           "end": "(?xi)\n# Selector match ends with one of the following:\n(?=\n    \\s                           # Whitespace\n  | \\/\\*                        # Comment\n  | ,                             # Comma\n  | {                             # Opening property list brace\n  | $                             # End of line\n)",
           "patterns": [
             {
