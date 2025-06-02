@@ -1190,7 +1190,7 @@
         'name': 'constant.character.escape.codepoint.css'
       }
       {
-        'begin': '\\\\$\\s*'
+        'begin': '\\\\$\\s*?'
         'end': '^(?<!\\G)'
         'name': 'constant.character.escape.newline.css'
       }
