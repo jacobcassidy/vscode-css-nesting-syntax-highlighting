@@ -959,16 +959,6 @@
             'include': '#container-query-features'
           }
           {
-            'match': '''(?xi)
-              # Match a slash as a property value delimiter if it's not enclosed by parentheses
-              (?:
-                (?<!\\(:[^\\)]*)
-                /
-              )
-            '''
-            'name': 'meta.property-value.delimiter.css'
-          }
-          {
             # Container Size Features
             'match': '''(?xi)
               # Match must be preceded by one of the following:
@@ -2137,20 +2127,25 @@
         'include': '#string'
       }
       {
+        'include': '#property-value-delimiter'
+      }
+      {
         'match': '!\\s*important(?![\\w-])'
         'name': 'keyword.other.important.css'
       }
-      {
-        'match': '''(?xi)
-          # Match a slash as a property value delimiter if it's not enclosed by parentheses
-          (?:
-            (?<!\\([^\\)]*)
-            /
-          )
-        '''
-        'name': 'meta.property-value.delimiter.css'
-      }
     ]
+  'property-value-delimiter':
+    'match': '''(?xi)
+      # Must be preceded by a colon with optionally follow-up characters:
+      (?<= \\:.* )
+      # Must NOT be preceded by an opening parenthesis, after the colon, before a closing parenthesis:
+      (?<! \\:.*\\([^\\)]* )
+      # Must match a slash
+      (?: / )
+      # Must NOT be followed by a closing parenthesis before an opening parenthesis
+      (?!= [^\\(]* \\) )
+    '''
+    'name': 'punctuation.separator.delimiter.slash.css'
   'pseudo-classes':
     'captures':
       '1':

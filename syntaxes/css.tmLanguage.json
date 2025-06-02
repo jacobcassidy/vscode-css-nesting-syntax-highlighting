@@ -1807,13 +1807,16 @@
           "include": "#string"
         },
         {
+          "include": "#property-value-delimiter"
+        },
+        {
           "match": "!\\s*important(?![\\w-])",
           "name": "keyword.other.important.css"
         }
       ]
     },
     "property-value-delimiter": {
-      "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n# Must be preceded by a colon and optionally other characters\n(?<= \\:.*\n)\n# Must not preceded by an opening parenthesis, after the colon, before a closing parenthesis\n(?<! \\:.*\\([^\\)]* )\n(?: / )                         # Match a slash\n(?!= [^\\(]* \\) )              # Not followed by a closing parenthesis before an opening parenthesis",
+      "match": "(?xi)\n# Must be preceded by a colon with optionally follow-up characters:\n(?<= \\:.* )\n# Must NOT be preceded by an opening parenthesis, after the colon, before a closing parenthesis:\n(?<! \\:.*\\([^\\)]* )\n# Must match a slash\n(?: / )\n# Must NOT be followed by a closing parenthesis before an opening parenthesis\n(?!= [^\\(]* \\) )",
       "name": "punctuation.separator.delimiter.slash.css"
     },
     "pseudo-classes": {
