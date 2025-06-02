@@ -14914,6 +14914,50 @@ describe("CSS grammar", function () {
 				});
 			});
 
+			it("tokenizes system color keywords", function () {
+				var tokens;
+				tokens = testGrammar.tokenizeLine("a { color: AccentColor; }").tokens;
+				assert.deepStrictEqual(tokens[7], {
+					value: "AccentColor",
+					scopes: [
+						"source.css",
+						"meta.property-list.css",
+						"meta.property-value.css",
+						"support.constant.color.system.css",
+					],
+				});
+			});
+
+			it("tokenizes deprecated system color keywords", function () {
+				var tokens;
+				tokens = testGrammar.tokenizeLine("a { color: background; }").tokens;
+				assert.deepStrictEqual(tokens[7], {
+					value: "background",
+					scopes: [
+						"source.css",
+						"meta.property-list.css",
+						"meta.property-value.css",
+						"invalid.deprecated.color.system.css",
+					],
+				});
+			});
+
+			it("does not confuse property names for deprecated color keywords", function () {
+				var tokens;
+				tokens = testGrammar.tokenizeLine(
+					"a { transition-property: background; }"
+				).tokens;
+				assert.deepStrictEqual(tokens[7], {
+					value: "background",
+					scopes: [
+						"source.css",
+						"meta.property-list.css",
+						"meta.property-value.css",
+						"support.constant.property-value.css",
+					],
+				});
+			});
+
 			it("tokenises RGBA values in hex notation", function () {
 				var tokens;
 				tokens = testGrammar.tokenizeLine("p{ color: #f030; }").tokens;
