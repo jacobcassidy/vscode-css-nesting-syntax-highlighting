@@ -19,7 +19,7 @@
 }
 
 /* OR */
-@container (width > 400px) or (height > 400px) {''
+@container (width > 400px) or (height > 400px) {
 }
 @container (display: grid) or (display: flex) {
 }
