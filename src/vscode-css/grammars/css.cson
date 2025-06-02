@@ -1687,6 +1687,24 @@
             'match': '(?i)even|odd'
             'name': 'support.constant.parity.css'
           }
+          {
+            'begin': '''(?xi)
+              (?<=
+                \\:nth-(?:last-)?child\\(
+                (?:even|odd|[+-]?(\\d+n?|n)(\\s*[+-]\\s*\\d+)?)\\s*
+              )
+              (?:of)
+            '''
+            'beginCaptures':
+              '0':
+                'name': 'keyword.operator.nth.of.css'
+            'end': '(?=\\))'
+            'patterns': [
+              {
+                'include': '#selector-innards'
+              }
+            ]
+          }
         ]
       }
     ]
