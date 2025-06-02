@@ -1920,6 +1920,8 @@
                 ic|ric|rcap|vh|vw|vb|vi|svh|
                 svw|svb|svi|dvh|dvw|dvb|dvi|
                 lvh|lvw|lvb|lvi|vmax|vmin|
+                dvmax|lvmax|svmax|
+                dvmin|lvmin|svmin|
                 cqw|cqi|cqh|cqb|cqmin|cqmax
               | dpi|dpcm|dppx                 # - Resolution
               | s|ms                          # - Time
