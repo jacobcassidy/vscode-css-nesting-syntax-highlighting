@@ -1037,9 +1037,6 @@
             '''
             'name': 'support.constant.property-value.container.css'
           }
-          {
-            'include': '#functions'
-          }
         ]
       }
       {
@@ -1150,9 +1147,6 @@
                 'name': 'support.constant.boolean.container.css'
               }
               {
-                'include': '#functions'
-              }
-              {
                 'include': '#property-keywords'
               }
               {
@@ -1181,6 +1175,9 @@
       }
       {
         'include': '#comment-block'
+      }
+      {
+        'include': '#functions'
       }
     ]
   'escapes':
