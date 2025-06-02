@@ -1,0 +1,11 @@
+/* https://github.com/microsoft/vscode-css/issues/33 */
+
+table thead tr:nth-child(odd of :not([hidden])),
+table:has(thead tr:last-child:nth-child(even of :not([hidden]))) tbody tr:nth-child(odd of :not([hidden])),
+table:has(thead tr:last-child:nth-child(odd of :not([hidden]))) tbody tr:nth-child(even of :not([hidden])),
+table:has(thead tr:last-child:nth-child(even of :not([hidden]))):has(tbody tr:last-child:nth-child(odd of :not([hidden]))) tfoot tr:nth-child(even of :not([hidden])),
+table:has(thead tr:last-child:nth-child(even of :not([hidden]))):has(tbody tr:last-child:nth-child(even of :not([hidden]))) tfoot tr:nth-child(odd of :not([hidden])),
+table:has(thead tr:last-child:nth-child(odd of :not([hidden]))):has(tbody tr:last-child:nth-child(odd of :not([hidden]))) tfoot tr:nth-child(odd of :not([hidden])),
+table:has(thead tr:last-child:nth-child(odd of :not([hidden]))):has(tbody tr:last-child:nth-child(even of :not([hidden]))) tfoot tr:nth-child(even of :not([hidden])) {
+  background-color: #f0f0f0;
+}

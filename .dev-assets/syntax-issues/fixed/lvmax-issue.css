@@ -1,0 +1,12 @@
+/* https://github.com/microsoft/vscode-css/issues/42 */
+.example-max {
+  width: 200lvmax;
+  width: 200svmax;
+  width: 200vmax;
+}
+
+.example-min {
+  width: 200lvmin;
+  width: 200svmin;
+  width: 200vmin;
+}
