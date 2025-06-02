@@ -1,0 +1,11 @@
+/* See: https://github.com/microsoft/vscode-css/issues/21 */
+
+a { color: AccentColor; }
+
+a { color: background; }
+
+a { transition-property: background, all; }
+
+.myclass {
+    transition-property: all, background;
+}

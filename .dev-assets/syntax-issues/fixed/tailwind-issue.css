@@ -1,0 +1,56 @@
+@utility fontawesome {
+  @apply pointer-events-none font-(--fa-weight) content-(--fa-icon);
+  --fa-icon: '\f00c';
+  --fa-weight: 300;
+  --fa-font-family: 'Font Awesome 6 Pro';
+  font-family: var( --fa-font-family );
+}
+
+@utility content {
+  content: '';
+}
+
+/* Sets the alignments of elements directly inside the root content, both fro... */
+@utility create-main-content-alignment {
+  /* Content container */
+  > * {
+    @apply mx-auto max-w-(--content-container-width);
+  }
+
+  /* Wide container */
+  > .container,
+  > .alignwide {
+    @apply mx-auto max-w-(--container-width) ;
+  }
+
+  > .alignfull {
+    @apply max-w-full;
+  }
+
+  /* Align content to the left when the container is not full width */
+  > *:not( .alignwide, .alignfull, .container ) {
+    margin-left: calc( ( 100% - var(--container-width ) ) / 2 );
+  }
+}
+
+
+.example {
+  /* Card padding */
+  --card-padding: 1rem;
+  @variant lg {
+    --card-padding: 1.5rem;
+  }
+  @variant xl {
+    --card-padding: 1.75rem;
+  }
+
+  /* Container size */
+  --container-padding: 1rem;
+  --container-width: calc( 100% - var( --container-padding ) * 2 );
+
+  @variant sm {
+    --container-width: calc(
+      var( --breakpoint-sm ) - var( --container-padding ) * 2
+    );
+  }
+}
