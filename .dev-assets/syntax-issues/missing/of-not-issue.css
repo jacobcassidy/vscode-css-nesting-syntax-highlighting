@@ -2,6 +2,9 @@
  * OF :NOT
  */
 
+ /* https://github.com/microsoft/vscode-css/issues/22 */
+ /* https://github.com/microsoft/vscode-css/issues/33 */
+
 /* `of` and trailing grammar has no syntax highlighting */
 .item > div:nth-child(1 of :not(.hidden)) {
   padding-left: var(--item_margin);

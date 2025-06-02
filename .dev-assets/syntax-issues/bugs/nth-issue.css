@@ -1,11 +1,50 @@
 /* https://github.com/microsoft/vscode-css/issues/33 */
+/* https://github.com/microsoft/vscode-css/issues/22 */
 
 table thead tr:nth-child(odd of :not([hidden])),
 table:has(thead tr:last-child:nth-child(even of :not([hidden]))) tbody tr:nth-child(odd of :not([hidden])),
 table:has(thead tr:last-child:nth-child(odd of :not([hidden]))) tbody tr:nth-child(even of :not([hidden])),
 table:has(thead tr:last-child:nth-child(even of :not([hidden]))):has(tbody tr:last-child:nth-child(odd of :not([hidden]))) tfoot tr:nth-child(even of :not([hidden])),
-table:has(thead tr:last-child:nth-child(even of :not([hidden]))):has(tbody tr:last-child:nth-child(even of :not([hidden]))) tfoot tr:nth-child(odd of :not([hidden])),
+table:has(thead tr:last-child:nth-last-child(even of :not([hidden]))):has(tbody tr:last-child:nth-child(even of :not([hidden]))) tfoot tr:nth-child(odd of :not([hidden])),
 table:has(thead tr:last-child:nth-child(odd of :not([hidden]))):has(tbody tr:last-child:nth-child(odd of :not([hidden]))) tfoot tr:nth-child(odd of :not([hidden])),
 table:has(thead tr:last-child:nth-child(odd of :not([hidden]))):has(tbody tr:last-child:nth-child(even of :not([hidden]))) tfoot tr:nth-child(even of :not([hidden])) {
   background-color: #f0f0f0;
+}
+
+.highlight:nth-child(2),
+:nth-child(2 of .highlight),
+:nth-child(4 of .highlight, .sale) {
+  gap:0;
+}
+
+tr:nth-child(even of :not([hidden])) {
+  background-color: lightgrey;
+}
+
+li:nth-child(-n + 3 of :not([hidden]):has(.class) ) {
+  border: 2px solid orange;
+  margin-bottom: 1px;
+}
+
+li:nth-child(even) {
+  background-color: lightyellow;
+}
+
+:nth-child(-n + 3 of li.important) {
+  gap:0
+}
+
+li:nth-last-child(even of .noted) {
+  background-color: tomato;
+  border-bottom-color: seagreen;
+}
+
+
+
+.item > div:nth-child(1 of :not(.hidden))  {
+  padding-left: var(--item_margin);
+}
+
+.item > div:nth-last-child(1 of :not(.hidden)) {
+  padding-right: var(--item_margin);
 }
