@@ -1,3 +1,5 @@
+/* https://github.com/jacobcassidy/vscode-css-nesting-syntax-highlighting/issues/8 */
+
 @utility fontawesome {
   @apply pointer-events-none font-(--fa-weight) content-(--fa-icon);
   --fa-icon: '\f00c';
