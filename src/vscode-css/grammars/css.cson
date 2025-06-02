@@ -1708,7 +1708,8 @@
       (?:
         # Standardised features
         (
-          (?:min-|max-)?            # Range features
+          # Range features
+          (?:min-|max-)?
           (?: height
             | width
             | aspect-ratio
@@ -1717,11 +1718,34 @@
             | monochrome
             | resolution
           )
-          | grid                    # Discrete features
-          | scan
-          | orientation
+          # Discrete features
+          | any-hover
+          | any-pointer
+          | color-gamut
           | display-mode
+          | grid
           | hover
+          | orientation
+          | overflow-block
+          | overflow-inline
+          | pointer
+          | scan
+          | update
+
+          # Media Queries 5 features
+          # Range features
+          | (?:min-|max-)?
+            (?: (?:horizontal|vertical)-viewport-segments
+              | video-color-gamut
+            )
+          # Discrete features
+          | (?:video-)?dynamic-range
+          | environment-blending
+          | forced-colors
+          | inverted-colors
+          | nav-controls
+          | prefers-(?:color-scheme|contrast|reduced-data|reduced-motion|reduced-transparency)
+          | scripting
         )
         |
         # Deprecated features

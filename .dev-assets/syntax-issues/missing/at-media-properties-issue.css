@@ -2,14 +2,137 @@
  * AT MEDIA PROPERTY
  */
 
+/*
+
+any-hover
+any-pointer
+aspect-ratio
+color
+color-gamut
+color-index
+device-aspect-ratio
+device-height
+device-width
+display-mode
+dynamic-range
+forced-colors
+grid
+height
+hover
+inverted-colors
+monochrome
+orientation
+overflow-block
+overflow-inline
+pointer
+prefers-color-scheme
+prefers-contrast
+prefers-reduced-data
+prefers-reduced-motion
+prefers-reduced-transparency
+resolution
+scan
+scripting
+update
+video-dynamic-range
+width
+
+any-hover
+any-pointer
+color-gamut
+dynamic-range
+forced-colors
+inverted-colors
+overflow-block
+overflow-inline
+pointer
+prefers-color-scheme
+prefers-contrast
+prefers-reduced-data
+prefers-reduced-motion
+prefers-reduced-transparency
+scripting
+update
+video-dynamic-range
+
+
+
+
+scripting
+
+
+
+*/
+
 /* Missing tokens */
 @media (any-hover: 0) {
 }
 @media (any-pointer: 0) {
 }
+@media (aspect-ratio: 0) {
+}
+@media (color: 0) {
+}
 @media (color-gamut: 0) {
 }
-@media (prefers-reduced-motion: reduce) {
+@media (color-index: 0) {
+}
 
+@media (device-aspect-ratio: 0) {
+}
+@media (device-height: 0) {
+}
+@media (device-width: 0) {
+}
+
+@media (display-mode: 0) {
+}
+@media (dynamic-range: 0) {
+}
+@media (forced-colors: 0) {
+}
+@media (grid: 0) {
+}
+@media (height: 0) {
+}
+@media (hover: 0) {
+}
+@media (inverted-colors: 0) {
+}
+@media (monochrome: 0) {
+}
+@media (orientation: 0) {
+}
+@media (overflow-block: 0) {
+}
+@media (overflow-inline: 0) {
+}
+@media (pointer: 0) {
+}
+@media (prefers-color-scheme: 0) {
+}
+@media (prefers-contrast: 0) {
+}
+@media (prefers-reduced-data: 0) {
+}
+@media (prefers-reduced-motion: 0) {
+}
+@media (prefers-reduced-transparency: 0) {
+}
+@media (resolution: 0) {
+}
+@media (scan: 0) {
+}
+@media (scripting: 0) {
+}
+@media (update: 0) {
+}
+@media (video-dynamic-range: 0) {
+}
+@media (width: 0) {
+}
+
+@media (nav-controls: 0) {
+}
 
 /* NOTE: see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries#descriptors for more media properties */
