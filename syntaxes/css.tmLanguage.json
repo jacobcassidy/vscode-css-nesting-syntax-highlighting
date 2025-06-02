@@ -223,7 +223,7 @@
               "name": "punctuation.definition.keyword.css"
             }
           },
-          "end": "(?=\\s*($|[:{;]))",
+          "end": "(?=\\s?(?=$|[:{;]))",
           "name": "meta.at-rule.page.css",
           "patterns": [
             {
@@ -785,6 +785,10 @@
     "color-keywords": {
       "patterns": [
         {
+          "match": "(?xi)\n(?<=\n  (transition|transition-property)\n  \\:[\\w\\s\\-,]*\n)\nbackground",
+          "name": "support.constant.property-value.css"
+        },
+        {
           "match": "(?i)(?<![\\w-])(aqua|black|blue|fuchsia|gray|green|lime|maroon|navy|olive|orange|purple|red|silver|teal|white|yellow)(?![\\w-])",
           "name": "support.constant.color.w3c-standard-color-name.css"
         },
@@ -797,7 +801,11 @@
           "name": "support.constant.color.current.css"
         },
         {
-          "match": "(?xi) (?<![\\w-])\n(ActiveBorder|ActiveCaption|AppWorkspace|Background|ButtonFace|ButtonHighlight|ButtonShadow\n|ButtonText|CaptionText|GrayText|Highlight|HighlightText|InactiveBorder|InactiveCaption\n|InactiveCaptionText|InfoBackground|InfoText|Menu|MenuText|Scrollbar|ThreeDDarkShadow\n|ThreeDFace|ThreeDHighlight|ThreeDLightShadow|ThreeDShadow|Window|WindowFrame|WindowText)\n(?![\\w-])",
+          "match": "(?xi) (?<![\\w-])\n(accentcolor|accentcolortext|activetext|buttonborder|buttonface|buttontext|canvas|canvastext|field|fieldtext\n|graytext|highlight|highlighttext|linktext|mark|marktext|selecteditem|selecteditemtext|visitedtext)\n(?![\\w-])",
+          "name": "support.constant.color.system.css"
+        },
+        {
+          "match": "(?xi) (?<![\\w-])\n(ActiveBorder|ActiveCaption|AppWorkspace|Background|ButtonHighlight|ButtonShadow|CaptionText\n|InactiveBorder|InactiveCaption|InactiveCaptionText|InfoBackground|InfoText|Menu|MenuText|Scrollbar\n|ThreeDDarkShadow|ThreeDFace|ThreeDHighlight|ThreeDLightShadow|ThreeDShadow|Window|WindowFrame|WindowText)\n(?![\\w-])",
           "name": "invalid.deprecated.color.system.css"
         }
       ]
@@ -902,19 +910,12 @@
               "include": "#container-query-features"
             },
             {
-              "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n(?:\n  (?<!\\(:[^\\)]*)\n  /\n)",
-              "name": "meta.property-value.delimiter.css"
-            },
-            {
               "match": "(?xi)\n# Match must be preceded by one of the following:\n(?<=\n    ^                 # Start of line\n  | \\s               # Whitespace\n  | \\(               # Opening parenthesis\n  | \\*/              # Comment closing\n)\n\n(?:\n  # Standardised features\n  (\n    (?:\n        min-\n      | max-\n    )?\n\n    # Range features\n    (?:\n        aspect-ratio\n      | block-size\n      | height\n      | inline-size\n      | width\n    )\n    | orientation\n  )\n)\n\n# Match must be followed by one of the following:\n(?=\n    \\s               # Whitespace\n  | $                 # End of line\n  | [><:=]            # Comparison operator\n  | \\)               # Closing parenthesis\n  | /\\*              # Comment opening\n)",
               "name": "support.type.property-name.container.css"
             },
             {
               "match": "(?xi)\n# Match must be preceded by one of the following:\n(?<=\n    ^                 # Start of line\n  | \\s               # Whitespace\n  | :                 # Colon\n  | \\*/              # Comment closing\n)\n\n# Orientation\n(?:\n    portrait\n  | landscape\n)\n\n# Match must be followed by one of the following:\n(?=\n    \\s               # Whitespace\n  | \\)               # Closing parenthesis\n  | /\\*              # Comment opening\n  | $                 # End of line\n)",
               "name": "support.constant.property-value.container.css"
-            },
-            {
-              "include": "#functions"
             }
           ]
         },
@@ -985,9 +986,6 @@
                   "name": "support.constant.boolean.container.css"
                 },
                 {
-                  "include": "#functions"
-                },
-                {
                   "include": "#property-keywords"
                 },
                 {
@@ -1017,6 +1015,9 @@
         },
         {
           "include": "#comment-block"
+        },
+        {
+          "include": "#functions"
         }
       ]
     },
@@ -1027,7 +1028,7 @@
           "name": "constant.character.escape.codepoint.css"
         },
         {
-          "begin": "\\\\$\\s*",
+          "begin": "\\\\$\\s*?",
           "end": "^(?<!\\G)",
           "name": "constant.character.escape.newline.css"
         },
@@ -1578,6 +1579,20 @@
             {
               "match": "(?i)even|odd",
               "name": "support.constant.parity.css"
+            },
+            {
+              "begin": "(?xi)\n(?<=\n  \\:nth-(?:last-)?child\\(\n  (?:even|odd|[+-]?(\\d+n?|n)(\\s*[+-]\\s*\\d+)?)\\s*\n)\n(?:of)",
+              "beginCaptures": {
+                "0": {
+                  "name": "keyword.operator.nth.of.css"
+                }
+              },
+              "end": "(?=\\))",
+              "patterns": [
+                {
+                  "include": "#selector-innards"
+                }
+              ]
             }
           ]
         }
@@ -1658,21 +1673,6 @@
               "name": "keyword.operator.comparison.css"
             },
             {
-              "captures": {
-                "1": {
-                  "name": "constant.numeric.css"
-                },
-                "2": {
-                  "name": "keyword.operator.arithmetic.css"
-                },
-                "3": {
-                  "name": "constant.numeric.css"
-                }
-              },
-              "match": "(\\d+)\\s*(/)\\s*(\\d+)",
-              "name": "meta.ratio.css"
-            },
-            {
               "include": "#numeric-values"
             },
             {
@@ -1710,6 +1710,21 @@
         {
           "captures": {
             "1": {
+              "name": "constant.numeric.css"
+            },
+            "2": {
+              "name": "keyword.operator.arithmetic.css"
+            },
+            "3": {
+              "name": "constant.numeric.css"
+            }
+          },
+          "match": "(?<=aspect-ratio:.*)(\\d+)\\s*(/)\\s*(\\d+)",
+          "name": "meta.ratio.css"
+        },
+        {
+          "captures": {
+            "1": {
               "name": "punctuation.definition.constant.css"
             }
           },
@@ -1725,7 +1740,7 @@
               "name": "keyword.other.unit.${2:/downcase}.css"
             }
           },
-          "match": "(?xi) (?<![\\w-])\n[-+]?                               # Sign indicator\n\n(?:                                 # Numerals\n    [0-9]+ (?:\\.[0-9]+)?           # Integer/float with leading digits\n  | \\.[0-9]+                       # Float without leading digits\n)\n\n(?:                                 # Scientific notation\n  (?<=[0-9])                        # Exponent must follow a digit\n  E                                 # Exponent indicator\n  [-+]?                             # Possible sign indicator\n  [0-9]+                            # Exponent value\n)?\n\n(?:                                 # Possible unit for data-type:\n  (%)                               # - Percentage\n  | ( deg|grad|rad|turn             # - Angle\n    | Hz|kHz                        # - Frequency\n    | ch|cm|em|ex|fr|in|mm|mozmm|   # - Length\n      pc|pt|px|q|rem|rch|rex|rlh|\n      ic|ric|rcap|vh|vw|vb|vi|svh|\n      svw|svb|svi|dvh|dvw|dvb|dvi|\n      lvh|lvw|lvb|lvi|vmax|vmin|\n      cqw|cqi|cqh|cqb|cqmin|cqmax\n    | dpi|dpcm|dppx                 # - Resolution\n    | s|ms                          # - Time\n    )\n  \\b                               # Boundary checking intentionally lax to\n)?                                  # facilitate embedding in CSS-like grammars",
+          "match": "(?xi) (?<![\\w-])\n[-+]?                               # Sign indicator\n\n(?:                                 # Numerals\n    [0-9]+ (?:\\.[0-9]+)?           # Integer/float with leading digits\n  | \\.[0-9]+                       # Float without leading digits\n)\n\n(?:                                 # Scientific notation\n  (?<=[0-9])                        # Exponent must follow a digit\n  E                                 # Exponent indicator\n  [-+]?                             # Possible sign indicator\n  [0-9]+                            # Exponent value\n)?\n\n(?:                                 # Possible unit for data-type:\n  (%)                               # - Percentage\n  | ( deg|grad|rad|turn             # - Angle\n    | Hz|kHz                        # - Frequency\n    | ch|cm|em|ex|fr|in|mm|mozmm|   # - Length\n      pc|pt|px|q|rem|rch|rex|rlh|\n      ic|ric|rcap|vh|vw|vb|vi|svh|\n      svw|svb|svi|dvh|dvw|dvb|dvi|\n      lvh|lvw|lvb|lvi|vmax|vmin|\n      dvmax|lvmax|svmax|\n      dvmin|lvmin|svmin|\n      cqw|cqi|cqh|cqb|cqmin|cqmax\n    | dpi|dpcm|dppx                 # - Resolution\n    | s|ms                          # - Time\n    )\n  \\b                               # Boundary checking intentionally lax to\n)?                                  # facilitate embedding in CSS-like grammars",
           "name": "constant.numeric.css"
         }
       ]
@@ -1794,12 +1809,12 @@
         {
           "match": "!\\s*important(?![\\w-])",
           "name": "keyword.other.important.css"
-        },
-        {
-          "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n(?:\n  (?<!\\([^\\)]*)\n  /\n)",
-          "name": "meta.property-value.delimiter.css"
         }
       ]
+    },
+    "property-value-delimiter": {
+      "match": "(?xi)\n# Match a slash as a property value delimiter if it's not enclosed by parentheses\n# Must be preceded by a colon and optionally other characters\n(?<= \\:.*\n)\n# Must not preceded by an opening parenthesis, after the colon, before a closing parenthesis\n(?<! \\:.*\\([^\\)]* )\n(?: / )                         # Match a slash\n(?!= [^\\(]* \\) )              # Not followed by a closing parenthesis before an opening parenthesis",
+      "name": "punctuation.separator.delimiter.slash.css"
     },
     "pseudo-classes": {
       "captures": {

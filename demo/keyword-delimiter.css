@@ -4,8 +4,14 @@
   font: 16px/1.5 'Helvetica Neue', sans-serif;
   border-radius:50% / 30%;
   box-shadow:10px 10px 5px rgba(0,0,0,0.5) / inset;
+  box-shadow:10px 10px 5px rgba(0,0,0,0.5) / rgba(0,0,0,0.5) inset;
   background:url("image.jpg") / cover;
   grid:auto-flow dense / auto auto;
+  aspect-ratio: 3 / 4;
+
+  @container (min-aspect-ratio: 3 / 2) {}
+
+  @media (min-aspect-ratio: 3 / 4) and (max-aspect-ratio: 20 / 17) {}
 }
 
 .invalid-delimiters {
@@ -28,8 +34,6 @@
   @namespace "/";
 
   @namespace pre "http://url/";
-
-  @media (min-aspect-ratio: 3 / 4) and (max-aspect-ratio: 20 / 17) {}
 
   a{content: url (http://a.pl/)}
 }

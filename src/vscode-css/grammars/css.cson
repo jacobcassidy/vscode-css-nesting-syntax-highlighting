@@ -1852,17 +1852,6 @@
             'name': 'keyword.operator.comparison.css'
           }
           {
-            'captures':
-              '1':
-                'name': 'constant.numeric.css'
-              '2':
-                'name': 'keyword.operator.arithmetic.css'
-              '3':
-                'name': 'constant.numeric.css'
-            'match': '(\\d+)\\s*(/)\\s*(\\d+)'
-            'name': 'meta.ratio.css'
-          }
-          {
             'include': '#numeric-values'
           }
           {
@@ -1901,6 +1890,17 @@
     '''
   'numeric-values':
     'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'constant.numeric.css'
+          '2':
+            'name': 'keyword.operator.arithmetic.css'
+          '3':
+            'name': 'constant.numeric.css'
+        'match': '(?<=aspect-ratio:.*)(\\d+)\\s*(/)\\s*(\\d+)'
+        'name': 'meta.ratio.css'
+      }
       {
         'captures':
           '1':

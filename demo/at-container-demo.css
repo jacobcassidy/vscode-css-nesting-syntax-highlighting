@@ -89,7 +89,7 @@
   container: sidebar / inline-size;
 }
 
-@container (min-width: 400px) {
+@container (min-width: calc(400px * 4) ) {
   /* … */
 }
 @container (orientation: landscape) and (width > 400px) {
