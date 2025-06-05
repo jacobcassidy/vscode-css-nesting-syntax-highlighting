@@ -15,7 +15,7 @@ supports(selector(&)) (min-width: calc(10px));
 @import "theme.css"
 layer;
 @import url('style.css') layer;
-@import url('style.css')
+@import url('style.css') layer
 layer;
 
 /* Highlight layer() function */
@@ -35,7 +35,6 @@ layer(layer.name);
 @import "theme.css" layer layer(layer-name);
 @import "theme.css" something layer(layer-name);
 @import "theme.css" layer(layer-name) layer(layer-name) layer;
-
 
 /* Rule Example */
 @layer default {

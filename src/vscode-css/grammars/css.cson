@@ -198,13 +198,24 @@
             'include': '#url'
           }
           {
+            'include': '#layer-function'
+          }
+          {
             'begin': '\\s+'
             'end': '(?=;)'
             'name': 'import.inner'
             'patterns': [
               {
-                'include': '#layer-function'
+                'match': '(?<!layer.*)layer(?=\\s|;)'
+                'name': 'test.begin'
               }
+              {
+                'match': '(?<=layer.*).*(?=;)'
+                'name': 'test.end'
+              }
+              # {
+              #   'include': '#layer-function'
+              # }
               # {
               #   'include': '#supports-function'
               # }
@@ -1710,39 +1721,174 @@
     ]
   'layer-function':
     'patterns': [
-      {
-        # Match "layer" keyword
-        'match': '''(?xi)
-          (?<!layer.*)          # Only one "layer" keyword is allowed per import
-          layer
-          (?=\\s|;)             # Keyword must end with a whitespace or semicolon
-        '''
-        'name': 'support.constant.import.css'
-      }
-      {
-        # Match "layer()" function
-        'begin': '''(?xi)
-          (?<!layer[\\s\\(].*)  # Only one "layer" keyword or function is allowed per import
-          (layer)(\\()
-        '''
-        'beginCaptures':
-          '1':
-            'name': 'support.function.layer.css'
-          '2':
-            'name': 'punctuation.section.layer.begin.bracket.round.css'
-        'end': '\\)'
-        'endCaptures':
-          '0':
-            'name': 'punctuation.section.layer.end.bracket.round.css'
-        'name': 'meta.function.layer.css'
-        'patterns': [
-          {
-            'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
-            'end': '(?=\\s|\\))'
-            'name': 'variable.parameter.layer.css'
-          }
-        ]
-      }
+      # {
+      #   'match': '.*layer(?=\\s|;)'
+      #   'name': 'test.begin'
+      # }
+      # {
+      #   'match': '.*'
+      #   'name': 'test.end'
+      # }
+          #  {
+      #   'match': '.*layer(\\(|\\s|;)'
+      #   'name': 'test.body'
+      # }
+
+      # {
+      #   'begin': '''(?xi)
+      #     # \\s*
+      #     (?:
+
+      #       \\s*
+      #       (layer)
+
+      #       # [^(layer)]
+      #       # (?<= \\s (layer) )
+      #       # layer
+      #       # .*layer
+
+      #       # (?:\\s|^)layer
+      #       # [(layer)\\(]
+      #       # [^(layer)]*layer
+      #       #   [^(layer)]*
+      #       # # |
+      #       # (?<!\\\\)(?=$|\\n)
+      #       # .*layer
+      #     )
+      #     # (layer)
+      #     # (?:
+      #     #     (?= \\s|; )
+      #     #   | (\\()
+      #     # )
+      #     # .*layer|(?<!\\\\)(?=$|\\n)
+      #     # (?<!layer[\\s\\(].*)  # Only one "layer" keyword or function is allowed per import
+      #     # [^(layer)]*
+      #     # (layer)
+      #     # (?:
+      #     #     (?= \\s|; )
+      #     #   | ( \\( )
+      #     # )
+      #   '''
+      #   'beginCaptures':
+      #     '0':
+      #       'name': 'test.begin'
+      #   #   '1':
+      #   #     'name': 'support.function.layer.css'
+      #   #   '2':
+      #   #     'name': 'punctuation.section.layer.begin.bracket.round.css'
+      #   'end': '''(?xi)
+      #     #   \\)
+      #     # |
+      #       (?=;)
+      #   '''
+      #   'endCaptures':
+      #     '0':
+      #       'name': 'test.end'
+      #   #     'name': 'punctuation.section.layer.end.bracket.round.css'
+      #   'name': 'test.body'
+      #   # 'name': 'meta.function.layer.css'
+      #   # 'patterns': [
+      #   #   {
+      #   #     'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
+      #   #     'end': '(?=\\s|\\))'
+      #   #     'name': 'variable.parameter.layer.css'
+      #   #   }
+      #   # ]
+      # }
+
+
+
+      # {
+      #   'begin': '''(?xi)
+      #     .*layer|(?<!\\\\)(?=$|\\n)
+      #   '''
+      #   'end': '\\)|(?=$|\\n|;)'
+      #   'name': 'test.body'
+      # }
+
+
+      # {
+      #   'begin': '''(?xi)
+
+      #     (?:
+      #         [^(layer)]*
+      #       | (?<!\\\\)(?=$|\\n)
+      #     )
+
+      #     (layer)
+      #     # (?:
+      #     #     (?= \\s|; )
+      #     #   | (\\()
+      #     # )
+
+
+
+
+      #     # .*layer|(?<!\\\\)(?=$|\\n)
+      #     # (?<!layer[\\s\\(].*)  # Only one "layer" keyword or function is allowed per import
+      #     # [^(layer)]*
+      #     # (layer)
+      #     # (?:
+      #     #     (?= \\s|; )
+      #     #   | (\\()
+      #     # )
+      #   '''
+      #   # 'beginCaptures':
+      #   #   '1':
+      #   #     'name': 'support.function.layer.css'
+      #   #   '2':
+      #   #     'name': 'punctuation.section.layer.begin.bracket.round.css'
+      #   'end': '\\)|(?=$|\\n|;)'
+      #   # 'endCaptures':
+      #   #   '0':
+      #   #     'name': 'punctuation.section.layer.end.bracket.round.css'
+      #   'name': 'test.body'
+      #   # 'name': 'meta.function.layer.css'
+      #   # 'patterns': [
+      #   #   {
+      #   #     'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
+      #   #     'end': '(?=\\s|\\))'
+      #   #     'name': 'variable.parameter.layer.css'
+      #   #   }
+      #   # ]
+      # }
+      # {
+      #   'match': '.*layer(\\(|\\s|;)'
+      #   'name': 'test.body'
+      # }
+      # {
+      #   # Match "layer" keyword
+      #   'match': '''(?xi)
+      #     (?<!layer.*)          # Only one "layer" keyword is allowed per import
+      #     layer
+      #     (?=\\s|;)             # Keyword must end with a whitespace or semicolon
+      #   '''
+      #   'name': 'support.constant.import.css'
+      # }
+      # {
+      #   # Match "layer()" function
+      #   'begin': '''(?xi)
+      #     (?<!layer[\\s\\(].*)  # Only one "layer" keyword or function is allowed per import
+      #     (layer)(\\()
+      #   '''
+      #   'beginCaptures':
+      #     '1':
+      #       'name': 'support.function.layer.css'
+      #     '2':
+      #       'name': 'punctuation.section.layer.begin.bracket.round.css'
+      #   'end': '\\)'
+      #   'endCaptures':
+      #     '0':
+      #       'name': 'punctuation.section.layer.end.bracket.round.css'
+      #   'name': 'meta.function.layer.css'
+      #   'patterns': [
+      #     {
+      #       'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
+      #       'end': '(?=\\s|\\))'
+      #       'name': 'variable.parameter.layer.css'
+      #     }
+      #   ]
+      # }
     ]
   'media-features':
     'captures':
