@@ -198,7 +198,20 @@
             'include': '#url'
           }
           {
-            'include': '#media-query-list'
+            'begin': '\\s+'
+            'end': '(?=;)'
+            'name': 'import.inner'
+            'patterns': [
+              {
+                'include': '#layer-function'
+              }
+              # {
+              #   'include': '#supports-function'
+              # }
+              # {
+              #   'include': '#media-query-list'
+              # }
+            ]
           }
         ]
       }
@@ -1695,6 +1708,42 @@
         ]
       }
     ]
+  'layer-function':
+    'patterns': [
+      {
+        # Match "layer" keyword
+        'match': '''(?xi)
+          (?<!layer.*)          # Only one "layer" keyword is allowed per import
+          layer
+          (?=\\s|;)             # Keyword must end with a whitespace or semicolon
+        '''
+        'name': 'support.constant.import.css'
+      }
+      {
+        # Match "layer()" function
+        'begin': '''(?xi)
+          (?<!layer[\\s\\(].*)  # Only one "layer" keyword or function is allowed per import
+          (layer)(\\()
+        '''
+        'beginCaptures':
+          '1':
+            'name': 'support.function.layer.css'
+          '2':
+            'name': 'punctuation.section.layer.begin.bracket.round.css'
+        'end': '\\)'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.section.layer.end.bracket.round.css'
+        'name': 'meta.function.layer.css'
+        'patterns': [
+          {
+            'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
+            'end': '(?=\\s|\\))'
+            'name': 'variable.parameter.layer.css'
+          }
+        ]
+      }
+    ]
   'media-features':
     'captures':
       '1':
@@ -2810,6 +2859,161 @@
         ]
       }
     ]
+
+    'supports-function':
+      'match': '.*supports\\('
+      'name': 'test.body'
+      # 'patterns': [
+      #     {
+      #       'match': '.*supports\\('
+      #       'name': 'test.body'
+      #     }
+      # ]
+      # # Match "layer()" function
+      # 'begin': '''(?xi)
+      #   (?<!supports\\(.*)?  # Only one "supports" function is allowed per import
+      #   .*(supports)(\\()
+      # '''
+      # 'beginCaptures':
+      #   '1':
+      #     'name': 'support.function.supports.css'
+      #   '2':
+      #     'name': 'punctuation.section.supports.begin.bracket.round.css'
+      # 'end': '\\)'
+      # 'endCaptures':
+      #   '0':
+      #     'name': 'punctuation.section.supports.end.bracket.round.css'
+      # 'name': 'meta.function.supports.css'
+      # 'patterns': [
+      #   {
+      #     'begin': '(?<=\\(\\s*)[\\w\\-\\.]*'
+      #     'end': '(?=\\s|\\))'
+      #     'name': 'variable.parameter.supports.css'
+      #   }
+      # ]
+
+
+
+
+  #   # {
+  #   #   # Rules for <container scroll-state queries>
+  #   #   'begin': '(?<=\\s)(scroll-state)(\\()'
+  #   #   'beginCaptures':
+  #   #     '1':
+  #   #       'name': 'support.query-name.container.css'
+  #   #     '2':
+  #   #       'name': 'punctuation.definition.parameters.begin.bracket.round.css'
+  #   #   'end': '\\)'
+  #   #   'endCaptures':
+  #   #     '0':
+  #   #       'name': 'punctuation.definition.parameters.end.bracket.round.css'
+  #   #   'patterns': [
+  #   #     {
+  #   #       'include': '#comment-block'
+  #   #     }
+  #   #     {
+  #   #       'match': ':'
+  #   #       'name': 'punctuation.separator.key-value.css'
+  #   #     }
+  #   #     {
+  #   #       # Scroll-state container descriptors names
+  #   #       'match': '(?:scrollable|snapped|stuck)(?=\\s*\\:)'
+  #   #       'name': 'support.type.property-name.container.css'
+  #   #     }
+  #   #     {
+  #   #       # Scroll-state container descriptors values
+  #   #       'match': '''(?xi)
+  #   #           (?:
+  #   #             (?<=(scrollable|snapped|stuck)\\s*\\:\\s*)
+  #   #             (?:none)
+  #   #           )
+  #   #         | (?:
+  #   #             (?<=(scrollable|snapped)\\s*\\:\\s*)
+  #   #             (?:
+  #   #                 x
+  #   #               | y
+  #   #               | block
+  #   #               | inline
+  #   #             )
+  #   #           )
+  #   #         | (?:
+  #   #             (?<=(scrollable|stuck)\\s*\\:\\s*)
+  #   #             (?:
+  #   #                 top
+  #   #               | right
+  #   #               | bottom
+  #   #               | left
+  #   #               | block-start
+  #   #               | block-end
+  #   #               | inline-start
+  #   #               | inline-end
+  #   #             )
+  #   #           )
+  #   #         | (?:
+  #   #             (?<=(snapped)\\s*\\:\\s*)
+  #   #             (?:both)
+  #   #           )
+  #   #       '''
+  #   #       'name': 'support.constant.property-value.css'
+  #   #     }
+  #   #   ]
+  #   # }
+  # 'supports-function':
+  #   'begin': '(?xi)(?: \\s|\\G|^|(?<= ^|\\G|$) )(supports)(\\()'
+  #   # 'begin': '(?:.*)(supports)(\\()'
+  #   'beginCaptures':
+  #     # '1':
+  #       # 'name': 'support.function.supports.css'
+  #     '2':
+  #       'name': 'punctuation.section.supports.begin.bracket.round.css'
+  #   'end': '\\)'
+  #   'endCaptures':
+  #     '0':
+  #       'name': 'punctuation.section.supports.end.bracket.round.css'
+  #   'name': 'meta.function.supports.css'
+  #   'patterns': [
+  #     # {
+  #     #   'include': '#shared-names'
+  #     # }
+  #     # {
+  #     #   'include': '#property-names'
+  #     # }
+  #     # {
+  #     #   'include': '#selector'
+  #     # }
+  #     # {
+  #     #   'begin': '(?<![-a-zA-Z])(?=[-a-zA-Z])'
+  #     #   'end': '$|(?![-a-zA-Z])'
+  #     #   'name': 'meta.property-name.css'
+  #     # }
+  #     # {
+  #     #   'begin': '(:)\\s*'
+  #     #   'beginCaptures':
+  #     #     '1':
+  #     #       'name': 'punctuation.separator.key-value.css'
+  #     #   'end': '\\s*(;)|\\s*(?=}|\\))'
+  #     #   'endCaptures':
+  #     #     '1':
+  #     #       'name': 'punctuation.terminator.rule.css'
+  #     #   'contentName': 'meta.property-value.css'
+  #     #   'patterns': [
+  #     #     {
+  #     #       'include': '#comment-block'
+  #     #     }
+  #     #     {
+  #     #       'include': '#property-values'
+  #     #     }
+  #     #   ]
+  #     # }
+  #     # {
+  #     #   'match': ';'
+  #     #   'name': 'punctuation.terminator.rule.css'
+  #     # }
+  #     # {
+  #     #   'match': '[\\w\\-\\.]*'
+  #     #   'name': 'variable.parameter.supports.css'
+  #     # }
+  #   ]
   'tag-names':
     'match': '''(?xi) (?<![\\w:-])
       (?:
