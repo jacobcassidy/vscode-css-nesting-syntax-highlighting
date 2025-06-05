@@ -2,14 +2,68 @@
  * AT IMPORT
  */
 
- /* https://github.com/microsoft/vscode-css/issue */
+/*
+@import [ <url> | <string> ]
+        [ layer | layer(<layer-name>) ]?
+        [ supports( [ <supports-condition> | <declaration> ] ) ]?
+        <media-query-list>?
+*/
 
-/* new syntax rules for @import have no syntax highlighting */
-@import "/css/styles.css" supports(color: red);
-@import url("green.css") layer supports(selector(&)) (min-width: calc(10px));
+/*
+@import url;
+@import url layer;
+@import url layer(layer-name);
+@import url layer(layer-name) supports(supports-condition);
+@import url layer(layer-name) supports(supports-condition) list-of-media-queries;
+@import url layer(layer-name) list-of-media-queries;
+@import url supports(supports-condition);
+@import url supports(supports-condition) list-of-media-queries;
+@import url list-of-media-queries;
+*/
 
-/* layer as a function */
-@import url("green.css") layer(bar) supports(selector(&))
-  (min-width: calc(10px));
+/* With `supports()` */
+@import "/css/styles.css" supports(color: red) screen and (max-width: 400px);
+@import "/css/styles.css" supports( color: red ) screen and (max-width: 400px);
+@import "/css/styles.css" supports;
+@import url("whatever.css") supports((selector(h2 > p)) and (font-tech(color-COLRv1)));
+@import url("grid.css") supports(display: grid) screen and (max-width: 400px);
+@import url("flex.css") supports((not (display: grid)) and (display: flex)) screen and (max-width: 400px);
 
-@import url('bootstrap/scss/bootstrap.scss') layer(bootstrap);
+/* With `layer()` */
+
+@import "style.css" something layer;
+@import "theme.css" layer layer(ssss);
+@import "theme.css" layer(ssss);
+@import "theme.css" layer(ssss) layer;
+
+@import "style.css"
+layer;
+@import url('bootstrap/scss/bootstrap.scss')
+layer(bootstrap);
+@import "theme.css" layer(utilities);
+@import url(headings.css) layer(default);
+@import url(links.css) layer(default.hello);
+@import 'url' layer(layer-name);
+@import "dark.css" layer(framework.themes.dark stasffss);
+
+
+@layer default {
+  audio[controls] {
+    display: block;
+  }
+}
+
+/* With `layer()` & `supports()` */
+@import url("green.css") layer(bar) supports(selector(&)) (min-width: calc(10px));
+@import url("green.css") s ssss sast layer layer
+supports(selector(&)) (min-width: calc(10px));
+
+/* Others */
+@import "custom.css";
+@import url("chrome://communicator/skin/");
+@import url("narrow.css") handheld and (max-width: 400px);
+@import url("bluish.css") projection, tv;
+@import url("fine-print.css") print;
+@import url("bluish.css") print, screen;
+@import "common.css" screen;
+@import url("landscape.css") screen and (orientation: landscape);

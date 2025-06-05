@@ -1,0 +1,45 @@
+/*
+@import
+  [ <url> | <string> ]
+  [ layer | layer(<layer-name>) ]?
+  [ supports( [ <supports-condition> | <declaration> ] ) ]?
+   <media-query-list>?
+*/
+
+/* Highlight layer keyword */
+@import "theme.css" layer;
+@import "theme.css" layer layer;
+@import "theme.css" layer screen and (max-width: 400px);
+@import "theme.css" layer
+supports(selector(&)) (min-width: calc(10px));
+@import "theme.css"
+layer;
+@import url('style.css') layer;
+@import url('style.css')
+layer;
+
+/* Highlight layer() function */
+@import "theme.css" layer(layer-name);
+@import "theme.css" layer(layer-name) layer;
+@import "theme.css" layer(layer-name) screen and (max-width: 400px);
+@import "theme.css" layer(layer-name)
+supports(selector(&)) (min-width: calc(10px));
+@import "theme.css"
+layer(layer-name);
+@import url('style.css') layer(layer.name);
+@import url('style.css')
+layer(layer.name);
+
+/* INVALID GRAMMAR */
+@import "theme.css" something layer;
+@import "theme.css" layer layer(layer-name);
+@import "theme.css" something layer(layer-name);
+@import "theme.css" layer(layer-name) layer(layer-name) layer;
+
+
+/* Rule Example */
+@layer default {
+  audio[controls] {
+    display: block;
+  }
+}
