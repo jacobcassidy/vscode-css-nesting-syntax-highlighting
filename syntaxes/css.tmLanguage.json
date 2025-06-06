@@ -4,7 +4,7 @@
 		"If you want to provide a fix or improvement, please create a pull request against the original repository.",
 		"Once accepted there, we are happy to receive an update request."
 	],
-	"version": "https://github.com/microsoft/vscode-css/commit/c216f777497265700ff336f739328e5197e012cd",
+	"version": "https://github.com/microsoft/vscode-css/commit/a927fe2f73927bf5c25d0b0c4dd0e63d69fd8887",
 	"name": "CSS",
 	"scopeName": "source.css",
 	"patterns": [
@@ -25,65 +25,11 @@
 		},
 		{
 			"include": "#rule-list"
-		},
-		{
-			"include": "#nesting-selector"
 		}
 	],
 	"repository": {
-		"arithmetic-operators": {
-			"match": "[*/]|(?<=\\s|^)[-+](?=\\s|$)",
-			"name": "keyword.operator.arithmetic.css"
-		},
 		"at-rules": {
 			"patterns": [
-				{
-					"begin": "(?i)(?=@container(\\s|\\(|/\\*|$))",
-					"end": "(?<=})(?!\\G)",
-					"patterns": [
-						{
-							"begin": "(?i)\\G(@)container",
-							"beginCaptures": {
-								"0": {
-									"name": "keyword.control.at-rule.container.css"
-								},
-								"1": {
-									"name": "punctuation.definition.keyword.css"
-								}
-							},
-							"end": "(?=\\s*[{;])",
-							"name": "meta.at-rule.container.header.css",
-							"patterns": [
-								{
-									"include": "#container-condition"
-								}
-							]
-						},
-						{
-							"begin": "{",
-							"beginCaptures": {
-								"0": {
-									"name": "punctuation.section.container.begin.bracket.curly.css"
-								}
-							},
-							"end": "}",
-							"endCaptures": {
-								"0": {
-									"name": "punctuation.section.container.end.bracket.curly.css"
-								}
-							},
-							"name": "meta.at-rule.container.body.css",
-							"patterns": [
-								{
-									"include": "#nesting-at-rules"
-								},
-								{
-									"include": "$self"
-								}
-							]
-						}
-					]
-				},
 				{
 					"begin": "\\A(?:\\xEF\\xBB\\xBF)?(?i:(?=\\s*@charset\\b))",
 					"end": ";|(?=$)",
@@ -272,9 +218,6 @@
 							},
 							"name": "meta.at-rule.media.body.css",
 							"patterns": [
-								{
-									"include": "#nesting-at-rules"
-								},
 								{
 									"include": "$self"
 								}
@@ -558,9 +501,6 @@
 							"name": "meta.at-rule.supports.body.css",
 							"patterns": [
 								{
-									"include": "#nesting-at-rules"
-								},
-								{
 									"include": "$self"
 								}
 							]
@@ -722,9 +662,6 @@
 							"name": "meta.at-rule.body.css",
 							"patterns": [
 								{
-									"include": "#nesting-at-rules"
-								},
-								{
 									"include": "$self"
 								}
 							]
@@ -783,164 +720,6 @@
 				}
 			},
 			"name": "comment.block.css"
-		},
-		"container-condition": {
-			"begin": "\\G",
-			"end": "(?=\\s*[{;])",
-			"patterns": [
-				{
-					"include": "#comment-block"
-				},
-				{
-					"include": "#escapes"
-				},
-				{
-					"match": "(?xi)\n (?<=not.*)not\n # Only one `not` in allowed",
-					"name": "invalid.illegal.multiple-not.container.css"
-				},
-				{
-					"match": "(?i)(?<=\\s|^|,|\\*/)(and|or|not)(?=\\s|{|/\\*|$)",
-					"name": "keyword.operator.logical.$1.container.css"
-				},
-				{
-					"include": "#container-name"
-				},
-				{
-					"include": "#container-query"
-				}
-			]
-		},
-		"container-name": {
-			"begin": "\\G",
-			"end": "(?xi)\n (?=(?:\\(|not)|style\\()\n # Ends when `(`, `not`, or `style(` is reached",
-			"patterns": [
-				{
-					"include": "#comment-block"
-				},
-				{
-					"captures": {
-						"1": {
-							"name": "invalid.illegal.constant.container-name.container.css"
-						},
-						"2": {
-							"name": "support.constant.container-name.container.css"
-						}
-					},
-					"match": "(?xi)\n (?<=^|\\s|\\*/)\n(?:\n # Invalid name\n (default|none)\n |\n # Valid names\n ([a-zA-Z0-9\\-_\\\\]+)\n )\n(?=$|[({\\s;]|/\\*)"
-				}
-			]
-		},
-		"container-query": {
-			"begin": "((?<=\\s)\\()|(style)(\\()",
-			"beginCaptures": {
-				"1": {
-					"name": "punctuation.definition.parameters.begin.bracket.round.css"
-				},
-				"2": {
-					"name": "support.style-query.container.css"
-				},
-				"3": {
-					"name": "punctuation.definition.parameters.begin.bracket.round.css"
-				}
-			},
-			"end": "\\)",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.definition.parameters.end.bracket.round.css"
-				}
-			},
-			"patterns": [
-				{
-					"begin": "(?xi)\n (?<=\\s\\()\n # Rules for size <container-query>",
-					"end": "(?=\\))",
-					"patterns": [
-						{
-							"include": "#container-query-features"
-						},
-						{
-							"include": "#container-size-features"
-						},
-						{
-							"include": "#container-size-feature-keywords"
-						}
-					]
-				},
-				{
-					"begin": "(?xi)\n (?<=style\\()\n # Rules for container-query <style-query>",
-					"end": "(?=\\))",
-					"name": "style-query.container.css",
-					"patterns": [
-						{
-							"include": "#container-query-features"
-						},
-						{
-							"include": "#container-style-features"
-						},
-						{
-							"include": "#container-style-feature-keywords"
-						}
-					]
-				}
-			]
-		},
-		"container-query-features": {
-			"patterns": [
-				{
-					"match": ":",
-					"name": "punctuation.separator.key-value.css"
-				},
-				{
-					"match": ">=|<=|=|<|>",
-					"name": "keyword.operator.comparison.css"
-				},
-				{
-					"include": "#numeric-values"
-				},
-				{
-					"include": "#comment-block"
-				}
-			]
-		},
-		"container-size-features": {
-			"match": "(?xi)\n (?<=^|\\s|\\(|\\*/) # Preceded by whitespace, bracket or comment\n (?:\n # Standardised features\n (\n (?:min-|max-)? # Range features\n (?: aspect-ratio\n | block-size\n | height\n | inline-size\n | width\n )\n | orientation\n )\n )\n (?=\\s|$|[><:=]|\\)|/\\*) # Terminates cleanly",
-			"name": "support.size.property-name.container.css"
-		},
-		"container-size-feature-keywords": {
-			"patterns": [
-				{
-					"match": "(?xi)\n (?<=^|\\s|:|\\*/)\n # Preceded by whitespace, colon, or comment\n (?: portrait\n | landscape\n # Orientation\n )\n (?=\\s|\\)|$)",
-					"name": "support.constant.property-value.container.css"
-				},
-				{
-					"include": "#functions"
-				}
-			]
-		},
-		"container-style-features": {
-			"match": "(?x)\n # Custom Property Name\n (?<=^|\\s|\\(|\\*/) # Preceded by whitespace, bracket or comment\n (?<![\\w-])\n --\n (?:[-a-zA-Z_] | [^\\x00-\\x7F]) # First letter\n (?:[-a-zA-Z0-9_] | [^\\x00-\\x7F] # Remainder of identifier\n |\\\\(?:[0-9a-fA-F]{1,6}|.)\n)*",
-			"name": "variable.style-query.container.css"
-		},
-		"container-style-feature-keywords": {
-			"begin": "(?xi)\n (?<=[\\:\\s*|\\*/])\n # Preceded by colon and zero or more whitespaces, or a comment \n (?:(?!\\s)) # Ignore trailing whitespace",
-			"end": "(?=[\\s|\\)|$])",
-			"patterns": [
-				{
-					"match": "(true|false)",
-					"name": "support.constant.boolean.container.css"
-				},
-				{
-					"include": "#functions"
-				},
-				{
-					"include": "#property-keywords"
-				},
-				{
-					"include": "#unicode-range"
-				},
-				{
-					"include": "#color-keywords"
-				}
-			]
 		},
 		"escapes": {
 			"patterns": [
@@ -1062,18 +841,16 @@
 					"name": "meta.function.calc.css",
 					"patterns": [
 						{
-							"include": "#arithmetic-operators"
+							"match": "[*/]|(?<=\\s|^)[-+](?=\\s|$)",
+							"name": "keyword.operator.arithmetic.css"
 						},
 						{
 							"include": "#property-values"
-						},
-						{
-							"include": "#function-nesting"
 						}
 					]
 				},
 				{
-					"begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color|light-dark)(\\()",
+					"begin": "(?i)(?<![\\w-])(rgba?|rgb|hsla?|hsl|hwb|lab|oklab|lch|oklch|color)(\\()",
 					"beginCaptures": {
 						"1": {
 							"name": "support.function.misc.css"
@@ -1190,9 +967,6 @@
 							"name": "constant.numeric.other.density.css"
 						},
 						{
-							"include": "#arithmetic-operators"
-						},
-						{
 							"include": "#property-values"
 						},
 						{
@@ -1304,35 +1078,6 @@
 						},
 						{
 							"include": "#property-values"
-						}
-					]
-				}
-			]
-		},
-		"function-nesting": {
-			"patterns": [
-				{
-					"begin": "\\(",
-					"beginCaptures": {
-						"0": {
-							"name": "punctuation.definition.begin.bracket.round.scss"
-						}
-					},
-					"end": "\\)",
-					"endCaptures": {
-						"0": {
-							"name": "punctuation.definition.end.bracket.round.scss"
-						}
-					},
-					"patterns": [
-						{
-							"include": "#arithmetic-operators"
-						},
-						{
-							"include": "#property-values"
-						},
-						{
-							"include": "#function-nesting"
 						}
 					]
 				}
@@ -1603,9 +1348,6 @@
 						},
 						{
 							"include": "#comment-block"
-						},
-						{
-							"include": "#functions"
 						}
 					]
 				}
@@ -1630,37 +1372,6 @@
 				}
 			},
 			"match": "(?xi)\n(?<=^|\\s|,|\\*/)\n(?:\n  # Valid media types\n  (all|print|screen|speech)\n  |\n  # Deprecated in Media Queries 4: http://dev.w3.org/csswg/mediaqueries/#media-types\n  (aural|braille|embossed|handheld|projection|tty|tv)\n)\n(?=$|[{,\\s;]|/\\*)"
-		},
-		"nesting-at-rules": {
-			"patterns": [
-				{
-					"include": "#commas"
-				},
-				{
-					"include": "#nesting-rules"
-				},
-				{
-					"include": "#rule-list-innards"
-				}
-			]
-		},
-		"nesting-rules": {
-			"patterns": [
-				{
-					"match": "(?xi) (?<![\\w:-])\n(?:\n header|label|mark|nav|ruby|span\n)\n(?=[+~>\\s,.\\#|&){:\\[]|/\\*|$)",
-					"name": "entity.name.tag.css"
-				},
-				{
-					"include": "#property-names"
-				},
-				{
-					"include": "#selector-innards"
-				}
-			]
-		},
-		"nesting-selector": {
-			"match": "&",
-			"name": "entity.name.tag.nesting.selector.css"
 		},
 		"numeric-values": {
 			"patterns": [
@@ -1794,13 +1505,7 @@
 			"name": "meta.property-list.css",
 			"patterns": [
 				{
-					"include": "#nesting-rules"
-				},
-				{
 					"include": "#rule-list-innards"
-				},
-				{
-					"include": "$self"
 				}
 			]
 		},
@@ -1871,9 +1576,6 @@
 		"selector-innards": {
 			"patterns": [
 				{
-					"include": "#nesting-selector"
-				},
-				{
 					"include": "#comment-block"
 				},
 				{
@@ -1916,7 +1618,7 @@
 							]
 						}
 					},
-					"match": "(?x) (?<![@\\w-])\n([.\\#])\n# Invalid identifier\n(\n  (?:\n    # Starts with ASCII digits, with possible hyphen preceding it\n    -?[0-9]\n    |\n    # Consists of a hyphen only\n    -                                      # Terminated by either:\n    (?= $                                  # - End-of-line\n      | [\\s,.\\#)\\[:{>+~|&]               # - Followed by another selector\n      | /\\*                               # - Followed by a block comment\n    )\n    |\n    # Name contains unescaped ASCII symbol\n    (?:                                    # Check for acceptable preceding characters\n        [-a-zA-Z_0-9]|[^\\x00-\\x7F]       # - Valid selector character\n      | \\\\(?:[0-9a-fA-F]{1,6}|.)         # - Escape sequence\n    )*\n    (?:                                    # Invalid punctuation\n      [!\"'%(*;<?@^`|\\]}]                 # - NOTE: We exempt `)` from the list of checked\n      |                                    #   symbols to avoid matching `:not(.invalid)`\n      / (?!\\*)                            # - Avoid invalidating the start of a comment\n    )+\n  )\n  # Mark remainder of selector invalid\n  (?: [-a-zA-Z_0-9]|[^\\x00-\\x7F]         # - Otherwise valid identifier characters\n    | \\\\(?:[0-9a-fA-F]{1,6}|.)           # - Escape sequence\n  )*\n)",
+					"match": "(?x) (?<![@\\w-])\n([.\\#])\n# Invalid identifier\n(\n  (?:\n    # Starts with ASCII digits, with possible hyphen preceding it\n    -?[0-9]\n    |\n    # Consists of a hyphen only\n    -                                      # Terminated by either:\n    (?= $                                  # - End-of-line\n      | [\\s,.\\#)\\[:{>+~|]               # - Followed by another selector\n      | /\\*                               # - Followed by a block comment\n    )\n    |\n    # Name contains unescaped ASCII symbol\n    (?:                                    # Check for acceptable preceding characters\n        [-a-zA-Z_0-9]|[^\\x00-\\x7F]       # - Valid selector character\n      | \\\\(?:[0-9a-fA-F]{1,6}|.)         # - Escape sequence\n    )*\n    (?:                                    # Invalid punctuation\n      [!\"'%&(*;<?@^`|\\]}]                 # - NOTE: We exempt `)` from the list of checked\n      |                                    #   symbols to avoid matching `:not(.invalid)`\n      / (?!\\*)                            # - Avoid invalidating the start of a comment\n    )+\n  )\n  # Mark remainder of selector invalid\n  (?: [-a-zA-Z_0-9]|[^\\x00-\\x7F]         # - Otherwise valid identifier characters\n    | \\\\(?:[0-9a-fA-F]{1,6}|.)           # - Escape sequence\n  )*\n)",
 					"name": "invalid.illegal.bad-identifier.css"
 				},
 				{
@@ -1932,7 +1634,7 @@
 							]
 						}
 					},
-					"match": "(?x)\n(\\.)                                  # Valid class-name\n(\n  (?: [-a-zA-Z_0-9]|[^\\x00-\\x7F]     # Valid identifier characters\n    | \\\\(?:[0-9a-fA-F]{1,6}|.)       # Escape sequence\n  )+\n)                                      # Followed by either:\n(?= $                                  # - End of the line\n  | [\\s,.\\#)\\[:{>+~|&]               # - Another selector\n  | /\\*                               # - A block comment\n)",
+					"match": "(?x)\n(\\.)                                  # Valid class-name\n(\n  (?: [-a-zA-Z_0-9]|[^\\x00-\\x7F]     # Valid identifier characters\n    | \\\\(?:[0-9a-fA-F]{1,6}|.)       # Escape sequence\n  )+\n)                                      # Followed by either:\n(?= $                                  # - End of the line\n  | [\\s,.\\#)\\[:{>+~|]               # - Another selector\n  | /\\*                               # - A block comment\n)",
 					"name": "entity.other.attribute-name.class.css"
 				},
 				{
@@ -1948,7 +1650,7 @@
 							]
 						}
 					},
-					"match": "(?x)\n(\\#)\n(\n  -?\n  (?![0-9])\n  (?:[-a-zA-Z0-9_]|[^\\x00-\\x7F]|\\\\(?:[0-9a-fA-F]{1,6}|.))+\n)\n(?=$|[\\s,.\\#)\\[:{>+~|&]|/\\*)",
+					"match": "(?x)\n(\\#)\n(\n  -?\n  (?![0-9])\n  (?:[-a-zA-Z0-9_]|[^\\x00-\\x7F]|\\\\(?:[0-9a-fA-F]{1,6}|.))+\n)\n(?=$|[\\s,.\\#)\\[:{>+~|]|/\\*)",
 					"name": "entity.other.attribute-name.id.css"
 				},
 				{
@@ -2112,7 +1814,7 @@
 			]
 		},
 		"tag-names": {
-			"match": "(?xi) (?<![\\w:-])\n(?:\n    # HTML\n    a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound\n  | big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|command\n  | content|data|datalist|dd|del|details|dfn|dialog|dir|div|dl|dt|element|em|embed|fieldset\n  | figcaption|figure|font|footer|form|frame|frameset|h[1-6]|head|header|hgroup|hr|html|i\n  | iframe|image|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark\n  | marquee|math|menu|menuitem|meta|meter|multicol|nav|nextid|nobr|noembed|noframes|noscript\n  | object|ol|optgroup|option|output|p|param|picture|plaintext|pre|progress|q|rb|rp|rt|rtc\n  | ruby|s|samp|script|section|select|shadow|slot|small|source|spacer|span|strike|strong\n  | style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr\n  | track|tt|u|ul|var|video|wbr|xmp\n\n  # SVG\n  | altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform\n  | circle|clipPath|color-profile|cursor|defs|desc|discard|ellipse|feBlend|feColorMatrix\n  | feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap\n  | feDistantLight|feDropShadow|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur\n  | feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting\n  | feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name\n  | font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hatch|hatchpath|hkern\n  | line|linearGradient|marker|mask|mesh|meshgradient|meshpatch|meshrow|metadata\n  | missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|solidcolor\n  | stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern\n\n  # MathML\n  | annotation|annotation-xml|maction|maligngroup|malignmark|math|menclose|merror|mfenced\n  | mfrac|mglyph|mi|mlabeledtr|mlongdiv|mmultiscripts|mn|mo|mover|mpadded|mphantom|mroot\n  | mrow|ms|mscarries|mscarry|msgroup|msline|mspace|msqrt|msrow|mstack|mstyle|msub|msubsup\n  | msup|mtable|mtd|mtext|mtr|munder|munderover|semantics\n)\n(?=[+~>\\s,.\\#|&){:\\[]|/\\*|$)",
+			"match": "(?xi) (?<![\\w:-])\n(?:\n    # HTML\n    a|abbr|acronym|address|applet|area|article|aside|audio|b|base|basefont|bdi|bdo|bgsound\n  | big|blink|blockquote|body|br|button|canvas|caption|center|cite|code|col|colgroup|command\n  | content|data|datalist|dd|del|details|dfn|dialog|dir|div|dl|dt|element|em|embed|fieldset\n  | figcaption|figure|font|footer|form|frame|frameset|h[1-6]|head|header|hgroup|hr|html|i\n  | iframe|image|img|input|ins|isindex|kbd|keygen|label|legend|li|link|listing|main|map|mark\n  | marquee|math|menu|menuitem|meta|meter|multicol|nav|nextid|nobr|noembed|noframes|noscript\n  | object|ol|optgroup|option|output|p|param|picture|plaintext|pre|progress|q|rb|rp|rt|rtc\n  | ruby|s|samp|script|section|select|shadow|slot|small|source|spacer|span|strike|strong\n  | style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr\n  | track|tt|u|ul|var|video|wbr|xmp\n\n  # SVG\n  | altGlyph|altGlyphDef|altGlyphItem|animate|animateColor|animateMotion|animateTransform\n  | circle|clipPath|color-profile|cursor|defs|desc|discard|ellipse|feBlend|feColorMatrix\n  | feComponentTransfer|feComposite|feConvolveMatrix|feDiffuseLighting|feDisplacementMap\n  | feDistantLight|feDropShadow|feFlood|feFuncA|feFuncB|feFuncG|feFuncR|feGaussianBlur\n  | feImage|feMerge|feMergeNode|feMorphology|feOffset|fePointLight|feSpecularLighting\n  | feSpotLight|feTile|feTurbulence|filter|font-face|font-face-format|font-face-name\n  | font-face-src|font-face-uri|foreignObject|g|glyph|glyphRef|hatch|hatchpath|hkern\n  | line|linearGradient|marker|mask|mesh|meshgradient|meshpatch|meshrow|metadata\n  | missing-glyph|mpath|path|pattern|polygon|polyline|radialGradient|rect|set|solidcolor\n  | stop|svg|switch|symbol|text|textPath|tref|tspan|use|view|vkern\n\n  # MathML\n  | annotation|annotation-xml|maction|maligngroup|malignmark|math|menclose|merror|mfenced\n  | mfrac|mglyph|mi|mlabeledtr|mlongdiv|mmultiscripts|mn|mo|mover|mpadded|mphantom|mroot\n  | mrow|ms|mscarries|mscarry|msgroup|msline|mspace|msqrt|msrow|mstack|mstyle|msub|msubsup\n  | msup|mtable|mtd|mtext|mtr|munder|munderover|semantics\n)\n(?=[+~>\\s,.\\#|){:\\[]|/\\*|$)",
 			"name": "entity.name.tag.css"
 		},
 		"unicode-range": {
