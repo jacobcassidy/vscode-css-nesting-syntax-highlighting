@@ -5,11 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.1] - 2025-06-06
+
+### Added
+
+- Added "issues" CSS files.
+- Added `\*.md` to list of files indented by spaces instead of tabs, in `.editorconfig`.
+- Added CSS syntax test demo files.
+- Added development config files.
+- Added official vscode-css source files.
+
+### Changed
+
+- Moved dev doc files out of main repo.
+- Reorganize `package.json` details.
+- Replaced extension's `css.tmLanguage.json` with official vscode-css file.
+- Restructured example CSS files.
+
 ## [0.4.0] - 2025-01-31
 
 ### Added
 
-- Added sheild.io badges to top of `README.md`.
+- Added shield.io badges to top of `README.md`.
 
 ## [0.3.0] - 2025-01-07
 
