@@ -1,0 +1,15 @@
+/**
+ * AT LAYER
+ */
+
+/* layer name has no unique syntax highlighting scope */
+.foo {
+	@layer base {
+		block-size: 100%;
+		@layer support {
+			& .bar {
+				min-block-size: 100%;
+			}
+		}
+	}
+}

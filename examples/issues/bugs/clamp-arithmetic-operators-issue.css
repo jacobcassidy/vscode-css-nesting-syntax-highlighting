@@ -1,0 +1,19 @@
+/**
+ * FUNCTION ARITHMETIC OPERATORS
+ */
+
+.example {
+  margin-block-start: clamp(15px, 0.805rem + 0.64vw, 18px);
+  margin-block-end: clamp(15px, 0.805rem - 0.64vw, 18px);
+}
+
+.other-examples {
+  width: clamp(100px, calc(30% / 2rem + 10px), 900px);
+  width: min(1000px, calc(70% + 100px));
+  font-size: clamp(1.1rem, 0.7153rem + 1.6368vw, 1.5rem);
+  width: max(300px, 50% + 20px);
+  width: min(300px, 50% + 20px);
+  height: calc(var(--base-height) + 10%);
+  font-size: clamp(15px, 0.805rem + 0.64vw, 18px);
+  width: calc(100% - 20px);
+}

@@ -1,0 +1,37 @@
+/**
+ * NESTED CALC FUNCTIONS
+ */
+
+.example {
+  margin-top: calc(600 / 16 * 1rem);
+  margin-bottom: calc( (768 / 16) * 1rem);
+  margin-right: calc( (768 / 16 * (768 / 16) ) * 1rem);
+  margin-left: calc( (768 / 16 * (768 / 16 + (768 / 16) ) ) * 1rem);
+  padding-top: calc( (768 / 16 * (768 / 16 + (768 / 16 - (768 / 16) ) ) ) * 1rem);
+}
+
+/* Without CSS nesting */
+@media screen and (max-width: calc( (1280 / 16) * 1rem)) {
+  .example {
+    max-width: calc((768 / 16) * 1rem);
+  }
+}
+
+/* With CSS nesting */
+@media only screen and (max-width: calc( (768 / 16) * 1rem )) {
+  .example {
+    max-width: calc((768 / 16) * 1rem);
+    span {
+      max-width: calc((600 / 16) * 1rem);
+    }
+  }
+}
+
+.example {
+  @media only screen and (max-width: calc( var(--size) * 1rem)) {
+    max-width: calc((768 / 16) * 1rem);
+    span {
+      max-width: calc((600 / 16) * 1rem);
+    }
+  }
+}

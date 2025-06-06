@@ -1,0 +1,14 @@
+/**
+ * AT PAGE
+ */
+
+@page {
+  content: "Page " counter(pageNumber);
+}
+
+@page {
+  /* margin box at top right showing page number */
+  @top-right {
+    content: "Page " counter(pageNumber);
+  }
+}
