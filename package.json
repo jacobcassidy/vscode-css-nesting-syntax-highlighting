@@ -47,6 +47,7 @@
 		"url": "https://github.com/jacobcassidy/vscode-css-nesting-syntax-highlighting"
 	},
 	"scripts": {
-		"build": "cson2json src/vscode-css/grammars/css.cson > syntaxes/css.tmLanguage.json"
+		"build": "cson2json src/vscode-css/grammars/css.cson > syntaxes/css.tmLanguage.json",
+		"test": "node --test ./src/vscode-css/spec/css-spec.mjs"
 	}
 }
