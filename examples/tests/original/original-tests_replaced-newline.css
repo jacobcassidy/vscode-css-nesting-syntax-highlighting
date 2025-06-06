@@ -1,0 +1,561 @@
+/* SELECTORS */
+
+/* SELECTORS > TYPE */
+p {gap:0}
+
+/* SELECTORS > UNIVERSAL SELECTOR */
+* {gap:0}
+
+/* SELECTORS > COMBINATOR */
+a > b + * ~ :not(.nah) {gap:0}
+
+/* SELECTORS > DEPRECATED COMBINATOR */
+/* .sooo /deep/ >>>_.>> {gap:0} */
+
+/* SELECTORS > COMPLEX */
+[disabled], [disabled] + p {gap:0}
+[disabled]:not(:first-child)::before:hover
+  ~ div.object
+  + #id.thing:hover > strong ~ p::before,
+  a::last-of-type,/*Comment*/::selection > html[lang^=en-AU],
+  *>em.i.ly[data-name|=\"Life\"] {gap:0}
+
+/* SELECTORS > CUSTOM ELEMENT */
+pearl-1941 1941-pearl -pearl-1941 {gap:0}
+pokémon-ピカチュウ {gap:0}
+Basecamp-schedule basecamp-Schedule {gap:0}
+halo_night {gap:0}
+@some-weird-new-feature {gap:0}
+some-edgy-new-function() {gap:0}
+
+/* SELECTORS > ATTRIBUTE */
+[title] {gap:0}
+[hreflang|=fr] {gap:0}
+[href^="http://www.w3.org/"] {gap:0}
+[*|title] {gap:0}
+[marvel|origin=radiation] {gap:0}
+[|data-hp="75"] {gap:0}
+#div[id="0"] {gap:0}
+.bar#div[id="0"] {gap:0}
+.div[id="0"] {gap:0}
+#bar.div[id] {gap:0}
+span[  er|lang  |=   "%%"   ] {gap:0}
+a[name\\[0\\]="value"] {gap:0}
+a[name\\ space|Get\\ It\\?="kek"] {gap:0}
+span[/*]*/lang] {gap:0}
+a[href^="#"] a[href^= "#"] a[href^="#" ] {gap:0}
+a[href^='#'] a[href^=  '#'] a[href^='#' ] {gap:0}
+span[class~=Java] {gap:0}
+span[class^=  0xDEADCAFE=|~BEEFBABE  ] {gap:0}
+a[name\\[0\\]=a\\BAD\\AF\\]a\\ i] {gap:0}
+a[attr=val i] a[attr="val" i] a[attr=\'val\'I] a[val^=  \'"\'i] a[attr= i] a[attr= i i] {gap:0}
+span[
+  \\x20{2}
+  ns|lang/**/
+  |=
+\"pt\"] {gap:0}
+span[/*===
+==|span[/*}
+====*/*|lang/*]=*/~=/*\"|\"*/\"en-AU\"/*
+ |
+*/
+i] {gap:0}
+
+/* SELECTORS > CLASS */
+.étendard {gap:0}
+.スポンサー {gap:0}
+.-- {gap:0}
+._ {gap:0}
+.\\33\\44-model {gap:0}
+.la\\{tex\\} {gap:0}
+.B!W{gap:0}
+.666{gap:0}
+.-911-{gap:0}
+.-{gap:0}
+
+/* SELECTORS > ID */
+#unicorn {gap:0}
+#洪荒之力 {gap:0}
+#_zer0-day {gap:0}
+#--d3bug-- {gap:0}
+#sort!{gap:0}
+#666{gap:0}
+#-911-{gap:0}
+#-{gap:0}
+#\\33\\44-model {gap:0}
+#la\\{tex\\} {gap:0}
+
+/* SELECTORS > NAMESPACE */
+foo|h1 {gap:0}
+*|abbr {gap:0}
+*|* {gap:0}
+foo|*  {gap:0}
+|[svg|attr=name]{gap:0}
+|h1   {gap:0}
+*| {gap:0}
+*|{gap:0}
+
+/* AT RULES */
+
+/* AT RULES > @CHARSET */
+@charset "US-ASCII";
+/* Not the first line */
+@charset "UTF-8";
+ @charset 'US-ASCII';
+@charset  "iso-8859-15";
+@charset"US-ASCII";
+@charset "UTF-8" ;
+@charset "WTF-8" /* Nope */ ;
+/* @charset "UTF-8 */
+@CHARSET 'US-ASCII';
+
+/* AT RULES > @IMPORT */
+@import url("file.css");
+@import "file.css";
+@import 'file.css';
+@import /* url("name"); */ "1.css";
+@import/* Comment */"2.css";
+@import"file.css";
+@import-file.css;
+@import
+url("file.css");
+@import
+url("file.css");
+@import url("1.css") print /* url(";"); */ all;
+@import "astral.css" projection;
+/* @import url(\'landscape.css\') screen and (orientation:landscape); */
+
+/* AT RULES > @MEDIA */
+@media(max-width: 37.5em) { }
+@media not print and (max-width: 37.5em){ }
+@media (max-device-width: 2px){ }
+@media (-webkit-foo: bar){ b{ } }
+@media screen and (-ms-high-contrast:black-on-white){ }
+@media (_moz-a:b){}
+@media (-hp-foo:bar){}
+@media (mso-page-size:wide){}
+h1 { }@media only screen { } h2 { }
+h1 { }@media only screen { }h2 { }
+@media (min-width >= 0px)
+   and (max-width <= 400)
+   and (min-height > 400)
+   and (max-height < 200) {}
+@media/* */only/* */screen/* */and (min-width:1100px){}
+@media/*=*/(max-width:/**/37.5em)/*=*/and/*=*/(/*=*/min-height/*:*/:/*=*/1.2em/*;*/){}
+@media only screen and (min-width : /* 40 */
+  320px),
+  not print and (max-width: 480px)  /* kek */ and (-webkit-min-device-pixel-ratio /*:*/ : 2),
+only speech and (min-width: 10em),  /* wat */     (-webkit-min-device-pixel-ratio: 2) { }
+@media , {}
+@media (min-aspect-ratio: 3 / 4) and (max-aspect-ratio: 20   /   17) {}
+
+/* AT RULES > @KEYFRAMES */
+@keyframes important1 {
+  from { margin-top: 50px;
+         margin-bottom: 100px }
+  50%  { margin-top: 150px !important; } /* Ignored */
+  to   { margin-top: 100px; }
+}
+/* broke, so removed */
+@keyframes Give-them-both { fROm { } To {} }
+@keyframes identifier { -50.2% } @keyframes ident2 { .25%}
+@keyframes A\\1F602Z {}
+
+/* AT RULES > @SUPPORTS */
+@supports (font-size: 1em) { }
+@supports not (font-size: 1em){ }
+@supports (font-size: 1em) and (font-size: 1em){ }
+@supports (font-size: 1em) or (font-size: 1em){ }
+@supports (--foo: green){}
+@supports not ((tab-size:4) or (-moz-tab-size:4)){
+  body::before{content: \"Come on, Microsoft (Get it together already)…\"; }
+}
+@supports (display:table-cell) or ((display:list-item) and (display:run-in)){}
+@supports (animation-name: test) {
+  #node {
+    animation-name: test;
+  }
+  body > header[data-name=\"attr\"] ~ *:not(:first-child){
+    content: \"😂👌\"
+  }
+  @keyframes important1 {
+    from {
+      margin-top: 50px;
+      margin-bottom: 100px
+    }
+    50%  { margin-top: 150px !important; } /* Ignored */
+    to   { margin-top: 100px; }
+  }
+}
+@supports/*===*/not/*==****************|
+==*/(display:table-cell)/*============*/ and (display: list-item)/*}*/{}
+/* @supports
+  (box-shadow: 0 0 2px rgba(0,0,0,.5) inset) or
+  (-moz-box-shadow: 0 0 2px black inset) or
+  (-webkit-box-shadow: 0 0 2px black inset) or
+  (-o-box-shadow: 0 0 2px black inset)
+{ .noticebox { } } */
+
+/* AT RULES > @NAMESPACE */
+@namespace "XML";
+@namespace  prefix  "XML"  ;
+@namespace url("http://a.bc/");
+@namespace url url("http://a.bc/");
+@namespace/*=*/pre/*=*/"url"/*=*/;
+@namespace"XML";
+@namespace pre\\ fix "http://url/";
+@namespace
+prefix\"XML\";
+/* @namespace
+
+  prefix
+
+url(\"http://a.bc/\"); */
+
+/* AT RULES > @FONT-FEATURE */
+@font-feature-values Font name 2 { }
+@font-feature-values
+Font name 2
+{}
+@font-feature-values/*{*/Font/*}*/name/*{*/2{}
+@swash{ swashy: 2; }
+@ornaments{ ident: 2; }
+@annotation{ ident: 1; }
+@stylistic{ stylish: 2; }
+@styleset{ sets: 2 3 4; }
+@character-variant{ charvar: 2 }
+@sWASH{ swashy: 2; }
+@ornaMENts{ ident: 2; }
+@anNOTatION{ ident: 1; }
+@styLISTic{ stylish: 2; }
+@STYLEset{ sets: 2 3 4; }
+@CHARacter-VARiant{ charvar: 2 }
+@font-feature-values Font name 2 {
+@swash{/*
+========*/swashy:/**/2;/**/}
+}
+@swash{ s\\000077a\\73hy: 1; }
+
+/* AT RULES > @PAGE */
+@page :first { }
+@page:right{}
+@page {}
+@page{}
+
+/* AT RULES > @COUNTER-STYLE */
+@counter-style winners-list {
+  system: fixed;
+  symbols: url(gold-medal.svg) url(silver-medal.svg) url(bronze-medal.svg);
+  suffix: \" \";
+}
+@counter-style/*{*/winners-list/*}*/{ system: fixed; }
+@counter-style
+winners-list {}
+@counter-style A\\01F602z {}
+
+/* AT RULES > @DOCUMENT */
+/* broke, so removed */
+
+/* AT RULES > @VIEWPORT */
+@viewport { min-width: 640px; max-width: 800px; }
+@-O-VIEWPORT
+{
+  zoom: 0.75;
+  min-zoom: 0.5;
+  max-zoom: 0.9;
+}
+@-ms-viewport/*{*/{/*
+==*/orientation: landscape;
+}
+
+/* AT RULES > UNKNOWN */
+/* @foo;
+@foo ;
+@foo a;
+@foo ();
+@foo (a); */
+/* @foo bar;
+.foo */
+
+/* CAPITALIZATION */
+/* @IMPoRT url(\"file.css\");
+@MEdIA (MAX-WIDTH: 2px){ }
+@pAgE :fIRST { }
+@NAMEspace \"A\";
+@foNT-FacE {} */
+a{ COLOR: #fff; }
+a{ gRId-tEMPLaTe: none; }
+a{ bACkgrOUND-iMAGE: none; }
+a{ -MOZ-IMAGE: none; }
+a{ color: INItIaL; }
+a{ color: trAnsPAREnT; }
+a{ color: rED; }
+a{ color: unSET; }
+a{ color: NONe; }
+a{ style: lOWER-lATIN; }
+a{ color: -WebkIT-foo; }
+a{ font: HelVETica; }
+DIV:HOVER { }
+#id::BefORE { }
+#id::aFTEr { }
+TABle:nTH-cHILD(2N+1) {}
+htML:NOT(.htiml) {}
+I::BACKDROP
+I::-mOZ-thing {}
+a{ color: RGBa(); }
+a{ color: hslA(); }
+a{ color: URL(); }
+a{ content: ATTr(); }
+a{ content: CoUNTer(); }
+a{ content: cuBIC-beZIER()}
+a{ content: sTePs()}
+a{ content: cALc(2 + 2)}
+a{width: 20EM; }
+a{width: 20ReM; }
+a{width: 8tURN; }
+a{width: 20S; }
+a{width: 20CM}
+a{width: 2gRAd}
+
+/* PSEUDO-CLASSES */
+p:first-child {}
+p{ left:left }
+a:dir(ltr ){gap:0}
+*:dir( rtl){gap:0}
+:DIR(/**
+==*/ltr/*
+*/) {gap:0}
+:lang(zh-Hans-CN,es-419) {gap:0}
+:lang(zh-*-CN) {gap:0}
+/* :lang("zh-*-CN",\'*-ab-\') {} */
+*:not(.class-name):not(div) {gap:0}
+*:not(/*(*/.class-name/*)*/):not(/*b*/) {gap:0}
+:nth-child(2n+1)
+:nth-child(2n -1)
+:nth-child(-2n+ 1)
+:nth-child(-2n - 1)
+:nth-child(odd)
+:nth-child(even)
+:nth-child(  odd   )
+:nth-child(  even  ) {gap:0}
+:nth-last-child(2n) {gap:0}
+:nth-last-child( -2n) {gap:0}
+:nth-last-child( 2n ) {gap:0}
+:nth-last-child(even) {gap:0}
+img:nth-of-type(+n+1) {gap:0}
+img:nth-of-type(-n+1) {gap:0}
+img:nth-of-type(n+1) {gap:0}
+h1:nth-last-of-type(-1) {gap:0}
+h1:nth-last-of-type(+2) {gap:0}
+h1:nth-last-of-type(3) {gap:0}
+
+/* PSEUDO-ELEMENTS */
+.opening:first-letter {gap:0}
+q::after {gap:0}
+:-ms-input-placeholder {gap:0}
+::-webkit-input-placeholder {gap:0}
+::selection {gap:0}
+:selection {gap:0}
+
+/* COMPOUND SELECTOR */
+very-custom.class
+very-custom:hover
+very-custom::shadow
+
+/* PROPERTY LISTS */
+div { font-size: inherit; }
+div{color:inherit;float:left}
+very-custom { color: inherit }
+another-one  {  display  :  none  ;  }
+:root { --white: #FFF; }
+a{ text-shadow: a, b; }
+.test{   width:  20em;;;;;;;;;
+;;;;;;;;;height: 10em; }
+p{ color: #f030; }
+a{ color: #CAFEBABE; }
+/* a{ color: #CAFEBABEF; } */
+p { font-family: Verdana, Helvetica, sans-serif; }
+ol.myth { list-style-type: cjk-earthly-branch }
+div { font-size: 14px; }
+div { font-size: test14px; }
+div { font-size: test-14px; }
+.edge { cursor: -webkit-zoom-in; }
+.edge { width: -moz-min-content; }
+.edge { display: -ms-grid; }
+div { color: var(--primary-color) }
+.a   { a:       12em  }
+.a   { a:     4.01ex  }
+.a   { a:   -456.8ch  }
+.a   { a:      0.0REM }
+.a   { a:     +0.0vh  }
+.a   { a:     -0.0vw  }
+.a   { a:       .6px  }
+.a   { a:     10e3mm  }
+.a   { a:     10E3cm  }
+.a   { a:  -3.4e+2In  }
+.a   { a:  -3.4e-2ch  }
+.a   { a:    +.5E-2%  }
+.a   { a:   -3.4e-2%  }
+
+/* FUNCTIONAL NOTATION */
+a{content:aTTr(data-width px, inherit)}
+a{content:ATTR(VAR(--name) px, "N/A")}
+a{
+  width: calc(3px + -1em);
+  width: calc(3px - -1em);
+  width: calc(3px * 2);
+  width: calc(3px / 2);
+}
+a{ width: calc(3px+1em); }
+a{ width: calc(3px--1em); height: calc(10-1em);}
+a{ width: calc(3px*2); }
+a{ width: calc(3px/2); }
+.foo { margin-top: calc(var(--gap) + 1px); }
+
+/* COLORS */
+a{ color: rgb(187,255,221); }
+a{ color: RGBa( 100%, 0% ,20.17% ,.5 ); }
+a{color:HSL(0,  00100%,50%)}
+a{color:HSLa(2,.0%,1%,.7)}
+a{ color: RGBA(var(--red), 0% , 20%, .2)}
+a{ color: rgba(/**/255/*=*/,0,/*2.2%*/51/*,*/0.2)}
+.frost{
+  background-color: rgba(
+    var(--red),    /* Red */
+    var(--green),  /* Green */
+    var(--blue),   /* Blue */
+    /* var(--test),
+    /**/var(--opacity) /* Transparency */
+  );
+}
+
+/* GRADIENTS */
+a{ background-image: linear-gradient( 45deg, blue, red ); }
+a{ background-image: LINear-graDIEnt( ellipse to left top, blue, red);
+a{ background-image: radial-gradient(farthest-corner at 45px 45px , #f00 0%, #00f 100%);}
+a{ background-image: RADial-gradiENT(16px at 60px 50%,#000 0%, #000 14px, rgba(0,0,0,.3) 18px, transparent 19px)}
+a{
+  background-image: raDIAL-gradiENT(
+    ellipse farthest-corner/*@*/at/*@*/470px 47px,/*===
+========*/#FFFF80 20%, rgba(204, 153, 153, 0.4) 30%,/*))))))))}*/#E6E6FF 60%); }
+.grad {
+  background-image: -webkit-linear-gradient(top,  /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */ hsl(0, 80%, 70%), #bada55);
+  background-image:    -moz-linear-gradient(top,  /* For Firefox (3.6 to 15) */ hsl(0, 80%, 70%), #bada55);
+  background-image:      -o-linear-gradient(top,  /* For old Opera (11.1 to 12.0) */  hsl(0, 80%, 70%), #bada55);
+}
+.grad {
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,
+    from( rgb(0, 171, 235)),
+    color-stop(0.5, rgb(255, 255, 255)),
+    color-stop(0.5, rgb(102, 204, 0)),
+    to(rgb(255, 255, 255))),
+    -webkit-gradient(radial, 45 45, 10, 52 50, 30, from(#A7D30C), to(rgba(1,159,98,0)), color-stop(90%, #019F62)),
+        -webkit-gradient(radial, 105 105, 20, 112 120, 50, from(#ff5f98), to(rgba(255,1,136,0)), color-stop(75%, #ff0188)),
+        -webkit-gradient(radial, 95 15, 15, 102 20, 40, from(#00c9ff), to(rgba(0,201,255,0)), color-stop(80%, #00b5e2)),
+        -webkit-gradient(radial, 0 150, 50, 0 140, 90, from(#f4f201), to(rgba(228, 199,0,0)), color-stop(80%, #e4c700));
+}
+
+/* OTHER FUNCTIONS */
+a{
+  shape-outside: circle(20em/*=*/at 50% 50%);
+  shape-outside: inset(1em, 1em, 1em, 1em);
+}
+.font{
+  font-variant-alternates: stylistic(user-defined-ident);
+  font-variant-alternates: styleset(user-defined-ident);
+  font-variant-alternates: character-variant(user-defined-ident);
+  font-variant-alternates: swash(user-defined-ident);
+  font-variant-alternates: ornaments(user-defined-ident);
+  font-variant-alternates: annotation(user-defined-ident);
+  font-variant-alternates: swash(ident1) annotation(ident2);
+}
+/* a{
+    background-image: image-set( \"foo.png\" 1x,
+                                 \"foo-2x.png\" 2x,
+                                 \"foo-print.png\" 600dpi );
+} */
+
+/* TIMING FUNCTIONS */
+a{ zoom: cubic-bezier(/**/1.2,/*=*/0,0,0/**/)}
+a{ before: steps(0, start); after: steps(1, end); }
+
+/* VARIABLES */
+a{color: var(--name)}
+a{color: var(  --name  )}
+a{ color: var( /*=*/ --something ) }
+.bar{ width: var(--page-width, /*;;;);*/ 2); }
+
+a{ p: attr (title); }
+a{url:url (s)}
+a{content:url ("http://github.com/");}
+a{content: url (http://a.pl/)}
+a{ color: rgb (187,255,221); }
+
+/* UNICODE RANGES */
+a{ a: U+A5 }
+a{ unicode-range: u+0-7F }
+a{ unicode-range: U+4?? }
+a{ unicode-range: U+0025-00FF, U+4?? }
+
+/* ESCAPE SEQUENCES */
+very-custom { content: '\\c0ffee' }
+very-custom { content: "\\c0ffee" }
+\\61 \\{ {  } \\}
+a { \\77\\69\\64\\74\\68: 20px; }
+a { content: \\1F764; }
+
+/* UNCLOSED STRINGS */
+/* a{ content: 'aaaa */
+/* a{ content: "aaaa */
+/* a{  content: \"aaaaa\\\\\\
+aaa\"; color: red;
+} */
+/* a{
+  content: 'aaaaa\\\\\\
+aaa'; color: red;
+} */
+/* a{ content: "aaa\\"aa */
+/* a{ content: 'aaa\\'aa */
+a{
+  content: \"aaa\\\"aa\\
+aaaa
+aaaa; color: red;
+}
+
+/* COMMENTS */
+@import /* url("name"); */ "1.css";
+@import/*";"*/ url("2.css");
+@import url("3.css") print /* url(";"); */;
+@font-face/*"{;}"*/
+/* comment */ @media {}
+@media/* comment */ () {}
+@media (max-height: 40em/* comment */) {}
+section {border:4px/*padding:1px*/}
+section {
+    border:4px /*1px;
+    padding:1px*/
+}
+
+/* ANIMATIONS */
+.animated {
+  animation-name: orphan-black;
+  animation-name: line-scale;
+}
+
+/* TRANSFORMS */
+.transformed {
+  transform: matrix(0, 1.5, -1.5, 0, 0, 100px);
+  transform: rotate(90deg) translateX(100px) scale(1.5);
+}
+
+/* PERFORMANCE REGRESSIONS */
+/* <![CDATA[啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"= */
+/* <body>
+  [}~" + ('ÁÂÃÄÅÆÇÈÊËÍÎ'.repeat(100)) + "
+</body> */
+
+/* MISSING SUPPORTED PROPERTIES REGRESSIONS */
+a { place-items: center center; }
+a { place-self: center center; }
+a { place-content: center center; }
+a { row-gap: 5px; }

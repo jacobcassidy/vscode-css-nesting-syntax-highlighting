@@ -1,0 +1,349 @@
+/* SELECTORS */
+
+/* SELECTORS > TYPE */
+p {gap:0}
+
+/* SELECTORS > UNIVERSAL SELECTOR */
+* {gap:0}
+
+/* SELECTORS > COMBINATOR */
+a > b + * ~ :not(.nah) {gap:0}
+
+/* SELECTORS > DEPRECATED COMBINATOR */
+.sooo /deep/ >>>_.>> {gap:0}
+
+/* SELECTORS > COMPLEX */
+[disabled], [disabled] + p {gap:0}
+[disabled]:not(:first-child)::before:hover
+  ~ div.object
+  + #id.thing:hover > strong ~ p::before,
+  a::last-of-type,/*Comment*/::selection > html[lang^=en-AU],
+  *>em.i.ly[data-name|=\"Life\"] {gap:0}
+
+/* SELECTORS > CUSTOM ELEMENT */
+pearl-1941 1941-pearl -pearl-1941 {gap:0}
+pokémon-ピカチュウ {gap:0}
+Basecamp-schedule basecamp-Schedule {gap:0}
+halo_night {gap:0}
+@some-weird-new-feature {gap:0}
+some-edgy-new-function() {gap:0}
+
+/* SELECTORS > ATTRIBUTE */
+[title] {gap:0}
+[hreflang|=fr] {gap:0}
+[href^="http://www.w3.org/"] {gap:0}
+[*|title] {gap:0}
+[marvel|origin=radiation] {gap:0}
+[|data-hp="75"] {gap:0}
+#div[id="0"] {gap:0}
+.bar#div[id="0"] {gap:0}
+.div[id="0"] {gap:0}
+#bar.div[id] {gap:0}
+span[  er|lang  |=   "%%"   ] {gap:0}
+a[name\\[0\\]="value"] {gap:0}
+a[name\\ space|Get\\ It\\?="kek"] {gap:0}
+span[/*]*/lang] {gap:0}
+a[href^="#"] a[href^= "#"] a[href^="#" ] {gap:0}
+a[href^='#'] a[href^=  '#'] a[href^='#' ] {gap:0}
+span[class~=Java] {gap:0}
+span[class^=  0xDEADCAFE=|~BEEFBABE  ] {gap:0}
+a[name\\[0\\]=a\\BAD\\AF\\]a\\ i] {gap:0}
+a[attr=val i] a[attr="val" i] a[attr=\'val\'I] a[val^=  \'"\'i] a[attr= i] a[attr= i i] {gap:0}
+span[\n  \\x20{2}\n  ns|lang/**/\n  |=\n\"pt\"] {gap:0}
+span[/*===\n==|span[/*}\n====*/*|lang/*]=*/~=/*\"|\"*/\"en-AU\"/*\n |\n*/\ni] {gap:0}
+
+/* SELECTORS > CLASS */
+.étendard {gap:0}
+.スポンサー {gap:0}
+.-- {gap:0}
+._ {gap:0}
+.\\33\\44-model {gap:0}
+.la\\{tex\\} {gap:0}
+.B!W{gap:0}
+.666{gap:0}
+.-911-{gap:0}
+.-{gap:0}
+
+/* SELECTORS > ID */
+#unicorn {gap:0}
+#洪荒之力 {gap:0}
+#_zer0-day {gap:0}
+#--d3bug-- {gap:0}
+#sort!{gap:0}
+#666{gap:0}
+#-911-{gap:0}
+#-{gap:0}
+#\\33\\44-model {gap:0}
+#la\\{tex\\} {gap:0}
+
+/* SELECTORS > NAMESPACE */
+foo|h1 {gap:0}
+*|abbr {gap:0}
+*|* {gap:0}
+foo|*  {gap:0}
+|[svg|attr=name]{gap:0}
+|h1   {gap:0}
+*| {gap:0}
+*|{gap:0}
+
+
+/* AT RULES */
+
+/* AT RULES > @CHARSET */
+@charset "US-ASCII";
+/* Not the first line */\n@charset "UTF-8";
+ @charset 'US-ASCII';
+@charset  "iso-8859-15";
+@charset"US-ASCII";
+@charset "UTF-8" ;
+@charset "WTF-8" /* Nope */ ;
+/* @charset "UTF-8 */
+@CHARSET 'US-ASCII';
+
+/* AT RULES > @IMPORT */
+@import url("file.css");
+@import "file.css";
+@import 'file.css';
+@import /* url("name"); */ "1.css";
+@import/* Comment */"2.css";
+@import"file.css";
+@import-file.css;
+@import\nurl("file.css");
+@import\nurl("file.css");
+@import url("1.css") print /* url(";"); */ all;
+@import "astral.css" projection;
+/* @import url(\'landscape.css\') screen and (orientation:landscape); */
+
+/* AT RULES > @MEDIA */
+@media(max-width: 37.5em) { }
+@media not print and (max-width: 37.5em){ }
+@media (max-device-width: 2px){ }
+@media (-webkit-foo: bar){ b{ } }
+@media screen and (-ms-high-contrast:black-on-white){ }
+@media (_moz-a:b){}
+@media (-hp-foo:bar){}
+@media (mso-page-size:wide){}
+h1 { }@media only screen { } h2 { }
+h1 { }@media only screen { }h2 { }
+/* @media (min-width >= 0px)\n   and (max-width <= 400)\n   and (min-height > 400)\n   and (max-height < 200) */
+@media/* */only/* */screen/* */and (min-width:1100px){}
+@media/*=*/(max-width:/**/37.5em)/*=*/and/*=*/(/*=*/min-height/*:*/:/*=*/1.2em/*;*/){}
+@media only screen and (min-width : /* 40 */\n  320px),\n  not print and (max-width: 480px)  /* kek */ and (-webkit-min-device-pixel-ratio /*:*/ : 2),\nonly speech and (min-width: 10em),  /* wat */     (-webkit-min-device-pixel-ratio: 2) { }
+@media , {}
+@media (min-aspect-ratio: 3 / 4) and (max-aspect-ratio: 20   /   17) {}
+
+/* AT RULES > @KEYFRAMES */
+@keyframes important1 {\n  from { margin-top: 50px;\n         margin-bottom: 100px }\n  50%  { margin-top: 150px !important; } /* Ignored */\n  to   { margin-top: 100px; }\n}
+/* broke, so removed */
+@keyframes Give-them-both { fROm { } To {} }
+@keyframes identifier { -50.2% } @keyframes ident2 { .25%}
+@keyframes A\\1F602Z {}
+
+/* AT RULES > @SUPPORTS */
+@supports (font-size: 1em) { }
+@supports not (font-size: 1em){ }\n@supports (font-size: 1em) and (font-size: 1em){ }\n@supports (font-size: 1em) or (font-size: 1em){ }
+@supports (--foo: green){}
+@supports not ((tab-size:4) or (-moz-tab-size:4)){\n  body::before{content: \"Come on, Microsoft (Get it together already)…\"; }\n}
+@supports (display:table-cell) or ((display:list-item) and (display:run-in)){}
+@supports (animation-name: test) {\n  #node {\n    animation-name: test;\n  }\n  body > header[data-name=\"attr\"] ~ *:not(:first-child){\n    content: \"😂👌\"\n  }\n  @keyframes important1 {\n    from {\n      margin-top: 50px;\n      margin-bottom: 100px\n    }\n    50%  { margin-top: 150px !important; } /* Ignored */\n    to   { margin-top: 100px; }\n  }\n}
+@supports/*===*/not/*==****************|\n==*/(display:table-cell)/*============*/ and (display: list-item)/*}*/{}
+/* @supports\n  (box-shadow: 0 0 2px rgba(0,0,0,.5) inset) or\n  (-moz-box-shadow: 0 0 2px black inset) or\n  (-webkit-box-shadow: 0 0 2px black inset) or\n  (-o-box-shadow: 0 0 2px black inset)\n{ .noticebox { } } */
+
+/* AT RULES > @NAMESPACE */
+@namespace "XML";
+@namespace  prefix  "XML"  ;
+@namespace url("http://a.bc/");
+@namespace url url("http://a.bc/");
+@namespace/*=*/pre/*=*/"url"/*=*/;
+@namespace"XML";
+@namespace pre\\ fix "http://url/";
+@namespace\nprefix\"XML\";
+@namespace\n\n  prefix\n\nurl(\"http://a.bc/\");
+
+/* AT RULES > @FONT-FEATURE */
+@font-feature-values Font name 2 { }
+@font-feature-values\nFont name 2\n{}
+@font-feature-values/*{*/Font/*}*/name/*{*/2{}
+@swash{ swashy: 2; }\n@ornaments{ ident: 2; }\n@annotation{ ident: 1; }\n@stylistic{ stylish: 2; }\n@styleset{ sets: 2 3 4; }\n@character-variant{ charvar: 2 }
+@sWASH{ swashy: 2; }\n@ornaMENts{ ident: 2; }\n@anNOTatION{ ident: 1; }\n@styLISTic{ stylish: 2; }\n@STYLEset{ sets: 2 3 4; }\n@CHARacter-VARiant{ charvar: 2 }
+@font-feature-values Font name 2 {\n@swash{/*\n========*/swashy:/**/2;/**/}\n}
+@swash{ s\\000077a\\73hy: 1; }
+
+/* AT RULES > @PAGE */
+@page :first { }
+@page:right{}
+@page {}
+@page{}
+
+/* AT RULES > @COUNTER-STYLE */
+@counter-style winners-list {\n  system: fixed;\n  symbols: url(gold-medal.svg) url(silver-medal.svg) url(bronze-medal.svg);\n  suffix: \" \";\n}
+@counter-style/*{*/winners-list/*}*/{ system: fixed; }
+@counter-style\nwinners-list {}
+@counter-style A\\01F602z {}
+
+/* AT RULES > @DOCUMENT */
+/* broke, so removed */
+
+/* AT RULES > @VIEWPORT */
+@viewport { min-width: 640px; max-width: 800px; }
+@-O-VIEWPORT\n{\n  zoom: 0.75;\n  min-zoom: 0.5;\n  max-zoom: 0.9;\n}
+@-ms-viewport/*{*/{/*\n==*/orientation: landscape;\n}
+
+/* AT RULES > UNKNOWN */
+/* @foo;\n@foo ;\n@foo a;\n@foo ();\n@foo (a); */
+/* @foo bar;\n.foo */
+
+/* CAPITALIZATION */
+/* @IMPoRT url(\"file.css\");\n@MEdIA (MAX-WIDTH: 2px){ }\n@pAgE :fIRST { }\n@NAMEspace \"A\";\n@foNT-FacE {} */
+a{ COLOR: #fff; }\na{ gRId-tEMPLaTe: none; }\na{ bACkgrOUND-iMAGE: none; }\na{ -MOZ-IMAGE: none; }
+a{ color: INItIaL; }\na{ color: trAnsPAREnT; }\na{ color: rED; }\na{ color: unSET; }\na{ color: NONe; }\na{ style: lOWER-lATIN; }\na{ color: -WebkIT-foo; }\na{ font: HelVETica; }
+DIV:HOVER { }\n#id::BefORE { }\n#id::aFTEr { }\nTABle:nTH-cHILD(2N+1) {}\nhtML:NOT(.htiml) {}\nI::BACKDROP\nI::-mOZ-thing {}
+a{ color: RGBa(); }\na{ color: hslA(); }\na{ color: URL(); }\na{ content: ATTr(); }\na{ content: CoUNTer(); }\na{ content: cuBIC-beZIER()}\na{ content: sTePs()}\na{ content: cALc(2 + 2)}
+a{width: 20EM; }\na{width: 20ReM; }\na{width: 8tURN; }\na{width: 20S; }\na{width: 20CM}\na{width: 2gRAd}
+
+/* PSEUDO-CLASSES */
+p:first-child {}
+p{ left:left }
+a:dir(ltr ){ }\n*:dir( rtl){ }
+:DIR(/**\n==*/ltr/*\n*/) {}
+:lang(zh-Hans-CN,es-419) {}
+:lang(zh-*-CN) {}
+/* :lang("zh-*-CN",\'*-ab-\') {} */
+*:not(.class-name):not(div) {}
+*:not(/*(*/.class-name/*)*/):not(/*b*/) {}
+:nth-child(2n+1)\n:nth-child(2n -1)\n:nth-child(-2n+ 1)\n:nth-child(-2n - 1)\n:nth-child(odd)\n:nth-child(even)\n:nth-child(  odd   )\n:nth-child(  even  ) {}
+:nth-last-child(2n)\n:nth-last-child( -2n)\n:nth-last-child( 2n )\n:nth-last-child(even) {}
+img:nth-of-type(+n+1)\nimg:nth-of-type(-n+1)\nimg:nth-of-type(n+1) {}
+h1:nth-last-of-type(-1)\nh1:nth-last-of-type(+2)\nh1:nth-last-of-type(3) {}
+
+/* PSEUDO-ELEMENTS */
+.opening:first-letter {}
+q::after {}
+:-ms-input-placeholder {}
+::-webkit-input-placeholder {}
+::selection {}
+:selection {}
+
+/* COMPOUND SELECTOR */
+very-custom.class
+very-custom:hover
+very-custom::shadow
+
+/* PROPERTY LISTS */
+div { font-size: inherit; }
+div{color:inherit;float:left}
+very-custom { color: inherit }\nanother-one  {  display  :  none  ;  }
+:root { --white: #FFF; }
+a{ text-shadow: a, b; }
+.test{   width:  20em;;;;;;;;;\n;;;;;;;;;height: 10em; }
+p{ color: #f030; }
+a{ color: #CAFEBABE; }
+/* a{ color: #CAFEBABEF; } */
+p { font-family: Verdana, Helvetica, sans-serif; }
+ol.myth { list-style-type: cjk-earthly-branch }
+div { font-size: 14px; }
+div { font-size: test14px; }
+div { font-size: test-14px; }
+.edge { cursor: -webkit-zoom-in; }
+.edge { width: -moz-min-content; }
+.edge { display: -ms-grid; }
+div { color: var(--primary-color) }
+.a   { a:       12em  }\n.a   { a:     4.01ex  }\n.a   { a:   -456.8ch  }\n.a   { a:      0.0REM }\n.a   { a:     +0.0vh  }\n.a   { a:     -0.0vw  }\n.a   { a:       .6px  }\n.a   { a:     10e3mm  }\n.a   { a:     10E3cm  }\n.a   { a:  -3.4e+2In  }\n.a   { a:  -3.4e-2ch  }\n.a   { a:    +.5E-2%  }\n.a   { a:   -3.4e-2%  }
+
+/* FUNCTIONAL NOTATION */
+a{content:aTTr(data-width px, inherit)}
+a{content:ATTR(VAR(--name) px, "N/A")}
+a{\n  width: calc(3px + -1em);\n  width: calc(3px - -1em);\n  width: calc(3px * 2);\n  width: calc(3px / 2);\n}
+a{ width: calc(3px+1em); }
+a{ width: calc(3px--1em); height: calc(10-1em);}
+a{ width: calc(3px*2); }
+a{ width: calc(3px/2); }
+.foo { margin-top: calc(var(--gap) + 1px); }
+
+/* COLORS */
+a{ color: rgb(187,255,221); }
+a{ color: RGBa( 100%, 0% ,20.17% ,.5 ); }
+a{color:HSL(0,  00100%,50%)}
+a{color:HSLa(2,.0%,1%,.7)}
+a{ color: RGBA(var(--red), 0% , 20%, .2)}
+a{ color: rgba(/**/255/*=*/,0,/*2.2%*/51/*,*/0.2)}
+.frost{\n  background-color: rgba(\n    var(--red),    /* Red */\n    var(--green),  /* Green */\n    var(--blue),   /* Blue */\n    /* var(--test),\n    /**/var(--opacity) /* Transparency */\n  );\n}
+
+/* GRADIENTS */
+a{ background-image: linear-gradient( 45deg, blue, red ); }
+a{ background-image: LINear-graDIEnt( ellipse to left top, blue, red);
+a{ background-image: radial-gradient(farthest-corner at 45px 45px , #f00 0%, #00f 100%);}
+a{ background-image: RADial-gradiENT(16px at 60px 50%,#000 0%, #000 14px, rgba(0,0,0,.3) 18px, transparent 19px)}
+a{\n  background-image: raDIAL-gradiENT(\n    ellipse farthest-corner/*@*/at/*@*/470px 47px,/*===\n========*/#FFFF80 20%, rgba(204, 153, 153, 0.4) 30%,/*))))))))}*/#E6E6FF 60%); }
+.grad {\n  background-image: -webkit-linear-gradient(top,  /* For Chrome 25 and Safari 6, iOS 6.1, Android 4.3 */ hsl(0, 80%, 70%), #bada55);\n  background-image:    -moz-linear-gradient(top,  /* For Firefox (3.6 to 15) */ hsl(0, 80%, 70%), #bada55);\n  background-image:      -o-linear-gradient(top,  /* For old Opera (11.1 to 12.0) */  hsl(0, 80%, 70%), #bada55);\n}
+.grad {\n  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%,\n    from( rgb(0, 171, 235)),\n    color-stop(0.5, rgb(255, 255, 255)),\n    color-stop(0.5, rgb(102, 204, 0)),\n    to(rgb(255, 255, 255))),\n    -webkit-gradient(radial, 45 45, 10, 52 50, 30, from(#A7D30C), to(rgba(1,159,98,0)), color-stop(90%, #019F62)),\n        -webkit-gradient(radial, 105 105, 20, 112 120, 50, from(#ff5f98), to(rgba(255,1,136,0)), color-stop(75%, #ff0188)),\n        -webkit-gradient(radial, 95 15, 15, 102 20, 40, from(#00c9ff), to(rgba(0,201,255,0)), color-stop(80%, #00b5e2)),\n        -webkit-gradient(radial, 0 150, 50, 0 140, 90, from(#f4f201), to(rgba(228, 199,0,0)), color-stop(80%, #e4c700));\n}
+
+/* OTHER FUNCTIONS */
+a{\n  shape-outside: circle(20em/*=*/at 50% 50%);\n  shape-outside: inset(1em, 1em, 1em, 1em);\n}
+.font{\n  font-variant-alternates: stylistic(user-defined-ident);\n  font-variant-alternates: styleset(user-defined-ident);\n  font-variant-alternates: character-variant(user-defined-ident);\n  font-variant-alternates: swash(user-defined-ident);\n  font-variant-alternates: ornaments(user-defined-ident);\n  font-variant-alternates: annotation(user-defined-ident);\n  font-variant-alternates: swash(ident1) annotation(ident2);\n}
+/* a{\n    background-image: image-set( \"foo.png\" 1x,\n                                 \"foo-2x.png\" 2x,\n                                 \"foo-print.png\" 600dpi );\n} */
+
+/* TIMING FUNCTIONS */
+a{ zoom: cubic-bezier(/**/1.2,/*=*/0,0,0/**/)}
+a{ before: steps(0, start); after: steps(1, end); }
+
+/* VARIABLES */
+a{color: var(--name)}
+a{color: var(  --name  )}
+a{ color: var( /*=*/ --something ) }
+.bar{ width: var(--page-width, /*;;;);*/ 2); }
+
+a{ p: attr (title); }
+a{url:url (s)}
+a{content:url ("http://github.com/");}
+a{content: url (http://a.pl/)}
+a{ color: rgb (187,255,221); }
+
+/* UNICODE RANGES */
+a{ a: U+A5 }
+a{ unicode-range: u+0-7F }
+a{ unicode-range: U+4?? }
+a{ unicode-range: U+0025-00FF, U+4?? }
+
+/* ESCAPE SEQUENCES */
+very-custom { content: '\\c0ffee' }
+very-custom { content: "\\c0ffee" }
+\\61 \\{ {  } \\}
+a { \\77\\69\\64\\74\\68: 20px; }
+a { content: \\1F764; }
+
+/* UNCLOSED STRINGS */
+/* a{ content: 'aaaa */
+/* a{ content: "aaaa */
+/* a{  content: \"aaaaa\\\\\\\naaa\"; color: red;\n} */
+/* a{\n  content: 'aaaaa\\\\\\\naaa'; color: red;\n} */
+/* a{ content: "aaa\\"aa */
+/* a{ content: 'aaa\\'aa */
+a{\n  content: \"aaa\\\"aa\\\naaaa\naaaa; color: red;\n}
+
+/* COMMENTS */
+@import /* url("name"); */ "1.css";
+@import/*";"*/ url("2.css");
+@import url("3.css") print /* url(";"); */;
+@font-face/*"{;}"*/{}
+/* comment */ @media {}
+@media/* comment */ () {}
+@media (max-height: 40em/* comment */) {}
+section {border:4px/*padding:1px*/}
+section {\n    border:4px /*1px;\n    padding:1px*/\n}
+
+/* ANIMATIONS */
+.animated {\n  animation-name: orphan-black;\n  animation-name: line-scale;\n}
+
+/* TRANSFORMS */
+.transformed {\n  transform: matrix(0, 1.5, -1.5, 0, 0, 100px);\n  transform: rotate(90deg) translateX(100px) scale(1.5);\n}
+
+/* PERFORMANCE REGRESSIONS */
+/* <![CDATA[啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"= */
+/* <body>\n  [}~" + ('ÁÂÃÄÅÆÇÈÊËÍÎ'.repeat(100)) + "\n</body> */
+
+/* MISSING SUPPORTED PROPERTIES REGRESSIONS */
+a { place-items: center center; }
+a { place-self: center center; }
+a { place-content: center center; }
+a { row-gap: 5px; }
