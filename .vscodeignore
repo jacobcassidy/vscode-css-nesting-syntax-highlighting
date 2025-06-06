@@ -1,5 +1,10 @@
-.dev-assets/**
-.vscode/**
-.vscode-test/**
+.dev-assets
 .gitignore
-vsc-extension-quickstart.md
+.package-lock.json
+.prettierignore
+.prettierrc
+.vscode
+.vscodeignore
+examples
+node_modules
+src
