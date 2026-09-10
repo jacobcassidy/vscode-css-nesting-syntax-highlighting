@@ -1,5 +1,8 @@
 # CSS Nesting Syntax Highlighting
 
+> [!NOTE]
+> This extension's code was  merged into the official VSCode app in [VSCode PR #330193](https://github.com/microsoft/vscode/pull/330193) from [vscode-css PR #47](https://github.com/microsoft/vscode-css/pull/47)) and is no longer needed. If you have it installed, you may now uninstall it and use the native CSS syntax from VSCode.
+
 [![vs marketplace](https://img.shields.io/vscode-marketplace/v/jacobcassidy.css-nesting-syntax-highlighting.svg?label=vs%20marketplace)](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.css-nesting-syntax-highlighting) [![Visual Studio Marketplace Downloads](https://img.shields.io/visual-studio-marketplace/d/jacobcassidy.css-nesting-syntax-highlighting)](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.css-nesting-syntax-highlighting) [![Visual Studio Marketplace Rating](https://img.shields.io/visual-studio-marketplace/r/jacobcassidy.css-nesting-syntax-highlighting)](https://marketplace.visualstudio.com/items?itemName=jacobcassidy.css-nesting-syntax-highlighting&ssr=false#review-details) [![GitHub commit activity](https://img.shields.io/github/commit-activity/t/jacobcassidy/vscode-css-nesting-syntax-highlighting)](https://github.com/jacobcassidy/vscode-css-nesting-syntax-highlighting/commits/main/)
 
 | Table of Contents                           |
