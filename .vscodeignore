@@ -1,5 +1,15 @@
-.dev-assets/**
-.vscode/**
-.vscode-test/**
+# Directories to ignore
+.dev-assets
+.vscode
+scripts
+
+# Files to ignore
+.editorconfig
 .gitignore
-vsc-extension-quickstart.md
+.markdownlint-cli2.jsonc
+.prettierignore
+.shellcheckrc
+azure-pipelines.yml
+eslint.config.js
+lefthook.yml
+prettier.config.js

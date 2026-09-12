@@ -1,0 +1,27 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DavidAnson/markdownlint-cli2/main/schema/markdownlint-cli2-config-schema.json",
+  "config": {
+    "default": true,
+    "heading-style": {
+      "style": "atx"
+    },
+    "line-length": {
+      "line_length": 9999
+    },
+    "no-duplicate-heading": {
+      "siblings_only": true
+    },
+    "no-hard-tabs": false,
+    "no-trailing-punctuation": false,
+    "ol-prefix": {
+      "style": "ordered"
+    },
+    "whitespace": false
+  },
+  "ignores": [
+    "node_modules",
+    "vendor"
+  ],
+  "gitignore": true,
+  "showFound": true
+}

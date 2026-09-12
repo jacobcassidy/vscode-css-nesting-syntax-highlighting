@@ -1,0 +1,32 @@
+# Prettier Notes
+#
+# Reference: https://prettier.io/docs/en/ignore.html
+#
+# Run `prettier --write` to format all files in a directory, except those ignored in this file,
+#
+# Prettier follow rules specified in the ".gitignore" file if it exists in the same directory from which it is run.
+#
+# By default, Prettier ignores the following files
+# **/.git
+# **/.svn
+# **/.hg
+# **/node_modules
+#
+# To ignore specific lines in a file, add the following comments directly above the line:
+# JavaScript              = // prettier-ignore
+# JSX                     = {/* prettier-ignore */}
+# MARKDOWN                = <!-- prettier-ignore -->
+# HTML                    = <!-- prettier-ignore -->
+# HTML ATTRIBUTE          = <!-- prettier-ignore-attribute -->
+# HTML SPECIFIC ATTRIBUTE = <!-- prettier-ignore-attribute (mouseup) -->
+# CSS                     = /* prettier-ignore */
+# YAML                    = # prettier-ignore
+
+# IGNORE BUILD FILES
+**/dist
+
+# IGNORE LOCK FILES
+**/package-lock.json
+
+# IGNORE MINIFIED FILES
+**/**.min.js

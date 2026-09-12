@@ -1,0 +1,25 @@
+pre-commit:
+  parallel: false
+  commands:
+    eslint:
+      priority: 1
+      glob: "**/*.js"
+      run: npx eslint {staged_files} --fix
+      stage_fixed: true
+    markdownlint:
+      priority: 2
+      glob: "**/*.md"
+      run: npx markdownlint-cli2 {staged_files} --fix
+      stage_fixed: true
+    prettier:
+      priority: 3
+      glob:
+        - "**/*.{astro,elm,hbs,svelte,vue}"
+        - "**/*.css"
+        - "**/*.html"
+        - "**/*.js"
+        - "**/*.{json,jsonc}"
+        - "**/*.md"
+        - "**/*.{yaml,yml}"
+      run: npx prettier {staged_files} --write
+      stage_fixed: true
