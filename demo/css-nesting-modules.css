@@ -43,7 +43,9 @@ ul {
 
 @font-face {
   font-family: "MyWebFont";
-  src: url("webfont.woff2") format("woff2"), url("webfont.woff") format("woff");
+  src:
+    url("webfont.woff2") format("woff2"),
+    url("webfont.woff") format("woff");
 }
 
 @font-feature-values MyFont {

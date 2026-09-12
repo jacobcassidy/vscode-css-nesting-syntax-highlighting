@@ -6,5 +6,4 @@
 @import url("green.css") layer supports(selector(&)) (min-width: calc(10px));
 
 /* layer as a function */
-@import url("green.css") layer(bar) supports(selector(&))
-  (min-width: calc(10px));
+@import url("green.css") layer(bar) supports(selector(&)) (min-width: calc(10px));

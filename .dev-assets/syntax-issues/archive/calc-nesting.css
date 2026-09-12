@@ -4,10 +4,10 @@
 
 .example {
   margin-top: calc(600 / 16 * 1rem);
-  margin-bottom: calc( (768 / 16) * 1rem);
-  margin-right: calc( (768 / 16 * (768 / 16) ) * 1rem);
-  margin-left: calc( (768 / 16 * (768 / 16 + (768 / 16) ) ) * 1rem);
-  padding-top: calc( (768 / 16 * (768 / 16 + (768 / 16 - (768 / 16) ) ) ) * 1rem);
+  margin-bottom: calc((768 / 16) * 1rem);
+  margin-right: calc((768 / 16 * (768 / 16)) * 1rem);
+  margin-left: calc((768 / 16 * (768 / 16 + (768 / 16))) * 1rem);
+  padding-top: calc((768 / 16 * (768 / 16 + (768 / 16 - (768 / 16)))) * 1rem);
 }
 
 /* Without CSS nesting */

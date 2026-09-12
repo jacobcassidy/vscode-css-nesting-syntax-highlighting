@@ -24,10 +24,7 @@ export default defineConfig([
       "import-x": importX,
       js,
     },
-    extends: [
-      "import-x/recommended",
-      "js/recommended",
-    ],
+    extends: ["import-x/recommended", "js/recommended"],
     files: ["**/*.js"],
     languageOptions: {
       globals: {
