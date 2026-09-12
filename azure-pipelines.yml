@@ -22,4 +22,8 @@ steps:
       workingDirectory: "$(Build.SourcesDirectory)"
       inlineScript: |
         set -euo pipefail
-        vsce publish --azure-credential
+        az account show --query '{tenant:tenantId,user:user}' -o json
+        az rest \
+          --url https://app.vssps.visualstudio.com/_apis/profile/profiles/me \
+          --resource 499b84ac-1321-427f-aa17-267ca6975798 \
+          --query '{id:id,displayName:displayName}' -o json
