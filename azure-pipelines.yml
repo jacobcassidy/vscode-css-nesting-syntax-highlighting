@@ -1,0 +1,25 @@
+trigger: none
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - checkout: self
+
+  - script: |
+      set -euo pipefail
+      npm install -g @vscode/vsce
+    displayName: "Install vsce and dependencies"
+    workingDirectory: "$(Build.SourcesDirectory)"
+
+  - task: AzureCLI@3
+    displayName: "Publish extension using managed identity"
+    inputs:
+      azureSubscription: "vscode_publishing_connection"
+      scriptType: bash
+      scriptLocation: inlineScript
+      workingDirectory: "$(Build.SourcesDirectory)"
+      inlineScript: |
+        set -euo pipefail
+        vsce publish --azure-credential
