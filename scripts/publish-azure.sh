@@ -13,6 +13,6 @@ fi
 az pipelines run \
   --organization 'https://dev.azure.com/jacobcassidy' \
   --project 'CSS Nesting Syntax Highlighting' \
-  --name 'jacobcassidy.vscode-css-nesting-syntax-highlighting' \
+  --id 2 \
   --branch main \
   --open
