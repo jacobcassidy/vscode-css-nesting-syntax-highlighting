@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This extension is now deprecated as we have successfully integrated the code into the native VSCode app and the extension is no longer needed for CSS nesting syntax highlighting.
 
+### Added
+
+- Added dev config files for linting and formatting.
+
 ### Changed
 
 - Added a note to the README.md file with details on the VSCode native integration.
